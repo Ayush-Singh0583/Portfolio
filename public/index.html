@@ -136,7 +136,7 @@ html.lenis, html.lenis body { height: auto; }
   top: 0; right: 0;
   width: 2px;
   height: 100vh;
-  height: 100svh;
+  height: 100lvh;
   z-index: 100;
   background: rgba(245, 158, 11, 0.15);
 }
@@ -155,7 +155,8 @@ html.lenis, html.lenis body { height: auto; }
   position: relative;
   width: 100%;
   height: 100vh;
-  height: 100svh;
+  height: 100lvh;   /* large viewport height — stays full when the mobile
+                       address bar collapses (no bottom black gap) */
   overflow: hidden;
   background: #000;
 }
@@ -698,9 +699,19 @@ html.lenis, html.lenis body { height: auto; }
   /* ---------- canvas sizing ---------- */
   var cw = 0, ch = 0;
   function sizeCanvas() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    cw = Math.max(1, Math.round(window.innerWidth  * dpr));
-    ch = Math.max(1, Math.round(window.innerHeight * dpr));
+    /* The backing store must match the canvas's on-screen box or the frame
+       gets stretched. Width = live viewport. Height is read from
+       #progress-track — also 100lvh, but (unlike the pinned .hero, or the
+       canvas inside it, whose size ScrollTrigger locks) never resized by
+       ScrollTrigger, so it always reports the true large-viewport height.
+       window.innerHeight can't be used either — it shrinks with the mobile
+       address bar. */
+    var dpr   = Math.min(window.devicePixelRatio || 1, 2);
+    var track = document.getElementById('progress-track');
+    var w = document.documentElement.clientWidth || window.innerWidth;
+    var h = (track && track.clientHeight) || window.innerHeight;
+    cw = Math.max(1, Math.round(w * dpr));
+    ch = Math.max(1, Math.round(h * dpr));
     canvas.width  = cw;
     canvas.height = ch;
   }
