@@ -3,6 +3,7 @@
 # 100 MB upload limit — and is not used by the live static site.
 node_modules
 resourcess-assets
+public/frames3
 .git
 MASTER-PROMPT.md
 server.js

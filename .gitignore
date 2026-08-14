@@ -6,6 +6,8 @@ node_modules/
 # live site does not need this file. To regenerate frames, see the
 # ffmpeg commands at the top of server.js.
 resourcess-assets/video-01.mp4
+public/frames3/
+frames3/
 
 # Vercel
 .vercel

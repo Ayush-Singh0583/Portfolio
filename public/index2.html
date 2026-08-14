@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayush Singh — Developer Portfolio</title>
+  <meta name="description"
+    content="Ayush Singh — Information Science & Engineering student and Software Developer. Building at the intersection of Software Engineering, Machine Learning, and Computer Vision." />
+  <meta name="theme-color" content="#030303" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030303'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       AYUSH SINGH LUXURY PORTFOLIO — CORE DESIGN SYSTEM
+       ============================================================ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg: #030303;
+      --bg-card: #09090b;
+      --bg-elevated: #111114;
+      --amber: #f59e0b;
+      --amber-dim: rgba(245, 158, 11, 0.15);
+      --amber-glow: rgba(245, 158, 11, 0.4);
+      --amber-soft: rgba(245, 158, 11, 0.06);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --text-sub: rgba(255, 255, 255, 0.4);
+      --border-subtle: rgba(245, 158, 11, 0.14);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html,
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.loading {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    ::selection {
+      background: rgba(245, 158, 11, 0.3);
+      color: #ffffff;
+    }
+
+    /* Lenis Smooth Scroll Setup */
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-smooth iframe {
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       LOADING SCREEN
+       ============================================================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: #030303;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s var(--ease);
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 48px;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.3em;
+      padding-left: 0.3em;
+      text-shadow: 0 0 35px rgba(245, 158, 11, 0.35);
+    }
+
+    .loader-bar-track {
+      width: 200px;
+      height: 2px;
+      margin-top: 36px;
+      background: rgba(245, 158, 11, 0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loader-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--amber);
+      box-shadow: 0 0 10px var(--amber);
+      transition: width 0.35s ease;
+    }
+
+    .loader-note {
+      margin-top: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ============================================================
+       FIXED HEADER
+       ============================================================ */
+    #site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 4.5vw, 60px);
+      background: transparent;
+      border: none;
+      pointer-events: none;
+      transition: background 0.4s ease;
+    }
+
+    #site-header.scrolled {
+      background: rgba(3, 3, 3, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.08);
+    }
+
+    .header-brand {
+      pointer-events: auto;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--amber);
+      letter-spacing: 0.28em;
+      padding-left: 0.28em;
+      text-decoration: none;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+      transition: opacity 0.3s ease;
+    }
+
+    .header-brand:hover {
+      opacity: 0.85;
+    }
+
+    .header-nav {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2.2vw, 32px);
+    }
+
+    .header-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s var(--ease), transform 0.3s ease;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+    }
+
+    .header-link:hover {
+      color: var(--amber);
+    }
+
+    /* ============================================================
+       SCROLL PROGRESS LINE (RIGHT EDGE)
+       ============================================================ */
+    #progress-track {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 2px;
+      height: 100vh;
+      height: 100lvh;
+      z-index: 150;
+      background: rgba(245, 158, 11, 0.15);
+      pointer-events: none;
+    }
+
+    #progress-fill {
+      width: 100%;
+      height: 100%;
+      background: rgba(245, 158, 11, 0.8);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+
+    /* ============================================================
+       HERO — SCROLL DRIVEN CANVAS SEQUENCE (800vh pin)
+       ============================================================ */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+    }
+
+    /* Vignette & cinematic overlay */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 35%, rgba(3, 3, 3, 0.6) 80%, rgba(3, 3, 3, 0.95) 100%);
+    }
+
+    /* Hero Text Moments */
+    .overlay {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      line-height: 1.18;
+      max-width: 50%;
+    }
+
+    /* Moment 01 — IDENTITY (approx 5%) */
+    .ov1 {
+      top: 14%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      max-width: 90%;
+    }
+
+    .ov1 .title-text {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(48px, 10vw, 130px);
+      letter-spacing: 0.35em;
+      padding-left: 0.35em;
+      white-space: nowrap;
+      color: var(--amber);
+      text-shadow: 0 4px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(245, 158, 11, 0.4);
+      opacity: 0;
+    }
+
+    /* Moment 02 — PROBLEM SOLVING (approx 18%) */
+    .ov2 {
+      left: clamp(24px, 8vw, 120px);
+      bottom: clamp(60px, 16vh, 140px);
+      text-align: left;
+    }
+
+    /* Moment 03 — TECHNICAL IDENTITY (approx 40%) */
+    .ov3 {
+      right: clamp(24px, 8vw, 120px);
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: right;
+    }
+
+    /* Moment 04 — PROJECTS (approx 62%) */
+    .ov4 {
+      left: clamp(24px, 8vw, 120px);
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+
+    /* Moment 05 — CLOSING (approx 85%) */
+    .ov5 {
+      left: clamp(24px, 8vw, 120px);
+      top: clamp(80px, 18vh, 160px);
+      text-align: left;
+    }
+
+    .oline {
+      display: block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(28px, 4.8vw, 56px);
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.95), 0 0 80px rgba(0, 0, 0, 0.85);
+      white-space: nowrap;
+    }
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(35px);
+    }
+
+    /* ============================================================
+       COMMON SECTION STYLES
+       ============================================================ */
+    section {
+      position: relative;
+      padding: clamp(90px, 12vh, 160px) clamp(20px, 6vw, 100px);
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: var(--amber);
+      margin-bottom: 16px;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(34px, 5.2vw, 62px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-lead {
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 780px;
+    }
+
+    /* ============================================================
+       ABOUT SECTION — "THE ENGINEER"
+       ============================================================ */
+    .about-section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: clamp(40px, 6vw, 90px);
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .about-content p {
+      font-size: clamp(15px, 1.25vw, 17px);
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 22px;
+    }
+
+    .about-content strong {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .about-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .metric-card {
+      padding: 30px 26px;
+      border-radius: 12px;
+      background: linear-gradient(160deg, rgba(245, 158, 11, 0.05), rgba(9, 9, 11, 0.8));
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      opacity: 0.5;
+    }
+
+    .metric-value {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(40px, 4.5vw, 56px);
+      font-weight: 600;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 4px;
+    }
+
+    .metric-sub {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-sub);
+    }
+
+    /* ============================================================
+       PROJECTS SECTION — "SELECTED WORK"
+       ============================================================ */
+    .projects-section {
+      border-top: 1px solid var(--border-subtle);
+      padding-bottom: 60px;
+    }
+
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 70px;
+      margin-top: 60px;
+    }
+
+    .project-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(30px, 4.5vw, 60px);
+      padding: clamp(32px, 4vw, 54px);
+      border-radius: 16px;
+      background: linear-gradient(160deg, #0d0d10 0%, #060608 100%);
+      border: 1px solid var(--border-card);
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.1), 0 30px 60px -25px rgba(0, 0, 0, 0.9);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      border-color: rgba(245, 158, 11, 0.45);
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.5),
+        0 36px 70px -20px rgba(0, 0, 0, 0.95),
+        0 0 50px -12px rgba(245, 158, 11, 0.22);
+    }
+
+    .project-meta-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .project-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--amber);
+    }
+
+    .project-type-badge {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--amber);
+      background: var(--amber-soft);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .project-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 24px;
+    }
+
+    /* Pipeline flow schematic */
+    .pipeline-container {
+      margin-bottom: 26px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(245, 158, 11, 0.12);
+    }
+
+    .pipeline-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--amber);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pipeline-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 8px var(--amber);
+    }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px 8px;
+    }
+
+    .pipeline-step {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .pipeline-arrow {
+      color: var(--amber);
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    /* Key bullet points */
+    .project-capabilities {
+      list-style: none;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-capabilities li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .project-capabilities li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-weight: 400;
+    }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tech-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(245, 158, 11, 0.9);
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+
+    .project-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .project-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--amber);
+      background: transparent;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.35s var(--ease);
+    }
+
+    .project-btn:hover {
+      background: var(--amber);
+      color: #030303;
+      border-color: var(--amber);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Interactive / Canvas Visual Panels */
+    .project-visual-wrapper {
+      position: relative;
+      border-radius: 12px;
+      background: #020204;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .project-card:hover .project-visual-wrapper {
+      transform: scale(1.045);
+    }
+
+    .canvas-visual {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    .visual-overlay-info {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      padding: 10px 14px;
+      background: rgba(3, 3, 3, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 5;
+    }
+
+    .visual-overlay-info span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .visual-pulse {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+      margin-right: 6px;
+    }
+
+    /* ============================================================
+       SKILLS SECTION — "THE TOOLKIT"
+       ============================================================ */
+    .skills-section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .skills-categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .skill-category-card {
+      padding: 32px 28px;
+      border-radius: 14px;
+      background: linear-gradient(160deg, rgba(245, 158, 11, 0.03) 0%, rgba(9, 9, 12, 0.95) 100%);
+      border: 1px solid var(--border-card);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+    }
+
+    .skill-category-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .skill-cat-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+    }
+
+    .skill-cat-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--text-sub);
+    }
+
+    .skill-items-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-badge:hover {
+      background: var(--amber-soft);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       ACHIEVEMENTS SECTION — "BEYOND THE CODE"
+       ============================================================ */
+    .achievements-section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .timeline-cinematic {
+      position: relative;
+      margin-top: 50px;
+      padding-left: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .timeline-cinematic::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--amber), rgba(245, 158, 11, 0.1));
+    }
+
+    .ach-item {
+      position: relative;
+      padding: 26px 30px;
+      border-radius: 12px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.02), rgba(6, 6, 8, 0.95));
+      border: 1px solid var(--border-card);
+      transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+    }
+
+    .ach-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 30px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--amber);
+      border: 2px solid #030303;
+      box-shadow: 0 0 12px var(--amber);
+    }
+
+    .ach-item:hover {
+      transform: translateX(6px);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .ach-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .ach-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.05em;
+    }
+
+    .ach-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .ach-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* ============================================================
+       EDUCATION & COURSEWORK
+       ============================================================ */
+    .edu-section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .edu-grid-two {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(30px, 5vw, 60px);
+      margin-top: 50px;
+    }
+
+    .edu-card {
+      padding: 34px 30px;
+      border-radius: 14px;
+      background: linear-gradient(160deg, rgba(245, 158, 11, 0.02), rgba(9, 9, 12, 0.95));
+      border: 1px solid var(--border-card);
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .edu-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .edu-degree {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .edu-inst {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 14px;
+    }
+
+    .edu-grade-pill {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* Coursework Grid */
+    .coursework-container {
+      padding: 34px 30px;
+      border-radius: 14px;
+      background: #09090c;
+      border: 1px solid var(--border-card);
+      height: fit-content;
+    }
+
+    .course-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+      .course-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+      transition: all 0.3s ease;
+
+      /* Force visibility */
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+    }
+
+    .course-item:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .course-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--text-sub);
+    }
+
+    /* ============================================================
+       CONTACT SECTION — "LET'S BUILD"
+       ============================================================ */
+    .contact-section {
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      padding-top: clamp(100px, 14vh, 180px);
+      padding-bottom: clamp(100px, 14vh, 180px);
+    }
+
+    .contact-subheading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-style: italic;
+      color: var(--amber);
+      margin-top: -12px;
+      margin-bottom: 30px;
+    }
+
+    .contact-lead {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+    }
+
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-luxury {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #030303;
+      background: var(--amber);
+      border: 1px solid var(--amber);
+      border-radius: 8px;
+      padding: 16px 32px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.35);
+      transition: all 0.35s var(--ease);
+    }
+
+    .btn-luxury:hover {
+      background: #ffffff;
+      border-color: #ffffff;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.85);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 16px 28px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.35s var(--ease);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateY(-2px);
+    }
+
+    .direct-links-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-sub);
+      flex-wrap: wrap;
+    }
+
+    .direct-link-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .direct-link-item:hover {
+      color: var(--amber);
+    }
+
+    /* ============================================================
+       FINAL CTA — "KEEP BUILDING"
+       ============================================================ */
+    .final-cta-section {
+      position: relative;
+      padding: 140px 24px;
+      text-align: center;
+      overflow: hidden;
+      background: radial-gradient(circle at center, rgba(245, 158, 11, 0.08) 0%, #030303 70%);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    #final-cta-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .final-cta-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .final-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #ffffff;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .final-sub {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(20px, 2.8vw, 30px);
+      color: var(--amber);
+      margin-bottom: 40px;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      border-top: 1px solid rgba(245, 158, 11, 0.15);
+      padding: 44px clamp(20px, 5vw, 80px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: #030303;
+    }
+
+    .footer-left {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--amber);
+    }
+
+    .footer-center {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-right a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .footer-right a:hover {
+      color: var(--amber);
+    }
+
+    /* ============================================================
+       RESPONSIVE DESIGN BREAKPOINTS
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .edu-grid-two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #site-header {
+        padding: 0 16px;
+      }
+
+      .header-nav {
+        gap: 12px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        max-width: calc(100vw - 85px);
+        padding: 4px 0;
+      }
+
+      .header-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .header-link {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        flex-shrink: 0;
+      }
+
+      .overlay {
+        max-width: 88%;
+      }
+
+      .oline {
+        white-space: normal;
+      }
+
+      .about-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .project-visual-wrapper {
+        min-height: clamp(240px, 50vw, 360px);
+      }
+
+      .site-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-nav {
+        gap: 10px;
+      }
+
+      .project-card {
+        padding: 24px 18px;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-luxury,
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Reduced Motion Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .word {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .title-text {
+        opacity: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="loading">
+
+  <!-- ============================================================
+       00. LOADING SCREEN
+       ============================================================ -->
+  <div id="loader">
+    <div class="loader-title">AYUSH</div>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill" id="loaderFill"></div>
+    </div>
+    <div class="loader-note" id="loaderNote">Initializing...</div>
+  </div>
+
+  <!-- ============================================================
+       01. FIXED HEADER
+       ============================================================ -->
+  <header id="site-header">
+    <a class="header-brand" href="#top" data-nav="top">AYUSH</a>
+    <nav class="header-nav" aria-label="Main Navigation">
+      <a class="header-link" data-nav="about">About</a>
+      <a class="header-link" data-nav="projects">Projects</a>
+      <a class="header-link" data-nav="skills">Skills</a>
+      <a class="header-link" data-nav="achievements">Achievements</a>
+      <a class="header-link" data-nav="education">Education</a>
+      <a class="header-link" data-nav="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       02. SCROLL PROGRESS INDICATOR (RIGHT EDGE)
+       ============================================================ -->
+  <div id="progress-track" aria-hidden="true">
+    <div id="progress-fill"></div>
+  </div>
+
+  <!-- ============================================================
+       03. CORE HERO EXPERIENCE (PINNED CANVAS & 5 TEXT MOMENTS)
+       ============================================================ -->
+  <div class="hero" id="top">
+    <canvas id="hero-canvas" aria-label="Cinematic developer visualization canvas"></canvas>
+    <div class="hero-vignette"></div>
+
+    <!-- Moment 01 — IDENTITY (~5%) -->
+    <div class="overlay ov1" id="ov1">
+      <span class="title-text">AYUSH</span>
+    </div>
+
+    <!-- Moment 02 — PROBLEM SOLVING (~18%) -->
+    <div class="overlay ov2" id="ov2">
+      <span class="oline" data-split>I build systems.</span>
+      <span class="oline" data-split>I solve problems.</span>
+    </div>
+
+    <!-- Moment 03 — TECHNICAL IDENTITY (~40%) -->
+    <div class="overlay ov3" id="ov3">
+      <span class="oline" data-split>Code. Data. Intelligence.</span>
+    </div>
+
+    <!-- Moment 04 — PROJECTS (~62%) -->
+    <div class="overlay ov4" id="ov4">
+      <span class="oline" data-split>From network security</span>
+      <span class="oline" data-split>to intelligent interfaces.</span>
+    </div>
+
+    <!-- Moment 05 — CLOSING (~85%) -->
+    <div class="overlay ov5" id="ov5">
+      <span class="oline" data-split>Still learning.</span>
+      <span class="oline" data-split>Still building.</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       04. ABOUT SECTION ("THE ENGINEER")
+       ============================================================ -->
+  <section class="about-section" id="about">
+    <span class="section-eyebrow">THE ENGINEER</span>
+    <h2 class="section-heading">Building where software meets intelligence.</h2>
+
+    <div class="about-layout">
+      <div class="about-content">
+        <p>
+          Hey, Ayush here! I’m an <strong>Information Science & Engineering</strong> student at <strong>RV Institute of
+            Technology and Management, Bengaluru</strong>.
+        </p>
+        <p>
+          Beyond coding, algorithms, and everything that comes with engineering, I’m just someone who loves getting lost
+          in novels, manhuas, and Marvel stories. I’m really into drawing and sketching, and whenever inspiration hits,
+          I tend to write down quotes, thoughts, or random ideas—basically anywhere I can find a place to write.
+        </p>
+        <p>
+          My notebooks have probably seen more random ideas than actual notes. I like learning and building things, but
+          I also enjoy the creative side of life—stories, art, ideas, and those little moments of inspiration that
+          somehow end up becoming something I want to keep.
+        </p>
+      </div>
+
+      <div class="about-metrics">
+        <div class="metric-card">
+          <div class="metric-value">8.71</div>
+          <div class="metric-label">CGPA</div>
+          <div class="metric-sub">RV Institute of Technology and Management</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">2023–27</div>
+          <div class="metric-label">B.E. ISE</div>
+          <div class="metric-sub">Information Science & Engineering</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       05. SELECTED WORK ("SELECTED WORK")
+       ============================================================ -->
+  <section class="projects-section" id="projects">
+    <span class="section-eyebrow">SELECTED WORK</span>
+    <h2 class="section-heading">Things I've built.</h2>
+    <p class="section-lead">Three focused case studies exploring machine learning security, scalable full-stack
+      persistence, and real-time computer vision control.</p>
+
+    <div class="projects-stack">
+      <!-- PROJECT 01 -->
+      <article class="project-card" id="proj-ids">
+        <div class="project-info">
+          <div class="project-meta-head">
+            <span class="project-number">PROJECT 01</span>
+            <span class="project-type-badge">Machine Learning / Security</span>
+          </div>
+          <h3 class="project-title">ML-Based Network Intrusion Detection System</h3>
+          <p class="project-desc">
+            A machine learning-based Intrusion Detection System designed to classify network flow as safe or malicious.
+          </p>
+
+          <div class="pipeline-container">
+            <div class="pipeline-title">Classification Pipeline</div>
+            <div class="pipeline-flow">
+              <span class="pipeline-step">NETWORK FLOW</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">DATA PREPROCESSING</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">FEATURE ENGINEERING</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">FEATURE SELECTION</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">ML MODEL</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">SAFE / MALICIOUS</span>
+            </div>
+          </div>
+
+          <ul class="project-capabilities">
+            <li>Developed a machine-learning-based Intrusion Detection System to inspect inbound and outbound traffic.
+            </li>
+            <li>Applied rigorous data preprocessing, feature engineering, and feature selection for optimal
+              dimensionality.</li>
+            <li>Evaluated multiple machine learning models to maximize classification fidelity.</li>
+            <li>Built an interactive Streamlit dashboard supporting real-time prediction and attack visualization.</li>
+          </ul>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Scikit-Learn</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">Streamlit</span>
+          </div>
+
+          <div class="project-cta-row">
+            <a class="project-btn"
+              href="https://github.com/Ayush-Singh0583/ML-Network-Intrusion-Detection-System" target="_blank" rel="noopener noreferrer">
+              VIEW ON GITHUB &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="project-visual-wrapper">
+          <canvas id="canvas-proj-ids" class="canvas-visual"></canvas>
+          <div class="visual-overlay-info">
+            <span><span class="visual-pulse"></span>NETWORK_FLOW :: ACTIVE MONITOR</span>
+            <span style="color:var(--amber);">ANOMALY_CLASSIFIER</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 02 -->
+      <article class="project-card" id="proj-ironforge">
+        <div class="project-info">
+          <div class="project-meta-head">
+            <span class="project-number">PROJECT 02</span>
+            <span class="project-type-badge">Full-Stack / Persistence</span>
+          </div>
+          <h3 class="project-title">IronForge — Progressive Strength Tracking Platform</h3>
+          <p class="project-desc">
+            A full-stack workout tracking platform built for personalized strength and progress tracking.
+          </p>
+
+          <div class="pipeline-container">
+            <div class="pipeline-title">System Architecture</div>
+            <div class="pipeline-flow">
+              <span class="pipeline-step">AUTHENTICATION</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">REST APIs</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">POSTGRESQL</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">WORKOUTS</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">EXERCISES</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">PROGRESS LOGS</span>
+            </div>
+          </div>
+
+          <ul class="project-capabilities">
+            <li>Architected a full-stack workout tracking application with robust session authentication.</li>
+            <li>Designed a relational PostgreSQL schema modeling workouts, exercise catalogs, and incremental progress
+              logs.</li>
+            <li>Built complete CRUD functionality for personalized fitness logging and volume overload tracking.</li>
+            <li>Structured scalable REST APIs connecting backend business logic with client interfaces.</li>
+          </ul>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">REST APIs</span>
+          </div>
+
+          <div class="project-cta-row">
+            <a class="project-btn"
+              href="https://github.com/Ayush-Singh0583/Workout_Tracker" target="_blank" rel="noopener noreferrer">
+              VIEW ON GITHUB &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="project-visual-wrapper">
+          <canvas id="canvas-proj-ironforge" class="canvas-visual"></canvas>
+          <div class="visual-overlay-info">
+            <span><span class="visual-pulse"></span>POSTGRESQL_RELATION :: SYNCED</span>
+            <span style="color:var(--amber);">OVERLOAD_CURVES</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 03 -->
+      <article class="project-card" id="proj-gesture">
+        <div class="project-info">
+          <div class="project-meta-head">
+            <span class="project-number">PROJECT 03</span>
+            <span class="project-type-badge">Computer Vision / Human-Computer Interface</span>
+          </div>
+          <h3 class="project-title">Vision-Based Hand Gesture Control System</h3>
+          <p class="project-desc">
+            A real-time hand gesture recognition system that translates hand landmarks into mouse interaction.
+          </p>
+
+          <div class="pipeline-container">
+            <div class="pipeline-title">Vision Pipeline</div>
+            <div class="pipeline-flow">
+              <span class="pipeline-step">CAMERA</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">HAND DETECTION</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">LANDMARKS</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">GESTURE</span>
+              <span class="pipeline-arrow">&darr;</span>
+              <span class="pipeline-step">MOUSE ACTION</span>
+            </div>
+          </div>
+
+          <ul class="project-capabilities">
+            <li>Engineered a real-time computer vision pipeline mapping 21 spatial hand landmarks directly to OS mouse
+              events.</li>
+            <li>Implemented precision cursor movement, single/double clicking, and contextual scrolling.</li>
+            <li>Optimized frame processing throughput to maintain ultra-low latency interaction loops.</li>
+            <li>Applied MediaPipe tracking graphs combined with custom OpenCV mathematical filters.</li>
+          </ul>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">MediaPipe</span>
+            <span class="tech-tag">Computer Vision</span>
+          </div>
+
+          <div class="project-cta-row">
+            <a class="project-btn"
+              href="https://github.com/Ayush-Singh0583/ML_GESTURE" target="_blank" rel="noopener noreferrer">
+              VIEW ON GITHUB &rarr;
+            </a>
+          </div>
+        </div>
+
+        <div class="project-visual-wrapper">
+          <canvas id="canvas-proj-gesture" class="canvas-visual"></canvas>
+          <div class="visual-overlay-info">
+            <span><span class="visual-pulse"></span>MEDIAPIPE_21_LANDMARKS :: TRACKING</span>
+            <span style="color:var(--amber);">GESTURE_INFERENCE</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       06. SKILLS SECTION ("THE TOOLKIT")
+       ============================================================ -->
+  <section class="skills-section" id="skills">
+    <span class="section-eyebrow">THE TOOLKIT</span>
+    <h2 class="section-heading">The technologies behind the work.</h2>
+    <p class="section-lead">A categorized breakdown of programming languages, machine learning frameworks, databases,
+      and developer tooling.</p>
+
+    <div class="skills-categories-grid">
+      <!-- LANGUAGES -->
+      <div class="skill-category-card sk-card">
+        <div class="skill-cat-header">
+          <span class="skill-cat-title">LANGUAGES</span>
+          <span class="skill-cat-count">04</span>
+        </div>
+        <div class="skill-items-list">
+          <span class="skill-badge">C</span>
+          <span class="skill-badge">Java</span>
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">C++</span>
+        </div>
+      </div>
+
+      <!-- FRONTEND -->
+      <div class="skill-category-card sk-card">
+        <div class="skill-cat-header">
+          <span class="skill-cat-title">FRONTEND</span>
+          <span class="skill-cat-count">04</span>
+        </div>
+        <div class="skill-items-list">
+          <span class="skill-badge">HTML</span>
+          <span class="skill-badge">CSS</span>
+          <span class="skill-badge">JavaScript</span>
+          <span class="skill-badge">React</span>
+        </div>
+      </div>
+
+      <!-- BACKEND -->
+      <div class="skill-category-card sk-card">
+        <div class="skill-cat-header">
+          <span class="skill-cat-title">BACKEND</span>
+          <span class="skill-cat-count">02</span>
+        </div>
+        <div class="skill-items-list">
+          <span class="skill-badge">Node.js</span>
+          <span class="skill-badge">REST APIs</span>
+        </div>
+      </div>
+
+      <!-- MACHINE LEARNING -->
+      <div class="skill-category-card sk-card">
+        <div class="skill-cat-header">
+          <span class="skill-cat-title">MACHINE LEARNING</span>
+          <span class="skill-cat-count">06</span>
+        </div>
+        <div class="skill-items-list">
+          <span class="skill-badge">Scikit-Learn</span>
+          <span class="skill-badge">OpenCV</span>
+          <span class="skill-badge">MediaPipe</span>
+          <span class="skill-badge">Pandas</span>
+          <span class="skill-badge">NumPy</span>
+          <span class="skill-badge">Matplotlib</span>
+        </div>
+      </div>
+
+      <!-- DATABASES -->
+      <div class="skill-category-card sk-card">
+        <div class="skill-cat-header">
+          <span class="skill-cat-title">DATABASES</span>
+          <span class="skill-cat-count">03</span>
+        </div>
+        <div class="skill-items-list">
+          <span class="skill-badge">PostgreSQL</span>
+          <span class="skill-badge">MySQL</span>
+          <span class="skill-badge">MongoDB</span>
+        </div>
+      </div>
+
+      <!-- DEVELOPER TOOLS -->
+      <div class="skill-category-card sk-card">
+        <div class="skill-cat-header">
+          <span class="skill-cat-title">DEVELOPER TOOLS</span>
+          <span class="skill-cat-count">05</span>
+        </div>
+        <div class="skill-items-list">
+          <span class="skill-badge">Git</span>
+          <span class="skill-badge">GitHub</span>
+          <span class="skill-badge">Docker</span>
+          <span class="skill-badge">Postman</span>
+          <span class="skill-badge">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       07. ACHIEVEMENTS SECTION ("BEYOND THE CODE")
+       ============================================================ -->
+  <section class="achievements-section" id="achievements">
+    <span class="section-eyebrow">BEYOND THE CODE</span>
+    <h2 class="section-heading">Proof of practice.</h2>
+    <p class="section-lead">Practical competitive milestones, hackathons, and technical presentations.</p>
+
+    <div class="timeline-cinematic">
+      <!-- Item 1 -->
+      <div class="ach-item ach-card">
+        <div class="ach-head">
+          <span class="ach-stat">150+</span>
+          <h3 class="ach-title">LEETCODE PROBLEMS</h3>
+        </div>
+        <p class="ach-desc">
+          Solved 150+ problems across arrays, trees, graphs, dynamic programming, and other core DSA topics.
+        </p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="ach-item ach-card">
+        <div class="ach-head">
+          <span class="ach-stat">SIH</span>
+          <h3 class="ach-title">SMART INDIA HACKATHON</h3>
+        </div>
+        <p class="ach-desc">
+          Participated in SIH and collaborated with a team to design and present an innovative technical solution.
+        </p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="ach-item ach-card">
+        <div class="ach-head">
+          <span class="ach-stat">FANTOM CODE</span>
+          <h3 class="ach-title">NATIONAL-LEVEL HACKATHON</h3>
+        </div>
+        <p class="ach-desc">
+          Volunteered at Fantom Code, supporting event operations, participant coordination, and execution.
+        </p>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="ach-item ach-card">
+        <div class="ach-head">
+          <span class="ach-stat">RESEARCH</span>
+          <h3 class="ach-title">POSTER PRESENTATION</h3>
+        </div>
+        <p class="ach-desc">
+          Presented technical work and research findings to academic and engineering panels.
+        </p>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="ach-item ach-card">
+        <div class="ach-head">
+          <span class="ach-stat">AUTONOMY</span>
+          <h3 class="ach-title">INDEPENDENT BUILDER</h3>
+        </div>
+        <p class="ach-desc">
+          Built multiple full-stack, machine learning, and computer vision projects independently from concept to
+          deployment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       08. EDUCATION & COURSEWORK
+       ============================================================ -->
+  <section class="edu-section" id="education">
+    <div class="edu-grid-two">
+      <!-- Education Timeline -->
+      <div class="edu-column">
+        <span class="section-eyebrow">EDUCATION</span>
+        <h2 class="section-heading" style="font-size: clamp(30px, 4vw, 48px);">The foundation.</h2>
+
+        <div class="edu-card edu-box">
+          <div class="edu-period">2023 — 2027</div>
+          <div class="edu-degree">B.E. Information Science & Engineering</div>
+          <div class="edu-inst">RV Institute of Technology and Management, Bengaluru</div>
+          <span class="edu-grade-pill">8.71 CGPA</span>
+        </div>
+
+        <div class="edu-card edu-box">
+          <div class="edu-period">2022 &amp; 2020</div>
+          <div class="edu-degree">Secondary &amp; Senior Secondary</div>
+          <div class="edu-inst">SJS Public School (CBSE)</div>
+          <div style="display: flex; gap: 8px; margin-top: 10px;">
+            <span class="edu-grade-pill">Class XII — 84.4%</span>
+            <span class="edu-grade-pill">Class X — 87.4%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coursework -->
+      <div class="coursework-column">
+        <span class="section-eyebrow">FOUNDATIONS</span>
+        <h2 class="section-heading" style="font-size: clamp(30px, 4vw, 48px);">What I've studied.</h2>
+
+        <div class="coursework-container">
+          <ul class="course-list">
+            <li class="course-item">
+              <span>Data Structures and Algorithms</span>
+              <span class="course-code">CORE_DSA</span>
+            </li>
+            <li class="course-item">
+              <span>Object-Oriented Programming</span>
+              <span class="course-code">OOP_SYSTEMS</span>
+            </li>
+            <li class="course-item">
+              <span>Operating Systems</span>
+              <span class="course-code">OS_KERNELS</span>
+            </li>
+            <li class="course-item">
+              <span>Database Management Systems</span>
+              <span class="course-code">DBMS_SQL</span>
+            </li>
+            <li class="course-item">
+              <span>Computer Networks</span>
+              <span class="course-code">NET_PROTOCOLS</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       09. CONTACT SECTION ("LET'S BUILD")
+       ============================================================ -->
+  <section class="contact-section" id="contact">
+    <span class="section-eyebrow">LET'S BUILD</span>
+    <h2 class="section-heading" style="font-size: clamp(38px, 6vw, 68px);">Have a problem worth solving?</h2>
+    <div class="contact-subheading">Let's talk.</div>
+    <p class="contact-lead">
+      Open to software engineering opportunities, machine learning research, technical collaborations, and interesting
+      systems conversations.
+    </p>
+
+    <div class="contact-actions">
+      <a class="btn-luxury" href="mailto:ayushsingh10580@gmail.com">
+        GET IN TOUCH &rarr;
+      </a>
+      <a class="btn-outline" href="tel:+918736836344">
+        +91-8736836344
+      </a>
+    </div>
+
+    <div class="direct-links-row">
+      <a class="direct-link-item" href="mailto:ayushsingh10580@gmail.com">
+        ayushsingh10580@gmail.com
+      </a>
+      <span>&bull;</span>
+      <a class="direct-link-item" href="https://github.com/Ayush-Singh0583" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+      <span>&bull;</span>
+      <a class="direct-link-item" href="https://www.linkedin.com/in/ayush-singh-47b446298" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+      <span>&bull;</span>
+      <a class="direct-link-item" href="https://leetcode.com/u/Ayush_Learning/" target="_blank" rel="noopener noreferrer">
+        LeetCode
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. FINAL CLOSING CTA ("KEEP BUILDING")
+       ============================================================ -->
+  <div class="final-cta-section">
+    <canvas id="final-cta-canvas"></canvas>
+    <div class="final-cta-inner">
+      <h2 class="final-heading">KEEP BUILDING.</h2>
+      <div class="final-sub">One problem at a time.</div>
+      <a class="btn-luxury" href="mailto:ayushsingh10580@gmail.com">
+        CONTACT AYUSH &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       11. FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-left">AYUSH</div>
+    <div class="footer-center">
+      &copy; 2026 Ayush Singh. Built with curiosity.
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/Ayush-Singh0583" target="_blank" rel="noopener noreferrer" title="Ayush Singh on GitHub">GitHub</a>
+      <span>&middot;</span>
+      <a href="https://www.linkedin.com/in/ayush-singh-47b446298" target="_blank" rel="noopener noreferrer" title="Ayush Singh on LinkedIn">LinkedIn</a>
+      <span>&middot;</span>
+      <a href="https://leetcode.com/u/Ayush_Learning/" target="_blank" rel="noopener noreferrer" title="Ayush Singh on LeetCode">LeetCode</a>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       12. SCRIPTS & ENGINE
+       ============================================================ -->
+  <!-- GSAP 3 + ScrollTrigger + Lenis 1.1.20 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* --- Config --- */
+      const TOTAL_FRAMES = 227;
+      function framePath(n) {
+        return 'frames/frame_' + String(n).padStart(4, '0') + '.jpg';
+      }
+
+      /* --- DOM Elements --- */
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const loader = document.getElementById('loader');
+      const loaderFill = document.getElementById('loaderFill');
+      const loaderNote = document.getElementById('loaderNote');
+      const siteHeader = document.getElementById('site-header');
+
+      let lenis = null;
+      let isFallbackCanvas = false;
+
+      /* --- Mobile optimization: load every 2nd frame --- */
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const stepSize = isMobile ? 2 : 1;
+      const frameIndices = [];
+      for (let n = 0; n < TOTAL_FRAMES; n += stepSize) {
+        frameIndices.push(n);
+      }
+      const N = frameIndices.length;
+      const frames = new Array(N);
+      let settled = 0;
+
+      /* --- Canvas Sizing with DPR Cap --- */
+      let cw = 0, ch = 0;
+      function sizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = document.documentElement.clientWidth || window.innerWidth;
+        const h = window.innerHeight;
+        cw = Math.max(1, Math.round(w * dpr));
+        ch = Math.max(1, Math.round(h * dpr));
+        canvas.width = cw;
+        canvas.height = ch;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+      }
+
+      /* --- Frame Drawing (Cover-fit, cross-faded between neighbors) --- */
+      let curF = -1; // last painted playhead position (fractional)
+
+      function nearestBitmap(i) {
+        if (frames[i]) return frames[i];
+        // Find closest loaded neighbor so we never draw nothing while
+        // the rest of the sequence is still streaming in.
+        for (let d = 1; d < N; d++) {
+          if (i - d >= 0 && frames[i - d]) return frames[i - d];
+          if (i + d < N && frames[i + d]) return frames[i + d];
+        }
+        return null;
+      }
+
+      function drawCover(bmp, alpha) {
+        const iw = bmp.naturalWidth || bmp.width;
+        const ih = bmp.naturalHeight || bmp.height;
+        const scale = Math.max(cw / iw, ch / ih);
+        const dw = iw * scale;
+        const dh = ih * scale;
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(bmp, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+        ctx.globalAlpha = 1;
+      }
+
+      function paint(f) {
+        if (isFallbackCanvas) {
+          paintFallback(f / (N - 1 || 1));
+          return;
+        }
+
+        const lo = Math.max(0, Math.min(N - 1, Math.floor(f)));
+        const hi = Math.min(N - 1, lo + 1);
+        const t = f - lo;
+
+        const bmpLo = nearestBitmap(lo);
+        const bmpHi = hi !== lo ? nearestBitmap(hi) : bmpLo;
+
+        if (!bmpLo && !bmpHi) {
+          paintFallback(f / (N - 1 || 1));
+          return;
+        }
+
+        // Draw the base frame, then cross-fade the next one in as the
+        // playhead moves between the two. This is what turns discrete
+        // JPEG frames into what reads as continuous motion.
+        if (bmpLo) {
+          drawCover(bmpLo, 1);
+        } else if (bmpHi) {
+          drawCover(bmpHi, 1);
+        }
+        if (bmpHi && bmpHi !== bmpLo && t > 0.01) {
+          drawCover(bmpHi, t);
+        }
+      }
+
+      function render(f) {
+        if (f < 0) f = 0;
+        else if (f > N - 1) f = N - 1;
+        // Skip only true no-ops; anything more than a hair of playhead
+        // movement should repaint so the cross-fade stays continuous.
+        if (Math.abs(f - curF) < 0.002) return;
+        curF = f;
+        paint(f);
+      }
+
+      function repaint() {
+        paint(curF < 0 ? 0 : curF);
+      }
+
+      /* --- Cinematic Fallback Network Canvas (if video frames unavailable) --- */
+      const particles = [];
+      for (let p = 0; p < 70; p++) {
+        particles.push({
+          x: Math.random(),
+          y: Math.random(),
+          vx: (Math.random() - 0.5) * 0.0004,
+          vy: (Math.random() - 0.5) * 0.0004,
+          r: Math.random() * 2.5 + 1.2,
+          alpha: Math.random() * 0.6 + 0.3
+        });
+      }
+
+      function paintFallback(progress) {
+        ctx.fillStyle = '#030303';
+        ctx.fillRect(0, 0, cw, ch);
+
+        // Network grid lines
+        ctx.lineWidth = 1;
+        for (let i = 0; i < particles.length; i++) {
+          const pi = particles[i];
+          const px = (pi.x + pi.vx * 100) % 1 * cw;
+          const py = (pi.y + pi.vy * 100 + progress * 0.1) % 1 * ch;
+
+          ctx.fillStyle = `rgba(245, 158, 11, ${pi.alpha * 0.8})`;
+          ctx.beginPath();
+          ctx.arc(px, py, pi.r, 0, Math.PI * 2);
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const pj = particles[j];
+            const qx = (pj.x + pj.vx * 100) % 1 * cw;
+            const qy = (pj.y + pj.vy * 100 + progress * 0.1) % 1 * ch;
+            const dist = Math.hypot(px - qx, py - qy);
+            if (dist < 140) {
+              ctx.strokeStyle = `rgba(245, 158, 11, ${0.18 * (1 - dist / 140)})`;
+              ctx.beginPath();
+              ctx.moveTo(px, py);
+              ctx.lineTo(qx, qy);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      /* --- Image / Frame Loading with ImageBitmap --- */
+      function decode(blob) {
+        if (window.createImageBitmap) {
+          return createImageBitmap(blob);
+        }
+        return new Promise(function (resolve, reject) {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = URL.createObjectURL(blob);
+        });
+      }
+
+      function loadFrame(slot) {
+        return fetch(framePath(frameIndices[slot]))
+          .then((r) => {
+            if (!r.ok) throw new Error('Frame unavailable');
+            return r.blob();
+          })
+          .then(decode)
+          .then((bmp) => {
+            frames[slot] = bmp;
+          })
+          .catch(() => {
+            frames[slot] = null;
+          })
+          .then(() => {
+            settled++;
+            const pct = (settled / N) * 100;
+            loaderFill.style.width = pct.toFixed(1) + '%';
+          });
+      }
+
+      /* --- Word Splitting for Text Moments --- */
+      function splitWords() {
+        const nodes = document.querySelectorAll('[data-split]');
+        nodes.forEach((el) => {
+          const words = el.textContent.trim().split(/\s+/);
+          el.textContent = '';
+          words.forEach((w, i) => {
+            const s = document.createElement('span');
+            s.className = 'word';
+            s.textContent = w;
+            el.appendChild(s);
+            if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+          });
+        });
+      }
+
+      /* --- Interactive Project Visuals (Network, IronForge Curves, MediaPipe Hand) --- */
+      function initProjectVisuals() {
+        /* Shared helper: cache element size via ResizeObserver instead of
+           reading clientWidth/clientHeight every animation frame (that
+           forces a synchronous layout on each rAF tick), and track
+           on-screen visibility so off-screen canvases stop drawing
+           instead of burning frame budget forever. */
+        function watchCanvas(canvas, sizeEl) {
+          const target = sizeEl || canvas.parentElement;
+          const state = { w: 0, h: 0, visible: false };
+          function applySize() {
+            state.w = target.clientWidth;
+            state.h = target.clientHeight;
+            canvas.width = state.w;
+            canvas.height = state.h;
+          }
+          applySize();
+          new ResizeObserver(applySize).observe(target);
+          new IntersectionObserver(([entry]) => {
+            state.visible = entry.isIntersecting;
+          }, { rootMargin: '200px' }).observe(canvas);
+          return state;
+        }
+
+        // 1. Intrusion Detection System Visual
+        const canvasIds = document.getElementById('canvas-proj-ids');
+        if (canvasIds) {
+          const ctxIds = canvasIds.getContext('2d');
+          const nodes = [];
+          for (let i = 0; i < 24; i++) {
+            nodes.push({
+              x: Math.random(),
+              y: Math.random(),
+              vx: (Math.random() - 0.5) * 0.002,
+              vy: (Math.random() - 0.5) * 0.002,
+              isMalicious: i % 6 === 0
+            });
+          }
+          const idsState = watchCanvas(canvasIds);
+
+          function drawIds() {
+            if (idsState.visible) {
+              const w = idsState.w;
+              const h = idsState.h;
+              ctxIds.fillStyle = '#060609';
+              ctxIds.fillRect(0, 0, w, h);
+
+              nodes.forEach((n, i) => {
+                n.x = (n.x + n.vx + 1) % 1;
+                n.y = (n.y + n.vy + 1) % 1;
+                const px = n.x * w;
+                const py = n.y * h;
+
+                ctxIds.fillStyle = n.isMalicious ? '#f59e0b' : '#38bdf8';
+                ctxIds.beginPath();
+                ctxIds.arc(px, py, n.isMalicious ? 4 : 2.5, 0, Math.PI * 2);
+                ctxIds.fill();
+
+                if (n.isMalicious) {
+                  ctxIds.strokeStyle = 'rgba(245, 158, 11, 0.35)';
+                  ctxIds.beginPath();
+                  ctxIds.arc(px, py, 12, 0, Math.PI * 2);
+                  ctxIds.stroke();
+                }
+
+                for (let j = i + 1; j < nodes.length; j++) {
+                  const m = nodes[j];
+                  const qx = m.x * w;
+                  const qy = m.y * h;
+                  const d = Math.hypot(px - qx, py - qy);
+                  if (d < 100) {
+                    ctxIds.strokeStyle = (n.isMalicious || m.isMalicious)
+                      ? `rgba(245, 158, 11, ${0.25 * (1 - d / 100)})`
+                      : `rgba(56, 189, 248, ${0.15 * (1 - d / 100)})`;
+                    ctxIds.beginPath();
+                    ctxIds.moveTo(px, py);
+                    ctxIds.lineTo(qx, qy);
+                    ctxIds.stroke();
+                  }
+                }
+              });
+            }
+            requestAnimationFrame(drawIds);
+          }
+          requestAnimationFrame(drawIds);
+        }
+
+        // 2. IronForge Overload Curves Visual
+        const canvasForge = document.getElementById('canvas-proj-ironforge');
+        if (canvasForge) {
+          const ctxForge = canvasForge.getContext('2d');
+          let t = 0;
+          const forgeState = watchCanvas(canvasForge);
+
+          function drawForge() {
+            if (forgeState.visible) {
+              const w = forgeState.w;
+              const h = forgeState.h;
+              ctxForge.fillStyle = '#060609';
+              ctxForge.fillRect(0, 0, w, h);
+
+              // Draw grid
+              ctxForge.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+              ctxForge.lineWidth = 1;
+              for (let x = 0; x < w; x += 40) {
+                ctxForge.beginPath(); ctxForge.moveTo(x, 0); ctxForge.lineTo(x, h); ctxForge.stroke();
+              }
+              for (let y = 0; y < h; y += 40) {
+                ctxForge.beginPath(); ctxForge.moveTo(0, y); ctxForge.lineTo(w, y); ctxForge.stroke();
+              }
+
+              // Draw progressive curve
+              ctxForge.strokeStyle = '#f59e0b';
+              ctxForge.lineWidth = 2.5;
+              ctxForge.beginPath();
+              for (let x = 0; x < w; x += 4) {
+                const normX = x / w;
+                const y = h * 0.85 - Math.pow(normX, 1.4) * (h * 0.55) + Math.sin(normX * 10 + t) * 6;
+                if (x === 0) ctxForge.moveTo(x, y);
+                else ctxForge.lineTo(x, y);
+              }
+              ctxForge.stroke();
+
+              // Draw database node highlights
+              ctxForge.fillStyle = 'rgba(245, 158, 11, 0.15)';
+              ctxForge.fillRect(w * 0.65, h * 0.18, 110, 48);
+              ctxForge.strokeStyle = 'rgba(245, 158, 11, 0.5)';
+              ctxForge.strokeRect(w * 0.65, h * 0.18, 110, 48);
+
+              ctxForge.fillStyle = '#ffffff';
+              ctxForge.font = '10px "JetBrains Mono", monospace';
+              ctxForge.fillText('TABLE: PROGRESS', w * 0.65 + 10, h * 0.18 + 20);
+              ctxForge.fillStyle = 'rgba(245, 158, 11, 0.9)';
+              ctxForge.fillText('1RM_EST :: +12.5kg', w * 0.65 + 10, h * 0.18 + 36);
+
+              t += 0.02;
+            }
+            requestAnimationFrame(drawForge);
+          }
+          requestAnimationFrame(drawForge);
+        }
+
+        // 3. MediaPipe Hand Landmark Visual
+        const canvasGesture = document.getElementById('canvas-proj-gesture');
+        if (canvasGesture) {
+          const ctxGesture = canvasGesture.getContext('2d');
+          const gestureState = watchCanvas(canvasGesture);
+          let phase = 0;
+
+          // 21 canonical MediaPipe hand landmarks in normalized coordinates
+          const baseLandmarks = [
+            [0.5, 0.85], // 0: Wrist
+            [0.42, 0.76], [0.36, 0.65], [0.32, 0.54], [0.28, 0.44], // 1-4: Thumb
+            [0.44, 0.55], [0.42, 0.40], [0.41, 0.28], [0.40, 0.16], // 5-8: Index
+            [0.50, 0.54], [0.50, 0.38], [0.50, 0.25], [0.50, 0.13], // 9-12: Middle
+            [0.56, 0.55], [0.58, 0.41], [0.59, 0.30], [0.60, 0.20], // 13-16: Ring
+            [0.62, 0.58], [0.66, 0.48], [0.68, 0.40], [0.70, 0.32]  // 17-20: Pinky
+          ];
+
+          const connections = [
+            [0, 1], [1, 2], [2, 3], [3, 4],
+            [0, 5], [5, 6], [6, 7], [7, 8],
+            [5, 9], [9, 10], [10, 11], [11, 12],
+            [9, 13], [13, 14], [14, 15], [15, 16],
+            [13, 17], [17, 18], [18, 19], [19, 20], [0, 17]
+          ];
+
+          function drawGesture() {
+            if (gestureState.visible) {
+              const w = gestureState.w;
+              const h = gestureState.h;
+              ctxGesture.fillStyle = '#060609';
+              ctxGesture.fillRect(0, 0, w, h);
+
+              phase += 0.03;
+              const wave = Math.sin(phase) * 0.03;
+
+              // Render skeleton bones
+              ctxGesture.strokeStyle = 'rgba(245, 158, 11, 0.4)';
+              ctxGesture.lineWidth = 2;
+              connections.forEach(([a, b]) => {
+                const pa = baseLandmarks[a];
+                const pb = baseLandmarks[b];
+                const ax = (pa[0] + (a >= 5 && a <= 8 ? wave : 0)) * w;
+                const ay = pa[1] * h;
+                const bx = (pb[0] + (b >= 5 && b <= 8 ? wave : 0)) * w;
+                const by = pb[1] * h;
+                ctxGesture.beginPath();
+                ctxGesture.moveTo(ax, ay);
+                ctxGesture.lineTo(bx, by);
+                ctxGesture.stroke();
+              });
+
+              // Render 21 landmark nodes
+              baseLandmarks.forEach((pt, idx) => {
+                const lx = (pt[0] + (idx >= 5 && idx <= 8 ? wave : 0)) * w;
+                const ly = pt[1] * h;
+                ctxGesture.fillStyle = (idx === 8) ? '#22c55e' : '#f59e0b';
+                ctxGesture.beginPath();
+                ctxGesture.arc(lx, ly, (idx === 8) ? 6 : 3.5, 0, Math.PI * 2);
+                ctxGesture.fill();
+              });
+
+              // Render cursor target trace from index tip (idx 8)
+              const tipX = (baseLandmarks[8][0] + wave) * w;
+              const tipY = baseLandmarks[8][1] * h;
+              ctxGesture.strokeStyle = 'rgba(34, 197, 94, 0.4)';
+              ctxGesture.beginPath();
+              ctxGesture.arc(tipX, tipY, 18, 0, Math.PI * 2);
+              ctxGesture.stroke();
+            }
+
+            requestAnimationFrame(drawGesture);
+          }
+          requestAnimationFrame(drawGesture);
+        }
+
+        // 4. Final CTA Interactive Backdrop Canvas
+        const ctaCanvas = document.getElementById('final-cta-canvas');
+        if (ctaCanvas) {
+          const ctaCtx = ctaCanvas.getContext('2d');
+          const ctaState = watchCanvas(ctaCanvas, ctaCanvas);
+          let ctaT = 0;
+          function drawCta() {
+            if (ctaState.visible) {
+              const w = ctaState.w;
+              const h = ctaState.h;
+              ctaCtx.clearRect(0, 0, w, h);
+              ctaCtx.strokeStyle = 'rgba(245, 158, 11, 0.08)';
+              ctaCtx.lineWidth = 1;
+              for (let i = 0; i < 6; i++) {
+                ctaCtx.beginPath();
+                ctaCtx.arc(w / 2, h / 2, 60 + i * 55 + Math.sin(ctaT + i) * 12, 0, Math.PI * 2);
+                ctaCtx.stroke();
+              }
+              ctaT += 0.015;
+            }
+            requestAnimationFrame(drawCta);
+          }
+          requestAnimationFrame(drawCta);
+        }
+      }
+
+      /* --- Master GSAP & ScrollTrigger Timeline --- */
+      function buildScroll() {
+        gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ ignoreMobileResize: true });
+
+        /* Lenis smooth scrolling initialization */
+        if (window.Lenis) {
+          lenis = new Lenis({
+            lerp: 0.08,
+            wheelMultiplier: 0.95,
+            touchMultiplier: 1.2,
+            smoothTouch: false
+          });
+          window.lenis = lenis;
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add((t) => {
+            lenis.raf(t * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+          lenis.stop();
+        }
+
+        /* Helper: hint the compositor only while an element is actively
+           being animated by GSAP, then release it — leaving will-change
+           on permanently just wastes memory on layers that never move. */
+        function withWillChange(vars) {
+          const userOnStart = vars.onStart;
+          const userOnComplete = vars.onComplete;
+          vars.onStart = function () {
+            gsap.set(this.targets(), { willChange: 'transform, opacity' });
+            if (userOnStart) userOnStart.apply(this, arguments);
+          };
+          vars.onComplete = function () {
+            gsap.set(this.targets(), { willChange: 'auto' });
+            if (userOnComplete) userOnComplete.apply(this, arguments);
+          };
+          return vars;
+        }
+
+        const playhead = { f: 0 };
+        const master = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: '+=700%',
+            pin: true,
+            scrub: 0.6,
+            invalidateOnRefresh: true
+          }
+        });
+
+        /* Frame sequence playback mapped across master timeline (duration 100) */
+        master.to(playhead, {
+          f: N - 1,
+          ease: 'none',
+          duration: 100,
+          onUpdate: () => render(playhead.f)
+        }, 0);
+
+        /* Helper for word reveals */
+        function overlayIn(sel, at, stg) {
+          master.fromTo(
+            sel + ' .word',
+            { autoAlpha: 0, y: 35 },
+            withWillChange({ autoAlpha: 1, y: 0, ease: 'power2.out', duration: 2.2, stagger: stg }),
+            at
+          );
+        }
+        function overlayOut(sel, at) {
+          master.to(sel, { autoAlpha: 0, ease: 'power1.in', duration: 2.5 }, at);
+        }
+
+        /* 01 — IDENTITY (at ~5%) */
+        master.fromTo(
+          '#ov1 .title-text',
+          { autoAlpha: 0, scale: 0.92, y: 20 },
+          withWillChange({ autoAlpha: 1, scale: 1, y: 0, ease: 'power2.out', duration: 3.5 }),
+          4
+        );
+        master.to('#ov1', { autoAlpha: 0, ease: 'power1.in', duration: 2.5 }, 14);
+
+        /* 02 — PROBLEM SOLVING (at ~18%) */
+        overlayIn('#ov2', 18, 0.4);
+        overlayOut('#ov2', 32);
+
+        /* 03 — TECHNICAL IDENTITY (at ~40%) */
+        overlayIn('#ov3', 38, 0.4);
+        overlayOut('#ov3', 52);
+
+        /* 04 — PROJECTS (at ~62%) */
+        overlayIn('#ov4', 60, 0.35);
+        overlayOut('#ov4', 74);
+
+        /* 05 — CLOSING (at ~85%) */
+        overlayIn('#ov5', 82, 0.4);
+        overlayOut('#ov5', 94);
+
+        /* Global Page Scroll Progress Line (Right Edge) */
+        gsap.fromTo('#progress-fill',
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: 'none',
+            scrollTrigger: {
+              start: 0,
+              end: 'max',
+              scrub: 0.3
+            }
+          }
+        );
+
+        /* Header background styling on scroll */
+        ScrollTrigger.create({
+          start: 'top -80',
+          end: 99999,
+          toggleClass: { className: 'scrolled', targets: '#site-header' }
+        });
+
+        /* Section Reveals */
+        gsap.utils.toArray('.project-card').forEach((card) => {
+          gsap.from(card, withWillChange({
+            autoAlpha: 0,
+            y: 40,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 82%'
+            }
+          }));
+        });
+
+        gsap.from('.sk-card', withWillChange({
+          autoAlpha: 0,
+          y: 30,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: '.skills-categories-grid',
+            start: 'top 80%'
+          }
+        }));
+
+        gsap.from('.ach-card', withWillChange({
+          autoAlpha: 0,
+          x: -25,
+          duration: 0.75,
+          ease: 'power2.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: '.timeline-cinematic',
+            start: 'top 80%'
+          }
+        }));
+
+        gsap.from('.edu-box', withWillChange({
+          autoAlpha: 0,
+          y: 25,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: '.edu-section',
+            start: 'top 85%'
+          }
+        }));
+
+        gsap.from('.course-item', withWillChange({
+          autoAlpha: 0,
+          x: 20,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: '.edu-section',
+            start: 'top 85%'
+          }
+        }));
+      }
+
+      /* --- Concurrency-limited frame loading queue ---
+         Firing all N fetches at once made every frame compete for the
+         same bandwidth from the start, so the "initial batch" the page
+         actually waits on wasn't getting any priority over frame 220.
+         Loading a bounded number at a time lets the initial batch land
+         first, then lets the rest stream in behind it. */
+      function runQueue(indices, concurrency, onEach) {
+        return new Promise((resolve) => {
+          if (indices.length === 0) { resolve(); return; }
+          let cursor = 0;
+          let remaining = indices.length;
+          function startNext() {
+            if (cursor >= indices.length) return;
+            const slot = indices[cursor++];
+            loadFrame(slot).then(() => {
+              if (onEach) onEach(slot);
+              remaining--;
+              if (remaining === 0) resolve();
+              else startNext();
+            });
+          }
+          const starters = Math.min(concurrency, indices.length);
+          for (let k = 0; k < starters; k++) startNext();
+        });
+      }
+
+      /* --- Bootstrap Sequence --- */
+      function init() {
+        document.body.classList.add('loading');
+        window.scrollTo(0, 0);
+        sizeCanvas();
+        splitWords();
+        initProjectVisuals();
+
+        const fontsReady = (document.fonts && document.fonts.ready)
+          ? document.fonts.ready
+          : Promise.resolve();
+
+        const allIndices = [];
+        for (let s = 0; s < N; s++) allIndices.push(s);
+
+        /* paint() already falls back to the nearest loaded neighbor
+           frame, so scroll doesn't need to wait on every single frame
+           to finish downloading — only an initial batch. The rest
+           keep streaming in the background and paint() picks them up
+           automatically as they arrive. This gets the page interactive
+           much sooner on slower connections. */
+        const INITIAL_BATCH = Math.min(N, Math.max(20, Math.round(N * 0.15)));
+        const initialIndices = allIndices.slice(0, INITIAL_BATCH);
+        const restIndices = allIndices.slice(INITIAL_BATCH);
+        const CONCURRENCY = 6;
+
+        const initialBatch = runQueue(initialIndices, CONCURRENCY);
+
+        initialBatch
+          .then(() => fontsReady)
+          .then(() => {
+            // Check if the initial batch actually loaded
+            const validFrames = frames.slice(0, INITIAL_BATCH).filter(Boolean).length;
+            if (validFrames < Math.min(10, INITIAL_BATCH)) {
+              isFallbackCanvas = true;
+            }
+
+            sizeCanvas();
+            render(0);
+            buildScroll();
+
+            // Fade out loader smoothly
+            loader.classList.add('hidden');
+            setTimeout(() => {
+              document.body.classList.remove('loading');
+              loader.style.display = 'none';
+              if (lenis) lenis.start();
+              requestAnimationFrame(() => {
+                ScrollTrigger.refresh();
+              });
+            }, 850);
+
+            // Now that the page is interactive, stream in the rest of
+            // the sequence at the same bounded concurrency.
+            runQueue(restIndices, CONCURRENCY).then(backgroundCompletionCheck);
+          });
+
+        // Background completion: re-check fallback status once every
+        // frame has settled, in case the initial batch looked fine but
+        // the rest of the sequence failed to load.
+        function backgroundCompletionCheck() {
+          if (!isFallbackCanvas) {
+            const validFrames = frames.filter(Boolean).length;
+            if (validFrames < 10) {
+              isFallbackCanvas = true;
+              repaint();
+            }
+          }
+        }
+      }
+
+      /* --- Debounced Resize Listener --- */
+      let resizeTimer;
+      let lastW = window.innerWidth;
+      window.addEventListener('resize', () => {
+        if (isMobile && window.innerWidth === lastW) return;
+        lastW = window.innerWidth;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          sizeCanvas();
+          repaint();
+          if (window.ScrollTrigger) ScrollTrigger.refresh();
+        }, 160);
+      });
+
+      /* --- Header Nav Click Handlers with Lenis --- */
+      const smoothEase = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
+      const navLinks = document.querySelectorAll('[data-nav]');
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          const targetId = link.getAttribute('data-nav');
+          const target = document.getElementById(targetId);
+
+          if (!target) return;
+
+          if (lenis) {
+            const currentScroll = window.scrollY || window.pageYOffset;
+            const targetPos =
+              target.getBoundingClientRect().top + currentScroll;
+
+            const dist = Math.abs(targetPos - currentScroll);
+
+            // Exactly 10.0s duration when clicking About
+            const duration = targetId === 'about'
+              ? 10.0
+              : Math.min(10.0, Math.max(2.5, dist / 1200));
+
+            lenis.scrollTo(target, {
+              duration,
+              offset: -20,
+              easing: smoothEase,
+            });
+          } else {
+            const top =
+              target.getBoundingClientRect().top +
+              window.pageYOffset -
+              20;
+
+            window.scrollTo({
+              top,
+              behavior: 'smooth',
+            });
+          }
+        });
+      });
+      /* --- Kickoff --- */
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+
+</html>

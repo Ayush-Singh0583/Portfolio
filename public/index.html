@@ -977,7 +977,7 @@
       margin-top: 20px;
     }
 
-    .course-item {
+      .course-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -989,6 +989,11 @@
       color: rgba(255, 255, 255, 0.85);
       font-weight: 400;
       transition: all 0.3s ease;
+
+      /* Force visibility */
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
     }
 
     .course-item:hover {
@@ -1232,16 +1237,27 @@
 
     @media (max-width: 768px) {
       #site-header {
-        padding: 0 20px;
+        padding: 0 16px;
       }
 
       .header-nav {
         gap: 12px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        max-width: calc(100vw - 85px);
+        padding: 4px 0;
+      }
+
+      .header-nav::-webkit-scrollbar {
+        display: none;
       }
 
       .header-link {
         font-size: 10px;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
+        flex-shrink: 0;
       }
 
       .overlay {
@@ -1256,6 +1272,10 @@
         grid-template-columns: 1fr;
       }
 
+      .project-visual-wrapper {
+        min-height: clamp(240px, 50vw, 360px);
+      }
+
       .site-footer {
         flex-direction: column;
         text-align: center;
@@ -1268,13 +1288,8 @@
         gap: 10px;
       }
 
-      .header-link:nth-child(4) {
-        display: none;
-        /* collapse achievements label on tiny screens */
-      }
-
       .project-card {
-        padding: 24px 20px;
+        padding: 24px 18px;
       }
 
       .contact-actions {
@@ -1333,6 +1348,7 @@
       <a class="header-link" data-nav="projects">Projects</a>
       <a class="header-link" data-nav="skills">Skills</a>
       <a class="header-link" data-nav="achievements">Achievements</a>
+      <a class="header-link" data-nav="education">Education</a>
       <a class="header-link" data-nav="contact">Contact</a>
     </nav>
   </header>
@@ -1407,7 +1423,7 @@
 
       <div class="about-metrics">
         <div class="metric-card">
-          <div class="metric-value">8.74</div>
+          <div class="metric-value">8.71</div>
           <div class="metric-label">CGPA</div>
           <div class="metric-sub">RV Institute of Technology and Management</div>
         </div>
@@ -1478,10 +1494,9 @@
           </div>
 
           <div class="project-cta-row">
-            <!-- Source-verified placeholder for GitHub link -->
             <a class="project-btn"
-              href="mailto:ayushsingh10580@gmail.com?subject=Inquiry:%20ML%20Network%20Intrusion%20Detection%20System">
-              VIEW PROJECT &rarr;
+              href="https://github.com/Ayush-Singh0583/ML-Network-Intrusion-Detection-System" target="_blank" rel="noopener noreferrer">
+              VIEW ON GITHUB &rarr;
             </a>
           </div>
         </div>
@@ -1541,8 +1556,8 @@
 
           <div class="project-cta-row">
             <a class="project-btn"
-              href="mailto:ayushsingh10580@gmail.com?subject=Inquiry:%20IronForge%20Strength%20Platform">
-              VIEW PROJECT &rarr;
+              href="https://github.com/Ayush-Singh0583/Workout_Tracker" target="_blank" rel="noopener noreferrer">
+              VIEW ON GITHUB &rarr;
             </a>
           </div>
         </div>
@@ -1600,8 +1615,8 @@
 
           <div class="project-cta-row">
             <a class="project-btn"
-              href="mailto:ayushsingh10580@gmail.com?subject=Inquiry:%20Vision-Based%20Hand%20Gesture%20System">
-              VIEW PROJECT &rarr;
+              href="https://github.com/Ayush-Singh0583/ML_GESTURE" target="_blank" rel="noopener noreferrer">
+              VIEW ON GITHUB &rarr;
             </a>
           </div>
         </div>
@@ -1794,7 +1809,7 @@
           <div class="edu-period">2023 — 2027</div>
           <div class="edu-degree">B.E. Information Science & Engineering</div>
           <div class="edu-inst">RV Institute of Technology and Management, Bengaluru</div>
-          <span class="edu-grade-pill">8.74 CGPA</span>
+          <span class="edu-grade-pill">8.71 CGPA</span>
         </div>
 
         <div class="edu-card edu-box">
@@ -1867,10 +1882,17 @@
         ayushsingh10580@gmail.com
       </a>
       <span>&bull;</span>
-      <!-- Verified profile handles without invented external URLs -->
-      <span class="direct-link-item">Bengaluru, India</span>
+      <a class="direct-link-item" href="https://github.com/Ayush-Singh0583" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
       <span>&bull;</span>
-      <span class="direct-link-item">RVITM</span>
+      <a class="direct-link-item" href="https://www.linkedin.com/in/ayush-singh-47b446298" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+      <span>&bull;</span>
+      <a class="direct-link-item" href="https://leetcode.com/u/Ayush_Learning/" target="_blank" rel="noopener noreferrer">
+        LeetCode
+      </a>
     </div>
   </section>
 
@@ -1897,12 +1919,11 @@
       &copy; 2026 Ayush Singh. Built with curiosity.
     </div>
     <div class="footer-right">
-      <!-- Profile placeholders per resume source of truth -->
-      <a href="mailto:ayushsingh10580@gmail.com" title="GitHub profile referenced on resume">GitHub</a>
+      <a href="https://github.com/Ayush-Singh0583" target="_blank" rel="noopener noreferrer" title="Ayush Singh on GitHub">GitHub</a>
       <span>&middot;</span>
-      <a href="mailto:ayushsingh10580@gmail.com" title="LinkedIn profile referenced on resume">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/ayush-singh-47b446298" target="_blank" rel="noopener noreferrer" title="Ayush Singh on LinkedIn">LinkedIn</a>
       <span>&middot;</span>
-      <a href="mailto:ayushsingh10580@gmail.com" title="LeetCode profile referenced on resume">LeetCode</a>
+      <a href="https://leetcode.com/u/Ayush_Learning/" target="_blank" rel="noopener noreferrer" title="Ayush Singh on LeetCode">LeetCode</a>
     </div>
   </footer>
 
@@ -1939,7 +1960,7 @@
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
       const stepSize = isMobile ? 2 : 1;
       const frameIndices = [];
-      for (let n = 1; n <= TOTAL_FRAMES; n += stepSize) {
+      for (let n = 0; n < TOTAL_FRAMES; n += stepSize) {
         frameIndices.push(n);
       }
       const N = frameIndices.length;
@@ -1956,49 +1977,78 @@
         ch = Math.max(1, Math.round(h * dpr));
         canvas.width = cw;
         canvas.height = ch;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
       }
 
-      /* --- Frame Drawing (Cover-fit, draw only on change) --- */
-      let curFrame = -1;
+      /* --- Frame Drawing (Cover-fit, cross-faded between neighbors) --- */
+      let curF = -1; // last painted playhead position (fractional)
 
-      function paint(i) {
-        if (isFallbackCanvas) {
-          paintFallback(i / (N - 1 || 1));
-          return;
+      function nearestBitmap(i) {
+        if (frames[i]) return frames[i];
+        // Find closest loaded neighbor so we never draw nothing while
+        // the rest of the sequence is still streaming in.
+        for (let d = 1; d < N; d++) {
+          if (i - d >= 0 && frames[i - d]) return frames[i - d];
+          if (i + d < N && frames[i + d]) return frames[i + d];
         }
+        return null;
+      }
 
-        let bmp = frames[i];
-        if (!bmp) {
-          // Find closest neighbor
-          for (let d = 1; d < N; d++) {
-            if (i - d >= 0 && frames[i - d]) { bmp = frames[i - d]; break; }
-            if (i + d < N && frames[i + d]) { bmp = frames[i + d]; break; }
-          }
-        }
-        if (!bmp) {
-          paintFallback(i / (N - 1 || 1));
-          return;
-        }
-
+      function drawCover(bmp, alpha) {
         const iw = bmp.naturalWidth || bmp.width;
         const ih = bmp.naturalHeight || bmp.height;
         const scale = Math.max(cw / iw, ch / ih);
         const dw = iw * scale;
         const dh = ih * scale;
+        ctx.globalAlpha = alpha;
         ctx.drawImage(bmp, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+        ctx.globalAlpha = 1;
+      }
+
+      function paint(f) {
+        if (isFallbackCanvas) {
+          paintFallback(f / (N - 1 || 1));
+          return;
+        }
+
+        const lo = Math.max(0, Math.min(N - 1, Math.floor(f)));
+        const hi = Math.min(N - 1, lo + 1);
+        const t = f - lo;
+
+        const bmpLo = nearestBitmap(lo);
+        const bmpHi = hi !== lo ? nearestBitmap(hi) : bmpLo;
+
+        if (!bmpLo && !bmpHi) {
+          paintFallback(f / (N - 1 || 1));
+          return;
+        }
+
+        // Draw the base frame, then cross-fade the next one in as the
+        // playhead moves between the two. This is what turns discrete
+        // JPEG frames into what reads as continuous motion.
+        if (bmpLo) {
+          drawCover(bmpLo, 1);
+        } else if (bmpHi) {
+          drawCover(bmpHi, 1);
+        }
+        if (bmpHi && bmpHi !== bmpLo && t > 0.01) {
+          drawCover(bmpHi, t);
+        }
       }
 
       function render(f) {
-        let i = Math.round(f);
-        if (i < 0) i = 0;
-        else if (i > N - 1) i = N - 1;
-        if (i === curFrame) return;
-        curFrame = i;
-        paint(i);
+        if (f < 0) f = 0;
+        else if (f > N - 1) f = N - 1;
+        // Skip only true no-ops; anything more than a hair of playhead
+        // movement should repaint so the cross-fade stays continuous.
+        if (Math.abs(f - curF) < 0.002) return;
+        curF = f;
+        paint(f);
       }
 
       function repaint() {
-        paint(curFrame < 0 ? 0 : curFrame);
+        paint(curF < 0 ? 0 : curF);
       }
 
       /* --- Cinematic Fallback Network Canvas (if video frames unavailable) --- */
@@ -2097,6 +2147,28 @@
 
       /* --- Interactive Project Visuals (Network, IronForge Curves, MediaPipe Hand) --- */
       function initProjectVisuals() {
+        /* Shared helper: cache element size via ResizeObserver instead of
+           reading clientWidth/clientHeight every animation frame (that
+           forces a synchronous layout on each rAF tick), and track
+           on-screen visibility so off-screen canvases stop drawing
+           instead of burning frame budget forever. */
+        function watchCanvas(canvas, sizeEl) {
+          const target = sizeEl || canvas.parentElement;
+          const state = { w: 0, h: 0, visible: false };
+          function applySize() {
+            state.w = target.clientWidth;
+            state.h = target.clientHeight;
+            canvas.width = state.w;
+            canvas.height = state.h;
+          }
+          applySize();
+          new ResizeObserver(applySize).observe(target);
+          new IntersectionObserver(([entry]) => {
+            state.visible = entry.isIntersecting;
+          }, { rootMargin: '200px' }).observe(canvas);
+          return state;
+        }
+
         // 1. Intrusion Detection System Visual
         const canvasIds = document.getElementById('canvas-proj-ids');
         if (canvasIds) {
@@ -2111,51 +2183,50 @@
               isMalicious: i % 6 === 0
             });
           }
+          const idsState = watchCanvas(canvasIds);
 
           function drawIds() {
-            const w = canvasIds.parentElement.clientWidth;
-            const h = canvasIds.parentElement.clientHeight;
-            if (canvasIds.width !== w || canvasIds.height !== h) {
-              canvasIds.width = w;
-              canvasIds.height = h;
-            }
-            ctxIds.fillStyle = '#060609';
-            ctxIds.fillRect(0, 0, w, h);
+            if (idsState.visible) {
+              const w = idsState.w;
+              const h = idsState.h;
+              ctxIds.fillStyle = '#060609';
+              ctxIds.fillRect(0, 0, w, h);
 
-            nodes.forEach((n, i) => {
-              n.x = (n.x + n.vx + 1) % 1;
-              n.y = (n.y + n.vy + 1) % 1;
-              const px = n.x * w;
-              const py = n.y * h;
+              nodes.forEach((n, i) => {
+                n.x = (n.x + n.vx + 1) % 1;
+                n.y = (n.y + n.vy + 1) % 1;
+                const px = n.x * w;
+                const py = n.y * h;
 
-              ctxIds.fillStyle = n.isMalicious ? '#f59e0b' : '#38bdf8';
-              ctxIds.beginPath();
-              ctxIds.arc(px, py, n.isMalicious ? 4 : 2.5, 0, Math.PI * 2);
-              ctxIds.fill();
-
-              if (n.isMalicious) {
-                ctxIds.strokeStyle = 'rgba(245, 158, 11, 0.35)';
+                ctxIds.fillStyle = n.isMalicious ? '#f59e0b' : '#38bdf8';
                 ctxIds.beginPath();
-                ctxIds.arc(px, py, 12, 0, Math.PI * 2);
-                ctxIds.stroke();
-              }
+                ctxIds.arc(px, py, n.isMalicious ? 4 : 2.5, 0, Math.PI * 2);
+                ctxIds.fill();
 
-              for (let j = i + 1; j < nodes.length; j++) {
-                const m = nodes[j];
-                const qx = m.x * w;
-                const qy = m.y * h;
-                const d = Math.hypot(px - qx, py - qy);
-                if (d < 100) {
-                  ctxIds.strokeStyle = (n.isMalicious || m.isMalicious)
-                    ? `rgba(245, 158, 11, ${0.25 * (1 - d / 100)})`
-                    : `rgba(56, 189, 248, ${0.15 * (1 - d / 100)})`;
+                if (n.isMalicious) {
+                  ctxIds.strokeStyle = 'rgba(245, 158, 11, 0.35)';
                   ctxIds.beginPath();
-                  ctxIds.moveTo(px, py);
-                  ctxIds.lineTo(qx, qy);
+                  ctxIds.arc(px, py, 12, 0, Math.PI * 2);
                   ctxIds.stroke();
                 }
-              }
-            });
+
+                for (let j = i + 1; j < nodes.length; j++) {
+                  const m = nodes[j];
+                  const qx = m.x * w;
+                  const qy = m.y * h;
+                  const d = Math.hypot(px - qx, py - qy);
+                  if (d < 100) {
+                    ctxIds.strokeStyle = (n.isMalicious || m.isMalicious)
+                      ? `rgba(245, 158, 11, ${0.25 * (1 - d / 100)})`
+                      : `rgba(56, 189, 248, ${0.15 * (1 - d / 100)})`;
+                    ctxIds.beginPath();
+                    ctxIds.moveTo(px, py);
+                    ctxIds.lineTo(qx, qy);
+                    ctxIds.stroke();
+                  }
+                }
+              });
+            }
             requestAnimationFrame(drawIds);
           }
           requestAnimationFrame(drawIds);
@@ -2166,51 +2237,51 @@
         if (canvasForge) {
           const ctxForge = canvasForge.getContext('2d');
           let t = 0;
+          const forgeState = watchCanvas(canvasForge);
+
           function drawForge() {
-            const w = canvasForge.parentElement.clientWidth;
-            const h = canvasForge.parentElement.clientHeight;
-            if (canvasForge.width !== w || canvasForge.height !== h) {
-              canvasForge.width = w;
-              canvasForge.height = h;
+            if (forgeState.visible) {
+              const w = forgeState.w;
+              const h = forgeState.h;
+              ctxForge.fillStyle = '#060609';
+              ctxForge.fillRect(0, 0, w, h);
+
+              // Draw grid
+              ctxForge.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+              ctxForge.lineWidth = 1;
+              for (let x = 0; x < w; x += 40) {
+                ctxForge.beginPath(); ctxForge.moveTo(x, 0); ctxForge.lineTo(x, h); ctxForge.stroke();
+              }
+              for (let y = 0; y < h; y += 40) {
+                ctxForge.beginPath(); ctxForge.moveTo(0, y); ctxForge.lineTo(w, y); ctxForge.stroke();
+              }
+
+              // Draw progressive curve
+              ctxForge.strokeStyle = '#f59e0b';
+              ctxForge.lineWidth = 2.5;
+              ctxForge.beginPath();
+              for (let x = 0; x < w; x += 4) {
+                const normX = x / w;
+                const y = h * 0.85 - Math.pow(normX, 1.4) * (h * 0.55) + Math.sin(normX * 10 + t) * 6;
+                if (x === 0) ctxForge.moveTo(x, y);
+                else ctxForge.lineTo(x, y);
+              }
+              ctxForge.stroke();
+
+              // Draw database node highlights
+              ctxForge.fillStyle = 'rgba(245, 158, 11, 0.15)';
+              ctxForge.fillRect(w * 0.65, h * 0.18, 110, 48);
+              ctxForge.strokeStyle = 'rgba(245, 158, 11, 0.5)';
+              ctxForge.strokeRect(w * 0.65, h * 0.18, 110, 48);
+
+              ctxForge.fillStyle = '#ffffff';
+              ctxForge.font = '10px "JetBrains Mono", monospace';
+              ctxForge.fillText('TABLE: PROGRESS', w * 0.65 + 10, h * 0.18 + 20);
+              ctxForge.fillStyle = 'rgba(245, 158, 11, 0.9)';
+              ctxForge.fillText('1RM_EST :: +12.5kg', w * 0.65 + 10, h * 0.18 + 36);
+
+              t += 0.02;
             }
-            ctxForge.fillStyle = '#060609';
-            ctxForge.fillRect(0, 0, w, h);
-
-            // Draw grid
-            ctxForge.strokeStyle = 'rgba(255, 255, 255, 0.04)';
-            ctxForge.lineWidth = 1;
-            for (let x = 0; x < w; x += 40) {
-              ctxForge.beginPath(); ctxForge.moveTo(x, 0); ctxForge.lineTo(x, h); ctxForge.stroke();
-            }
-            for (let y = 0; y < h; y += 40) {
-              ctxForge.beginPath(); ctxForge.moveTo(0, y); ctxForge.lineTo(w, y); ctxForge.stroke();
-            }
-
-            // Draw progressive curve
-            ctxForge.strokeStyle = '#f59e0b';
-            ctxForge.lineWidth = 2.5;
-            ctxForge.beginPath();
-            for (let x = 0; x < w; x += 4) {
-              const normX = x / w;
-              const y = h * 0.85 - Math.pow(normX, 1.4) * (h * 0.55) + Math.sin(normX * 10 + t) * 6;
-              if (x === 0) ctxForge.moveTo(x, y);
-              else ctxForge.lineTo(x, y);
-            }
-            ctxForge.stroke();
-
-            // Draw database node highlights
-            ctxForge.fillStyle = 'rgba(245, 158, 11, 0.15)';
-            ctxForge.fillRect(w * 0.65, h * 0.18, 110, 48);
-            ctxForge.strokeStyle = 'rgba(245, 158, 11, 0.5)';
-            ctxForge.strokeRect(w * 0.65, h * 0.18, 110, 48);
-
-            ctxForge.fillStyle = '#ffffff';
-            ctxForge.font = '10px "JetBrains Mono", monospace';
-            ctxForge.fillText('TABLE: PROGRESS', w * 0.65 + 10, h * 0.18 + 20);
-            ctxForge.fillStyle = 'rgba(245, 158, 11, 0.9)';
-            ctxForge.fillText('1RM_EST :: +12.5kg', w * 0.65 + 10, h * 0.18 + 36);
-
-            t += 0.02;
             requestAnimationFrame(drawForge);
           }
           requestAnimationFrame(drawForge);
@@ -2220,6 +2291,7 @@
         const canvasGesture = document.getElementById('canvas-proj-gesture');
         if (canvasGesture) {
           const ctxGesture = canvasGesture.getContext('2d');
+          const gestureState = watchCanvas(canvasGesture);
           let phase = 0;
 
           // 21 canonical MediaPipe hand landmarks in normalized coordinates
@@ -2241,51 +2313,49 @@
           ];
 
           function drawGesture() {
-            const w = canvasGesture.parentElement.clientWidth;
-            const h = canvasGesture.parentElement.clientHeight;
-            if (canvasGesture.width !== w || canvasGesture.height !== h) {
-              canvasGesture.width = w;
-              canvasGesture.height = h;
-            }
-            ctxGesture.fillStyle = '#060609';
-            ctxGesture.fillRect(0, 0, w, h);
+            if (gestureState.visible) {
+              const w = gestureState.w;
+              const h = gestureState.h;
+              ctxGesture.fillStyle = '#060609';
+              ctxGesture.fillRect(0, 0, w, h);
 
-            phase += 0.03;
-            const wave = Math.sin(phase) * 0.03;
+              phase += 0.03;
+              const wave = Math.sin(phase) * 0.03;
 
-            // Render skeleton bones
-            ctxGesture.strokeStyle = 'rgba(245, 158, 11, 0.4)';
-            ctxGesture.lineWidth = 2;
-            connections.forEach(([a, b]) => {
-              const pa = baseLandmarks[a];
-              const pb = baseLandmarks[b];
-              const ax = (pa[0] + (a >= 5 && a <= 8 ? wave : 0)) * w;
-              const ay = pa[1] * h;
-              const bx = (pb[0] + (b >= 5 && b <= 8 ? wave : 0)) * w;
-              const by = pb[1] * h;
+              // Render skeleton bones
+              ctxGesture.strokeStyle = 'rgba(245, 158, 11, 0.4)';
+              ctxGesture.lineWidth = 2;
+              connections.forEach(([a, b]) => {
+                const pa = baseLandmarks[a];
+                const pb = baseLandmarks[b];
+                const ax = (pa[0] + (a >= 5 && a <= 8 ? wave : 0)) * w;
+                const ay = pa[1] * h;
+                const bx = (pb[0] + (b >= 5 && b <= 8 ? wave : 0)) * w;
+                const by = pb[1] * h;
+                ctxGesture.beginPath();
+                ctxGesture.moveTo(ax, ay);
+                ctxGesture.lineTo(bx, by);
+                ctxGesture.stroke();
+              });
+
+              // Render 21 landmark nodes
+              baseLandmarks.forEach((pt, idx) => {
+                const lx = (pt[0] + (idx >= 5 && idx <= 8 ? wave : 0)) * w;
+                const ly = pt[1] * h;
+                ctxGesture.fillStyle = (idx === 8) ? '#22c55e' : '#f59e0b';
+                ctxGesture.beginPath();
+                ctxGesture.arc(lx, ly, (idx === 8) ? 6 : 3.5, 0, Math.PI * 2);
+                ctxGesture.fill();
+              });
+
+              // Render cursor target trace from index tip (idx 8)
+              const tipX = (baseLandmarks[8][0] + wave) * w;
+              const tipY = baseLandmarks[8][1] * h;
+              ctxGesture.strokeStyle = 'rgba(34, 197, 94, 0.4)';
               ctxGesture.beginPath();
-              ctxGesture.moveTo(ax, ay);
-              ctxGesture.lineTo(bx, by);
+              ctxGesture.arc(tipX, tipY, 18, 0, Math.PI * 2);
               ctxGesture.stroke();
-            });
-
-            // Render 21 landmark nodes
-            baseLandmarks.forEach((pt, idx) => {
-              const lx = (pt[0] + (idx >= 5 && idx <= 8 ? wave : 0)) * w;
-              const ly = pt[1] * h;
-              ctxGesture.fillStyle = (idx === 8) ? '#22c55e' : '#f59e0b';
-              ctxGesture.beginPath();
-              ctxGesture.arc(lx, ly, (idx === 8) ? 6 : 3.5, 0, Math.PI * 2);
-              ctxGesture.fill();
-            });
-
-            // Render cursor target trace from index tip (idx 8)
-            const tipX = (baseLandmarks[8][0] + wave) * w;
-            const tipY = baseLandmarks[8][1] * h;
-            ctxGesture.strokeStyle = 'rgba(34, 197, 94, 0.4)';
-            ctxGesture.beginPath();
-            ctxGesture.arc(tipX, tipY, 18, 0, Math.PI * 2);
-            ctxGesture.stroke();
+            }
 
             requestAnimationFrame(drawGesture);
           }
@@ -2296,23 +2366,22 @@
         const ctaCanvas = document.getElementById('final-cta-canvas');
         if (ctaCanvas) {
           const ctaCtx = ctaCanvas.getContext('2d');
+          const ctaState = watchCanvas(ctaCanvas, ctaCanvas);
           let ctaT = 0;
           function drawCta() {
-            const w = ctaCanvas.clientWidth;
-            const h = ctaCanvas.clientHeight;
-            if (ctaCanvas.width !== w || ctaCanvas.height !== h) {
-              ctaCanvas.width = w;
-              ctaCanvas.height = h;
+            if (ctaState.visible) {
+              const w = ctaState.w;
+              const h = ctaState.h;
+              ctaCtx.clearRect(0, 0, w, h);
+              ctaCtx.strokeStyle = 'rgba(245, 158, 11, 0.08)';
+              ctaCtx.lineWidth = 1;
+              for (let i = 0; i < 6; i++) {
+                ctaCtx.beginPath();
+                ctaCtx.arc(w / 2, h / 2, 60 + i * 55 + Math.sin(ctaT + i) * 12, 0, Math.PI * 2);
+                ctaCtx.stroke();
+              }
+              ctaT += 0.015;
             }
-            ctaCtx.clearRect(0, 0, w, h);
-            ctaCtx.strokeStyle = 'rgba(245, 158, 11, 0.08)';
-            ctaCtx.lineWidth = 1;
-            for (let i = 0; i < 6; i++) {
-              ctaCtx.beginPath();
-              ctaCtx.arc(w / 2, h / 2, 60 + i * 55 + Math.sin(ctaT + i) * 12, 0, Math.PI * 2);
-              ctaCtx.stroke();
-            }
-            ctaT += 0.015;
             requestAnimationFrame(drawCta);
           }
           requestAnimationFrame(drawCta);
@@ -2327,9 +2396,9 @@
         /* Lenis smooth scrolling initialization */
         if (window.Lenis) {
           lenis = new Lenis({
-            lerp: 0.1,
-            wheelMultiplier: 1,
-            touchMultiplier: 1.5,
+            lerp: 0.08,
+            wheelMultiplier: 0.95,
+            touchMultiplier: 1.2,
             smoothTouch: false
           });
           window.lenis = lenis;
@@ -2341,6 +2410,23 @@
           lenis.stop();
         }
 
+        /* Helper: hint the compositor only while an element is actively
+           being animated by GSAP, then release it — leaving will-change
+           on permanently just wastes memory on layers that never move. */
+        function withWillChange(vars) {
+          const userOnStart = vars.onStart;
+          const userOnComplete = vars.onComplete;
+          vars.onStart = function () {
+            gsap.set(this.targets(), { willChange: 'transform, opacity' });
+            if (userOnStart) userOnStart.apply(this, arguments);
+          };
+          vars.onComplete = function () {
+            gsap.set(this.targets(), { willChange: 'auto' });
+            if (userOnComplete) userOnComplete.apply(this, arguments);
+          };
+          return vars;
+        }
+
         const playhead = { f: 0 };
         const master = gsap.timeline({
           scrollTrigger: {
@@ -2348,7 +2434,7 @@
             start: 'top top',
             end: '+=700%',
             pin: true,
-            scrub: 0.4,
+            scrub: 0.6,
             invalidateOnRefresh: true
           }
         });
@@ -2366,7 +2452,7 @@
           master.fromTo(
             sel + ' .word',
             { autoAlpha: 0, y: 35 },
-            { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 2.2, stagger: stg },
+            withWillChange({ autoAlpha: 1, y: 0, ease: 'power2.out', duration: 2.2, stagger: stg }),
             at
           );
         }
@@ -2378,7 +2464,7 @@
         master.fromTo(
           '#ov1 .title-text',
           { autoAlpha: 0, scale: 0.92, y: 20 },
-          { autoAlpha: 1, scale: 1, y: 0, ease: 'power2.out', duration: 3.5 },
+          withWillChange({ autoAlpha: 1, scale: 1, y: 0, ease: 'power2.out', duration: 3.5 }),
           4
         );
         master.to('#ov1', { autoAlpha: 0, ease: 'power1.in', duration: 2.5 }, 14);
@@ -2422,7 +2508,7 @@
 
         /* Section Reveals */
         gsap.utils.toArray('.project-card').forEach((card) => {
-          gsap.from(card, {
+          gsap.from(card, withWillChange({
             autoAlpha: 0,
             y: 40,
             duration: 1,
@@ -2431,10 +2517,10 @@
               trigger: card,
               start: 'top 82%'
             }
-          });
+          }));
         });
 
-        gsap.from('.sk-card', {
+        gsap.from('.sk-card', withWillChange({
           autoAlpha: 0,
           y: 30,
           duration: 0.8,
@@ -2444,9 +2530,9 @@
             trigger: '.skills-categories-grid',
             start: 'top 80%'
           }
-        });
+        }));
 
-        gsap.from('.ach-card', {
+        gsap.from('.ach-card', withWillChange({
           autoAlpha: 0,
           x: -25,
           duration: 0.75,
@@ -2456,30 +2542,56 @@
             trigger: '.timeline-cinematic',
             start: 'top 80%'
           }
-        });
+        }));
 
-        gsap.from('.edu-box', {
+        gsap.from('.edu-box', withWillChange({
           autoAlpha: 0,
           y: 25,
           duration: 0.8,
           ease: 'power2.out',
           stagger: 0.15,
           scrollTrigger: {
-            trigger: '.edu-column',
-            start: 'top 80%'
+            trigger: '.edu-section',
+            start: 'top 85%'
           }
-        });
+        }));
 
-        gsap.from('.course-item', {
+        gsap.from('.course-item', withWillChange({
           autoAlpha: 0,
           x: 20,
           duration: 0.6,
           ease: 'power2.out',
-          stagger: 0.1,
+          stagger: 0.08,
           scrollTrigger: {
-            trigger: '.coursework-container',
-            start: 'top 80%'
+            trigger: '.edu-section',
+            start: 'top 85%'
           }
+        }));
+      }
+
+      /* --- Concurrency-limited frame loading queue ---
+         Firing all N fetches at once made every frame compete for the
+         same bandwidth from the start, so the "initial batch" the page
+         actually waits on wasn't getting any priority over frame 220.
+         Loading a bounded number at a time lets the initial batch land
+         first, then lets the rest stream in behind it. */
+      function runQueue(indices, concurrency, onEach) {
+        return new Promise((resolve) => {
+          if (indices.length === 0) { resolve(); return; }
+          let cursor = 0;
+          let remaining = indices.length;
+          function startNext() {
+            if (cursor >= indices.length) return;
+            const slot = indices[cursor++];
+            loadFrame(slot).then(() => {
+              if (onEach) onEach(slot);
+              remaining--;
+              if (remaining === 0) resolve();
+              else startNext();
+            });
+          }
+          const starters = Math.min(concurrency, indices.length);
+          for (let k = 0; k < starters; k++) startNext();
         });
       }
 
@@ -2495,17 +2607,28 @@
           ? document.fonts.ready
           : Promise.resolve();
 
-        const frameJobs = [];
-        for (let s = 0; s < N; s++) {
-          frameJobs.push(loadFrame(s));
-        }
+        const allIndices = [];
+        for (let s = 0; s < N; s++) allIndices.push(s);
 
-        Promise.all(frameJobs)
+        /* paint() already falls back to the nearest loaded neighbor
+           frame, so scroll doesn't need to wait on every single frame
+           to finish downloading — only an initial batch. The rest
+           keep streaming in the background and paint() picks them up
+           automatically as they arrive. This gets the page interactive
+           much sooner on slower connections. */
+        const INITIAL_BATCH = Math.min(N, Math.max(20, Math.round(N * 0.15)));
+        const initialIndices = allIndices.slice(0, INITIAL_BATCH);
+        const restIndices = allIndices.slice(INITIAL_BATCH);
+        const CONCURRENCY = 6;
+
+        const initialBatch = runQueue(initialIndices, CONCURRENCY);
+
+        initialBatch
           .then(() => fontsReady)
           .then(() => {
-            // Check if frames actually loaded
-            const validFrames = frames.filter(Boolean).length;
-            if (validFrames < 10) {
+            // Check if the initial batch actually loaded
+            const validFrames = frames.slice(0, INITIAL_BATCH).filter(Boolean).length;
+            if (validFrames < Math.min(10, INITIAL_BATCH)) {
               isFallbackCanvas = true;
             }
 
@@ -2523,7 +2646,24 @@
                 ScrollTrigger.refresh();
               });
             }, 850);
+
+            // Now that the page is interactive, stream in the rest of
+            // the sequence at the same bounded concurrency.
+            runQueue(restIndices, CONCURRENCY).then(backgroundCompletionCheck);
           });
+
+        // Background completion: re-check fallback status once every
+        // frame has settled, in case the initial batch looked fine but
+        // the rest of the sequence failed to load.
+        function backgroundCompletionCheck() {
+          if (!isFallbackCanvas) {
+            const validFrames = frames.filter(Boolean).length;
+            if (validFrames < 10) {
+              isFallbackCanvas = true;
+              repaint();
+            }
+          }
+        }
       }
 
       /* --- Debounced Resize Listener --- */
@@ -2541,11 +2681,7 @@
       });
 
       /* --- Header Nav Click Handlers with Lenis --- */
-      const smoothEase = (t) => {
-        return t < 0.5
-          ? 2 * t * t
-          : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      };
+      const smoothEase = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
       const navLinks = document.querySelectorAll('[data-nav]');
 
       navLinks.forEach((link) => {
@@ -2564,11 +2700,10 @@
 
             const dist = Math.abs(targetPos - currentScroll);
 
-            // Slower, more cinematic scrolling
-            const duration = Math.min(
-              2.5,
-              Math.max(1.2, dist / 1800)
-            );
+            // Exactly 10.0s duration when clicking About
+            const duration = targetId === 'about'
+              ? 10.0
+              : Math.min(10.0, Math.max(2.5, dist / 1200));
 
             lenis.scrollTo(target, {
               duration,
