@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TEA — Rooted in the Hills</title>
-<meta name="description" content="A single bag. Ancient wisdom inside. TEA — a premium Indian tea ritual, blend by blend." />
+<title>Ayush Singh — Developer Portfolio</title>
+<meta name="description" content="Ayush Singh — Full-Stack Developer & ML Engineer. Building intelligent, scalable applications with React, Node.js, Python, and Machine Learning." />
 <meta name="theme-color" content="#030303" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23030303'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23f59e0b'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030303'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <style>
 /* ============================================================
-   TEA — base
+   AYUSH SINGH PORTFOLIO — base
    ============================================================ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -116,7 +116,12 @@ html.lenis, html.lenis body { height: auto; }
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.8);
   text-decoration: none;
 }
-.header-shop {
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.header-link {
   font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
@@ -155,8 +160,7 @@ html.lenis, html.lenis body { height: auto; }
   position: relative;
   width: 100%;
   height: 100vh;
-  height: 100lvh;   /* large viewport height — stays full when the mobile
-                       address bar collapses (no bottom black gap) */
+  height: 100lvh;
   overflow: hidden;
   background: #000;
 }
@@ -214,8 +218,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 .word { display: inline-block; opacity: 0; }
 
-/* hero brand mark — Devini, shown centered just below the tea bag on the
-   opening frame; fades out the instant the hero starts scrolling */
+/* hero brand mark */
 .brand-mark {
   position: absolute;
   z-index: 2;
@@ -238,7 +241,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ============================================================
-   Product collection
+   Projects section (was product collection)
    ============================================================ */
 .collection {
   position: relative;
@@ -304,9 +307,9 @@ html.lenis, html.lenis body { height: auto; }
 .card-name {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: clamp(30px, 3.6vw, 40px);
-  letter-spacing: 0.16em;
-  padding-left: 0.16em;
+  font-size: clamp(26px, 3.6vw, 36px);
+  letter-spacing: 0.1em;
+  padding-left: 0.1em;
   color: var(--amber);
 }
 .card-night .card-name { color: #fff; }
@@ -333,12 +336,6 @@ html.lenis, html.lenis body { height: auto; }
   justify-content: space-between;
   gap: 16px;
 }
-.card-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: clamp(26px, 3vw, 32px);
-  color: #fff;
-}
 .card-btn {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
@@ -352,6 +349,10 @@ html.lenis, html.lenis body { height: auto; }
   padding: 12px 16px;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: background 0.35s var(--ease), color 0.35s var(--ease),
               border-color 0.35s var(--ease);
 }
@@ -378,7 +379,195 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ============================================================
-   Newsletter
+   Skills & Education section
+   ============================================================ */
+.skills-section {
+  position: relative;
+  padding: 130px 34px 140px;
+  background: var(--bg);
+}
+
+.skills-head { text-align: center; margin-bottom: 72px; }
+.skills-eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  padding-left: 0.4em;
+  color: var(--amber);
+}
+.skills-title {
+  margin-top: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(30px, 5vw, 46px);
+  color: #fff;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  padding: 32px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  background: linear-gradient(160deg, rgba(245, 158, 11, 0.03), rgba(3, 3, 3, 0.95));
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.skill-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+  margin-bottom: 18px;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+  border-radius: 100px;
+  padding: 6px 14px;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Education */
+.education-area {
+  max-width: 1120px;
+  margin: 80px auto 0;
+}
+
+.edu-head { text-align: center; margin-bottom: 42px; }
+.edu-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(26px, 4vw, 38px);
+  color: #fff;
+}
+
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 28px;
+}
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: rgba(245, 158, 11, 0.25);
+}
+
+.edu-item {
+  position: relative;
+  padding: 20px 0 20px 24px;
+}
+.edu-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 28px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+.edu-year {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+.edu-degree {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(20px, 2.8vw, 26px);
+  color: #fff;
+  margin-bottom: 4px;
+}
+.edu-school {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
+.edu-score {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(245, 158, 11, 0.8);
+  background: rgba(245, 158, 11, 0.08);
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+
+/* Achievements */
+.achievements-area {
+  max-width: 1120px;
+  margin: 80px auto 0;
+}
+.achievements-head { text-align: center; margin-bottom: 42px; }
+.achievements-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(26px, 4vw, 38px);
+  color: #fff;
+}
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 20px;
+}
+.achievement-item {
+  padding: 24px 22px;
+  border-radius: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.12);
+  background: rgba(245, 158, 11, 0.02);
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.achievement-icon {
+  font-size: 22px;
+  margin-bottom: 12px;
+  display: block;
+}
+.achievement-text {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+}
+.achievement-text strong {
+  color: var(--amber);
+  font-weight: 500;
+}
+
+/* ============================================================
+   Contact (was newsletter)
    ============================================================ */
 .newsletter {
   position: relative;
@@ -404,42 +593,57 @@ html.lenis, html.lenis body { height: auto; }
   font-weight: 300;
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.45);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.newsletter-form {
-  margin-top: 44px;
-  display: inline-flex;
+
+.contact-links {
+  margin-top: 48px;
+  display: flex;
   align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
-.newsletter-input {
-  width: min(320px, 78vw);
-  padding: 12px 4px;
+
+.contact-btn {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: #fff;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.55);
-  outline: none;
-  transition: border-color 0.35s var(--ease);
-}
-.newsletter-input::placeholder { color: rgba(255, 255, 255, 0.3); }
-.newsletter-input:focus { border-bottom-color: var(--amber); }
-.newsletter-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
+  text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--amber);
   background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px 2px;
-  transition: opacity 0.3s ease;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 8px;
+  padding: 14px 24px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease),
+              border-color 0.35s var(--ease), transform 0.3s var(--ease);
 }
-.newsletter-btn span { border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+.contact-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.contact-email {
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+.contact-email a {
+  color: rgba(245, 158, 11, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
 /* ============================================================
    Footer
@@ -478,7 +682,9 @@ html.lenis, html.lenis body { height: auto; }
 }
 @media (max-width: 768px) {
   #site-header { padding: 0 20px; }
+  .header-nav { gap: 16px; }
   .collection { padding: 110px 22px 120px; }
+  .skills-section { padding: 90px 22px 100px; }
   .newsletter { padding: 120px 22px; }
   .overlay { max-width: 84%; }
   .ov2 { left: 7%; bottom: 12%; }
@@ -488,20 +694,20 @@ html.lenis, html.lenis body { height: auto; }
 }
 @media (max-width: 600px) {
   .title-text { letter-spacing: 0.16em; padding-left: 0.16em; }
-  /* let full-sentence overlay lines wrap instead of clipping at the edge */
   .oline { white-space: normal; }
 
-  /* product cards: stack price + button so the CTA goes full-width
-     (no overflow on narrow cards, and a far bigger tap target) */
   .card-body { padding: 26px 24px 30px; }
   .card-price-row { flex-direction: column; align-items: stretch; }
-  .card-btn { padding: 16px; }
+  .card-btn { padding: 16px; justify-content: center; }
 
-  .newsletter-btn { padding: 14px 10px; }
+  .contact-btn { padding: 14px 18px; }
+  .contact-links { gap: 12px; }
 
-  /* enlarge header link hit areas to ~44px for comfortable tapping */
   .header-brand,
-  .header-shop { display: inline-flex; align-items: center; min-height: 44px; }
+  .header-link { display: inline-flex; align-items: center; min-height: 44px; }
+
+  .header-nav { gap: 12px; }
+  .header-link { font-size: 10px; letter-spacing: 0.12em; }
 }
 @media (max-width: 680px) {
   .site-footer { flex-direction: column; text-align: center; gap: 16px; }
@@ -510,14 +716,12 @@ html.lenis, html.lenis body { height: auto; }
   #site-header { height: 56px; }
 }
 @media (max-width: 400px) {
-  /* keep hero overlay text clear of the screen edges on tiny phones */
   .overlay { max-width: 90%; }
   .ov2, .ov4, .ov5 { left: 5%; }
   .ov3 { right: 5%; }
 }
 
-/* hover effects — applied only on devices with a real hover-capable pointer,
-   so they never get "stuck" after a tap on touchscreens */
+/* hover effects — hover-capable devices only */
 @media (hover: hover) {
   .card:hover {
     transform: translateY(-12px);
@@ -526,14 +730,33 @@ html.lenis, html.lenis body { height: auto; }
                 0 0 60px -14px rgba(245, 158, 11, 0.28);
   }
   .card:hover .card-media { transform: scale(1.045); }
-  .header-shop:hover { color: var(--amber); }
+  .header-link:hover { color: var(--amber); }
   .card-btn:hover {
     background: var(--amber);
     border-color: var(--amber);
     color: #1a0f0a;
   }
-  .newsletter-btn:hover span { border-bottom-color: var(--amber); }
+  .contact-btn:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: #1a0f0a;
+    transform: translateY(-2px);
+  }
+  .contact-email a:hover { color: var(--amber); }
   .footer-links a:hover { text-decoration: underline; color: var(--amber); }
+  .skill-card:hover {
+    border-color: rgba(245, 158, 11, 0.35);
+    transform: translateY(-4px);
+  }
+  .skill-pill:hover {
+    background: rgba(245, 158, 11, 0.18);
+    border-color: rgba(245, 158, 11, 0.4);
+    color: var(--amber);
+  }
+  .achievement-item:hover {
+    border-color: rgba(245, 158, 11, 0.3);
+    transform: translateY(-3px);
+  }
 }
 </style>
 </head>
@@ -542,15 +765,19 @@ html.lenis, html.lenis body { height: auto; }
 
 <!-- ===================== Loading screen ===================== -->
 <div id="loader">
-  <div class="loader-title">TEA</div>
+  <div class="loader-title">AYUSH</div>
   <div class="loader-bar-track"><div class="loader-bar-fill" id="loaderFill"></div></div>
-  <div class="loader-note">Preparing your ritual...</div>
+  <div class="loader-note">Loading portfolio...</div>
 </div>
 
 <!-- ===================== Fixed header ===================== -->
 <header id="site-header">
-  <a class="header-brand" href="#top">TEA</a>
-  <a class="header-shop" id="shopLink">SHOP</a>
+  <a class="header-brand" href="#top">AYUSH SINGH</a>
+  <nav class="header-nav">
+    <a class="header-link" data-nav="projects">Projects</a>
+    <a class="header-link" data-nav="skills">Skills</a>
+    <a class="header-link" data-nav="contact">Contact</a>
+  </nav>
 </header>
 
 <!-- ===================== Scroll progress bar ===================== -->
@@ -560,108 +787,252 @@ html.lenis, html.lenis body { height: auto; }
 <section class="hero" id="top">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
-  <div class="brand-mark" id="ovBrand"><span class="brand-word">Devini</span></div>
+  <div class="brand-mark" id="ovBrand"><span class="brand-word">Ayush Singh</span></div>
 
   <div class="overlay ov1" id="ov1">
-    <span class="title-text">TEA</span>
+    <span class="title-text">HELLO</span>
   </div>
 
   <div class="overlay ov2" id="ov2">
-    <span class="oline" data-split>A single bag.</span>
-    <span class="oline" data-split>Ancient wisdom inside.</span>
+    <span class="oline" data-split>Full-Stack Developer.</span>
+    <span class="oline" data-split>Building the future.</span>
   </div>
 
   <div class="overlay ov3" id="ov3">
-    <span class="oline" data-split>Rose, cardamom, tulsi.</span>
-    <span class="oline" data-split>Every leaf, awake.</span>
+    <span class="oline" data-split>React. Node. Python.</span>
+    <span class="oline" data-split>Every stack, mastered.</span>
   </div>
 
   <div class="overlay ov4" id="ov4">
-    <span class="oline" data-split>Steeped slow.</span>
-    <span class="oline" data-split>Nothing is hurried here.</span>
+    <span class="oline" data-split>Clean code.</span>
+    <span class="oline" data-split>Thoughtful engineering.</span>
   </div>
 
   <div class="overlay ov5" id="ov5">
-    <span class="oline" data-split>Warm in your hands.</span>
-    <span class="oline" data-split>The ritual is yours.</span>
+    <span class="oline" data-split>Let's build together.</span>
+    <span class="oline" data-split>Scroll to explore.</span>
   </div>
 </section>
 
-<!-- ===================== Product collection ===================== -->
-<section class="collection" id="collection">
+<!-- ===================== Projects ===================== -->
+<section class="collection" id="projects">
   <div class="collection-head">
-    <span class="collection-eyebrow">The Collection</span>
-    <h2 class="collection-title">Choose your hour.</h2>
+    <span class="collection-eyebrow">Projects</span>
+    <h2 class="collection-title">What I've built.</h2>
   </div>
 
   <div class="cards">
     <article class="card card-dawn">
-      <img class="card-media" src="dawn.jpg" alt="DAWN — Morning Awakening Blend" loading="lazy" decoding="async" />
+      <img class="card-media" src="dawn.jpg" alt="ML Network Intrusion Detection System" loading="lazy" decoding="async" />
       <div class="card-body">
-        <span class="card-name">DAWN</span>
-        <span class="card-blend">Morning Awakening Blend</span>
-        <p class="card-ingredients">Tulsi. Rose. Cardamom. Green tea.</p>
+        <span class="card-name">Intrusion Detection</span>
+        <span class="card-blend">ML-Based Network Security</span>
+        <p class="card-ingredients">Developed a machine learning-based IDS to classify network flow as safe or malicious. Applied data preprocessing, feature engineering, and feature selection. Built a Streamlit dashboard for real-time prediction and attack visualization.</p>
         <div class="card-foot">
           <div class="card-price-row">
-            <span class="card-price">₹ 890</span>
-            <button class="card-btn" type="button">Add to Ritual</button>
+            <a class="card-btn" href="https://github.com/ayushsingh10580" target="_blank" rel="noopener">View on GitHub &rarr;</a>
           </div>
-          <span class="card-meta">15 BAGS · ORGANIC · ASSAM ORIGIN</span>
+          <span class="card-meta">PYTHON · SCIKIT-LEARN · PANDAS · NUMPY · STREAMLIT</span>
         </div>
       </div>
     </article>
 
     <article class="card card-dusk">
-      <span class="card-badge">Bestseller</span>
-      <img class="card-media" src="dusk.jpg" alt="DUSK — Evening Unwind Blend" loading="lazy" decoding="async" />
+      <span class="card-badge">Featured</span>
+      <img class="card-media" src="dusk.jpg" alt="Workout Tracker Application" loading="lazy" decoding="async" />
       <div class="card-body">
-        <span class="card-name">DUSK</span>
-        <span class="card-blend">Evening Unwind Blend</span>
-        <p class="card-ingredients">Chamomile. Rose. Cardamom. Black tea.</p>
+        <span class="card-name">Workout Tracker</span>
+        <span class="card-blend">Full-Stack Fitness Application</span>
+        <p class="card-ingredients">Developed a full-stack workout tracking application with authentication and REST APIs. Designed PostgreSQL schema for workouts, exercises and progress logs. Implemented CRUD functionality for personalized fitness tracking.</p>
         <div class="card-foot">
           <div class="card-price-row">
-            <span class="card-price">₹ 890</span>
-            <button class="card-btn" type="button">Add to Ritual</button>
+            <a class="card-btn" href="https://github.com/ayushsingh10580" target="_blank" rel="noopener">View on GitHub &rarr;</a>
           </div>
-          <span class="card-meta">15 BAGS · ORGANIC · ASSAM ORIGIN</span>
+          <span class="card-meta">TYPESCRIPT · NODE.JS · POSTGRESQL · REST API</span>
         </div>
       </div>
     </article>
 
     <article class="card card-night">
-      <img class="card-media" src="night.jpg" alt="NIGHT — Deep Rest Blend" loading="lazy" decoding="async" />
+      <img class="card-media" src="night.jpg" alt="ML Gesture Control System" loading="lazy" decoding="async" />
       <div class="card-body">
-        <span class="card-name">NIGHT</span>
-        <span class="card-blend">Deep Rest Blend</span>
-        <p class="card-ingredients">Ashwagandha. Rose. Lavender. White tea.</p>
+        <span class="card-name">Gesture Control</span>
+        <span class="card-blend">ML Hand Gesture Recognition</span>
+        <p class="card-ingredients">Developed a real-time hand gesture recognition system for mouse control. Implemented cursor movement, clicking and scrolling using hand landmarks. Optimized the tracking pipeline for low-latency interaction.</p>
         <div class="card-foot">
           <div class="card-price-row">
-            <span class="card-price">₹ 950</span>
-            <button class="card-btn" type="button">Add to Ritual</button>
+            <a class="card-btn" href="https://github.com/ayushsingh10580" target="_blank" rel="noopener">View on GitHub &rarr;</a>
           </div>
-          <span class="card-meta">15 BAGS · ORGANIC · ASSAM ORIGIN</span>
+          <span class="card-meta">PYTHON · OPENCV · MEDIAPIPE · COMPUTER VISION</span>
         </div>
       </div>
     </article>
   </div>
 </section>
 
-<!-- ===================== Newsletter ===================== -->
-<section class="newsletter">
-  <h2 class="newsletter-title nl-reveal">Join the ceremony.</h2>
-  <p class="newsletter-sub nl-reveal">Be the first to know. No noise. Only ritual.</p>
-  <form class="newsletter-form nl-reveal" id="nlForm">
-    <input class="newsletter-input" type="email" placeholder="Your email" aria-label="Your email" />
-    <button class="newsletter-btn" type="submit"><span>BEGIN&nbsp;&rarr;</span></button>
-  </form>
+<!-- ===================== Skills & Education ===================== -->
+<section class="skills-section" id="skills">
+  <div class="skills-head">
+    <span class="skills-eyebrow">Technical Skills</span>
+    <h2 class="skills-title">Tools of the trade.</h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card sk-reveal">
+      <div class="skill-card-title">Languages</div>
+      <div class="skill-pills">
+        <span class="skill-pill">C</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">C++</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="skill-card sk-reveal">
+      <div class="skill-card-title">Frontend</div>
+      <div class="skill-pills">
+        <span class="skill-pill">HTML</span>
+        <span class="skill-pill">CSS</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">React</span>
+        <span class="skill-pill">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="skill-card sk-reveal">
+      <div class="skill-card-title">Backend</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Node.js</span>
+        <span class="skill-pill">REST APIs</span>
+        <span class="skill-pill">Express</span>
+      </div>
+    </div>
+
+    <div class="skill-card sk-reveal">
+      <div class="skill-card-title">Machine Learning</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Scikit-Learn</span>
+        <span class="skill-pill">OpenCV</span>
+        <span class="skill-pill">MediaPipe</span>
+        <span class="skill-pill">Pandas</span>
+        <span class="skill-pill">NumPy</span>
+        <span class="skill-pill">Matplotlib</span>
+      </div>
+    </div>
+
+    <div class="skill-card sk-reveal">
+      <div class="skill-card-title">Databases</div>
+      <div class="skill-pills">
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">MongoDB</span>
+      </div>
+    </div>
+
+    <div class="skill-card sk-reveal">
+      <div class="skill-card-title">Developer Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">GitHub</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Postman</span>
+        <span class="skill-pill">VS Code</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education Timeline -->
+  <div class="education-area">
+    <div class="edu-head">
+      <h3 class="edu-title">Education</h3>
+    </div>
+    <div class="edu-timeline">
+      <div class="edu-item edu-reveal">
+        <div class="edu-year">2023 — 2027</div>
+        <div class="edu-degree">B.E. Information Science & Engineering</div>
+        <div class="edu-school">RV Institute of Technology and Management, Bengaluru</div>
+        <span class="edu-score">CGPA: 8.71</span>
+      </div>
+      <div class="edu-item edu-reveal">
+        <div class="edu-year">2022</div>
+        <div class="edu-degree">Class XII — CBSE</div>
+        <div class="edu-school">SJS Public School</div>
+        <span class="edu-score">84.4%</span>
+      </div>
+      <div class="edu-item edu-reveal">
+        <div class="edu-year">2020</div>
+        <div class="edu-degree">Class X — CBSE</div>
+        <div class="edu-school">SJS Public School</div>
+        <span class="edu-score">87.4%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements -->
+  <div class="achievements-area">
+    <div class="achievements-head">
+      <h3 class="achievements-title">Achievements</h3>
+    </div>
+    <div class="achievements-grid">
+      <div class="achievement-item ach-reveal">
+        <span class="achievement-icon">🏆</span>
+        <p class="achievement-text">Participated in <strong>Smart India Hackathon (SIH)</strong>, collaborating to design and present an innovative technical solution.</p>
+      </div>
+      <div class="achievement-item ach-reveal">
+        <span class="achievement-icon">💡</span>
+        <p class="achievement-text">Solved <strong>150+ problems on LeetCode</strong> across arrays, trees, graphs, dynamic programming, and more.</p>
+      </div>
+      <div class="achievement-item ach-reveal">
+        <span class="achievement-icon">🎯</span>
+        <p class="achievement-text">Volunteered at <strong>Fantom Code</strong>, a national-level hackathon, managing event operations and participant coordination.</p>
+      </div>
+      <div class="achievement-item ach-reveal">
+        <span class="achievement-icon">📊</span>
+        <p class="achievement-text">Presented technical work and research findings at a <strong>Poster Presentation</strong> event. Built multiple <strong>end-to-end projects</strong> independently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Contact ===================== -->
+<section class="newsletter" id="contact">
+  <h2 class="newsletter-title nl-reveal">Let's Connect.</h2>
+  <p class="newsletter-sub nl-reveal">Open to opportunities, collaborations, and conversations about tech. Feel free to reach out.</p>
+
+  <div class="contact-links nl-reveal">
+    <a class="contact-btn" href="mailto:ayushsingh10580@gmail.com">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Email
+    </a>
+    <a class="contact-btn" href="https://linkedin.com/in/ayushsingh10580" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      LinkedIn
+    </a>
+    <a class="contact-btn" href="https://github.com/ayushsingh10580" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+      GitHub
+    </a>
+    <a class="contact-btn" href="https://leetcode.com/ayushsingh10580" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 00-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 00-1.209 2.104 5.35 5.35 0 00-.125.513 5.527 5.527 0 00.062 2.362 5.395 5.395 0 00.349 1.017 5.27 5.27 0 001.172 1.672l4.766 4.766a1.374 1.374 0 001.945 0l1.378-1.378a1.374 1.374 0 000-1.945l-4.766-4.766a1.374 1.374 0 010-1.945l4.766-4.766a1.374 1.374 0 000-1.945L13.483 0zm5.031 4.644a1.374 1.374 0 00-.961.438l-1.378 1.378a1.374 1.374 0 000 1.945l4.766 4.766a1.374 1.374 0 010 1.945l-4.766 4.766a1.374 1.374 0 000 1.945l1.378 1.378a1.374 1.374 0 001.945 0l4.766-4.766a5.27 5.27 0 001.172-1.672 5.395 5.395 0 00.349-1.017 5.527 5.527 0 00.062-2.362 5.35 5.35 0 00-.125-.513 5.266 5.266 0 00-1.209-2.104l-3.854-4.126-1.583-1.788a1.374 1.374 0 00-.961-.438h-.555z"/></svg>
+      LeetCode
+    </a>
+  </div>
+
+  <p class="contact-email nl-reveal">
+    or drop a line at <a href="mailto:ayushsingh10580@gmail.com">ayushsingh10580@gmail.com</a> · <a href="tel:+918736836344">+91-8736836344</a>
+  </p>
 </section>
 
 <!-- ===================== Footer ===================== -->
 <footer class="site-footer">
-  <span class="footer-brand">TEA</span>
-  <span class="footer-center">© 2026 Tea. Rooted in the hills.</span>
+  <span class="footer-brand">AYUSH SINGH</span>
+  <span class="footer-center">© 2026 Ayush Singh. Built with passion.</span>
   <span class="footer-links">
-    <a href="#top">Instagram</a> · <a href="#top">YouTube</a>
+    <a href="https://linkedin.com/in/ayushsingh10580" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="https://github.com/ayushsingh10580" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://leetcode.com/ayushsingh10580" target="_blank" rel="noopener">LeetCode</a>
   </span>
 </footer>
 
@@ -699,13 +1070,6 @@ html.lenis, html.lenis body { height: auto; }
   /* ---------- canvas sizing ---------- */
   var cw = 0, ch = 0;
   function sizeCanvas() {
-    /* The backing store must match the canvas's on-screen box or the frame
-       gets stretched. Width = live viewport. Height is read from
-       #progress-track — also 100lvh, but (unlike the pinned .hero, or the
-       canvas inside it, whose size ScrollTrigger locks) never resized by
-       ScrollTrigger, so it always reports the true large-viewport height.
-       window.innerHeight can't be used either — it shrinks with the mobile
-       address bar. */
     var dpr   = Math.min(window.devicePixelRatio || 1, 2);
     var track = document.getElementById('progress-track');
     var w = document.documentElement.clientWidth || window.innerWidth;
@@ -721,7 +1085,7 @@ html.lenis, html.lenis body { height: auto; }
 
   function paint(i) {
     var bmp = frames[i];
-    if (!bmp) {                                  /* nearest-ready fallback */
+    if (!bmp) {
       for (var d = 1; d < N; d++) {
         if (i - d >= 0 && frames[i - d]) { bmp = frames[i - d]; break; }
         if (i + d <  N && frames[i + d]) { bmp = frames[i + d]; break; }
@@ -790,24 +1154,18 @@ html.lenis, html.lenis body { height: auto; }
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.config({ ignoreMobileResize: true });
 
-    /* smooth scrolling — Lenis, driven by GSAP's ticker and synced to
-       ScrollTrigger. Keeps real native scroll, so the pinned hero and the
-       fixed header / progress bar / loader keep working. Chrome + Safari. */
+    /* smooth scrolling — Lenis */
     if (window.Lenis) {
       lenis = new Lenis({ lerp: 0.1 });
       window.lenis = lenis;
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
       gsap.ticker.lagSmoothing(0);
-      lenis.stop();   /* stay locked through the loader fade */
+      lenis.stop();
     }
 
     var playhead = { f: 0 };
 
-    /* one master timeline: video playback + every text overlay, scrubbed by a
-       single pinned ScrollTrigger. The scroll distance is shorter on phones so
-       the hero isn't an endless swipe; all timeline beats live in timeline
-       units (0-100), so they auto-rescale to whatever distance is used. */
     var heroEnd = lightMode ? '+=320%' : '+=700%';
     var master = gsap.timeline({
       scrollTrigger: {
@@ -820,7 +1178,7 @@ html.lenis, html.lenis body { height: auto; }
       }
     });
 
-    /* frame playback across the full hero (timeline units = % of hero) */
+    /* frame playback */
     master.to(playhead, {
       f: N - 1,
       ease: 'none',
@@ -839,34 +1197,51 @@ html.lenis, html.lenis body { height: auto; }
       master.to(sel, { autoAlpha: 0, ease: 'power1.in', duration: 3 }, at);
     }
 
-    /* ovBrand — Devini brand mark; visible on the opening frame, fades
-       out the instant the hero starts scrolling (gone by ~4% of hero) */
+    /* ovBrand — name mark */
     master.to('#ovBrand', { autoAlpha: 0, ease: 'power2.out', duration: 4 }, 0);
 
-    /* ov1 — TEA (in 5%, out 15%) */
+    /* ov1 — HELLO */
     master.fromTo('#ov1 .title-text',
       { autoAlpha: 0, yPercent: 30 },
       { autoAlpha: 1, yPercent: 0, ease: 'power2.out', duration: 2.4 }, 5);
     master.to('#ov1', { autoAlpha: 0, ease: 'power1.in', duration: 2.2 }, 15);
 
-    /* ov2..ov5 — word-by-word, synced to the film's beats */
-    overlayIn('#ov2', 18, 1.3); overlayOut('#ov2', 31);   /* the single bag   */
-    overlayIn('#ov3', 40, 1.3); overlayOut('#ov3', 52);   /* the burst        */
-    overlayIn('#ov4', 60, 1.3); overlayOut('#ov4', 72);   /* the steeping     */
-    overlayIn('#ov5', 84, 1.0); overlayOut('#ov5', 94);   /* held in hands    */
+    /* ov2..ov5 */
+    overlayIn('#ov2', 18, 1.3); overlayOut('#ov2', 31);
+    overlayIn('#ov3', 40, 1.3); overlayOut('#ov3', 52);
+    overlayIn('#ov4', 60, 1.3); overlayOut('#ov4', 72);
+    overlayIn('#ov5', 84, 1.0); overlayOut('#ov5', 94);
 
     /* right-edge scroll progress */
     gsap.fromTo('#progress-fill',
       { scaleY: 0 },
       { scaleY: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
 
-    /* product cards reveal */
+    /* project cards reveal */
     gsap.from('.card', {
       autoAlpha: 0, yPercent: 14, duration: 1, ease: 'power2.out', stagger: 0.14,
       scrollTrigger: { trigger: '.collection', start: 'top 72%' }
     });
 
-    /* newsletter reveal */
+    /* skills cards reveal */
+    gsap.from('.sk-reveal', {
+      autoAlpha: 0, y: 30, duration: 0.8, ease: 'power2.out', stagger: 0.1,
+      scrollTrigger: { trigger: '.skills-section', start: 'top 72%' }
+    });
+
+    /* education reveal */
+    gsap.from('.edu-reveal', {
+      autoAlpha: 0, x: -20, duration: 0.8, ease: 'power2.out', stagger: 0.15,
+      scrollTrigger: { trigger: '.education-area', start: 'top 75%' }
+    });
+
+    /* achievements reveal */
+    gsap.from('.ach-reveal', {
+      autoAlpha: 0, y: 20, duration: 0.7, ease: 'power2.out', stagger: 0.1,
+      scrollTrigger: { trigger: '.achievements-area', start: 'top 75%' }
+    });
+
+    /* contact reveal */
     gsap.from('.nl-reveal', {
       autoAlpha: 0, y: 28, duration: 1, ease: 'power2.out', stagger: 0.12,
       scrollTrigger: { trigger: '.newsletter', start: 'top 70%' }
@@ -886,7 +1261,7 @@ html.lenis, html.lenis body { height: auto; }
     var jobs = [];
     for (var s = 0; s < N; s++) jobs.push(loadFrame(s));
 
-    /* preload the newsletter background + product card images */
+    /* preload background + card images */
     ['newsletter-bg.jpg', 'dawn.jpg', 'dusk.jpg', 'night.jpg'].forEach(function (src) {
       jobs.push(new Promise(function (res) {
         var img = new Image();
@@ -913,11 +1288,6 @@ html.lenis, html.lenis body { height: auto; }
   }
 
   /* ---------- resize (debounced) ---------- */
-  /* On phones, scrolling shows/hides the address bar, firing 'resize' with a
-     height-only change. Refreshing ScrollTrigger on those re-pins the hero and
-     causes a visible jump — so on mobile we only react to real width changes
-     (orientation / true resize). The hero is 100svh, so ignoring the address
-     bar leaves no gap. */
   var resizeTimer, lastW = window.innerWidth;
   window.addEventListener('resize', function () {
     if (lightMode && window.innerWidth === lastW) return;
@@ -930,16 +1300,17 @@ html.lenis, html.lenis body { height: auto; }
     }, 160);
   });
 
-  /* ---------- header SHOP jump + form guard ---------- */
-  var shop = document.getElementById('shopLink');
-  if (shop) shop.addEventListener('click', function () {
-    var c = document.getElementById('collection');
-    if (!c) return;
-    if (lenis) lenis.scrollTo(c, { duration: 1.5 });
-    else window.scrollTo(0, c.getBoundingClientRect().top + window.pageYOffset);
+  /* ---------- header nav links ---------- */
+  var navLinks = document.querySelectorAll('[data-nav]');
+  Array.prototype.forEach.call(navLinks, function (link) {
+    link.addEventListener('click', function () {
+      var targetId = link.getAttribute('data-nav');
+      var target = document.getElementById(targetId);
+      if (!target) return;
+      if (lenis) lenis.scrollTo(target, { duration: 1.5 });
+      else window.scrollTo(0, target.getBoundingClientRect().top + window.pageYOffset);
+    });
   });
-  var nlForm = document.getElementById('nlForm');
-  if (nlForm) nlForm.addEventListener('submit', function (e) { e.preventDefault(); });
 
   /* ---------- go ---------- */
   if (document.readyState === 'loading') {
