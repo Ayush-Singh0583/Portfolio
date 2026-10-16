@@ -44,6 +44,8 @@ Portfolio/
 ├── server.js                 # Express static server for local development
 ├── vercel.json               # Vercel config, serves public/
 ├── project_documentation.md  # Function-by-function technical notes
+├── docs/kb/                  # Project knowledge base (status, decisions, verified numbers)
+├── CLAUDE.md                 # Entry file for AI coding sessions
 └── package.json
 ```
 
