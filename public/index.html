@@ -240,7 +240,7 @@
     }
 
     /* ============================================================
-       HERO — SCROLL DRIVEN CANVAS SEQUENCE (800vh pin)
+       HERO — SCROLL DRIVEN NETWORK CANVAS (500vh pin)
        ============================================================ */
     .hero {
       position: relative;
@@ -280,11 +280,72 @@
 
     /* Moment 01 — IDENTITY (approx 5%) */
     .ov1 {
-      top: 14%;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       text-align: center;
-      max-width: 90%;
+      max-width: 92%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ov1 .hero-sub {
+      display: block;
+      margin-top: clamp(14px, 2.4vh, 26px);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(22px, 3.2vw, 40px);
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+      opacity: 0;
+    }
+
+    .ov1 .hero-meta {
+      display: block;
+      margin-top: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(10px, 1vw, 12px);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      opacity: 0;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: clamp(24px, 5vh, 48px);
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245, 158, 11, 0.75);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .scroll-hint-line {
+      width: 1px;
+      height: 38px;
+      background: linear-gradient(to bottom, rgba(245, 158, 11, 0.8), transparent);
+      animation: hintDrop 1.8s ease-in-out infinite;
+      transform-origin: top;
+    }
+
+    @keyframes hintDrop {
+      0% { transform: scaleY(0); opacity: 1; }
+      60% { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(1); opacity: 0; }
     }
 
     .ov1 .title-text {
@@ -681,6 +742,86 @@
       color: #030303;
       border-color: var(--amber);
       box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+
+    /* More projects — compact cards under the three case studies */
+    .more-projects {
+      margin-top: 80px;
+    }
+
+    .more-projects-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+    }
+
+    .more-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .mini-card {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(24px, 3vw, 36px);
+      border-radius: 14px;
+      background: linear-gradient(160deg, #0d0d10 0%, #060608 100%);
+      border: 1px solid var(--border-card);
+      transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+    }
+
+    .mini-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+
+    .mini-card-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 12px;
+    }
+
+    .mini-card-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(24px, 2.4vw, 30px);
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .mini-card-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .mini-card .project-tech-tags {
+      margin-bottom: 22px;
+    }
+
+    .mini-card .project-btn {
+      align-self: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .more-projects {
+        margin-top: 56px;
+      }
+
+      .more-projects-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Interactive / Canvas Visual Panels */
@@ -1473,9 +1614,15 @@
       }
 
       .ov1 {
-        top: 18%;
+        top: 46%;
         width: 100%;
         max-width: 95%;
+      }
+
+      .ov1 .hero-meta {
+        letter-spacing: 0.14em;
+        line-height: 1.8;
+        max-width: 300px;
       }
 
       .ov1 .title-text {
@@ -1667,7 +1814,10 @@
         transform: none !important;
       }
 
-      .title-text {
+      .title-text,
+      .hero-sub,
+      .hero-meta,
+      .scroll-hint {
         opacity: 1 !important;
       }
     }
@@ -1748,12 +1898,19 @@
        03. CORE HERO EXPERIENCE (PINNED CANVAS & 5 TEXT MOMENTS)
        ============================================================ -->
   <div class="hero" id="top">
-    <canvas id="hero-canvas" aria-label="Cinematic developer visualization canvas"></canvas>
+    <canvas id="hero-canvas" aria-label="Animated network of hosts with traffic flowing between them"></canvas>
     <div class="hero-vignette"></div>
 
-    <!-- Moment 01 — IDENTITY (~5%) -->
+    <!-- Moment 01 — IDENTITY (visible on the first screen) -->
     <div class="overlay ov1" id="ov1">
       <span class="title-text">AYUSH</span>
+      <span class="hero-sub">Machine learning &amp; backend systems</span>
+      <span class="hero-meta">B.E. Information Science &middot; RVITM Bengaluru &middot; Class of 2027</span>
+    </div>
+
+    <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="scroll-hint-line"></span>
     </div>
 
     <!-- Moment 02 — PROBLEM SOLVING (~18%) -->
@@ -1807,7 +1964,7 @@
 
       <div class="about-metrics">
         <div class="metric-card">
-          <div class="metric-value">8.71</div>
+          <div class="metric-value">8.74</div>
           <div class="metric-label">CGPA</div>
           <div class="metric-sub">RV Institute of Technology and Management</div>
         </div>
@@ -1826,8 +1983,8 @@
   <section class="projects-section" id="projects">
     <span class="section-eyebrow">SELECTED WORK</span>
     <h2 class="section-heading">Things I've built.</h2>
-    <p class="section-lead">Three focused case studies exploring machine learning security, scalable full-stack
-      persistence, and real-time computer vision control.</p>
+    <p class="section-lead">Three case studies in machine learning security, full-stack persistence and real-time
+      computer vision, followed by two more projects.</p>
 
     <div class="projects-stack">
       <!-- PROJECT 01 -->
@@ -1839,42 +1996,49 @@
           </div>
           <h3 class="project-title">ML-Based Network Intrusion Detection System</h3>
           <p class="project-desc">
-            A machine learning-based Intrusion Detection System designed to classify network flow as safe or malicious.
+            A real-time intrusion detection system that captures live traffic, turns packets into flows and flags
+            attacks, tested honestly on attack types it never saw in training.
           </p>
 
           <div class="pipeline-container">
-            <div class="pipeline-title">Classification Pipeline</div>
+            <div class="pipeline-title">Live Detection Pipeline</div>
             <div class="pipeline-flow">
-              <span class="pipeline-step">NETWORK FLOW</span>
+              <span class="pipeline-step">LIVE PACKETS</span>
               <span class="pipeline-arrow">&darr;</span>
-              <span class="pipeline-step">DATA PREPROCESSING</span>
+              <span class="pipeline-step">BIDIRECTIONAL FLOWS</span>
               <span class="pipeline-arrow">&darr;</span>
-              <span class="pipeline-step">FEATURE ENGINEERING</span>
+              <span class="pipeline-step">FLOW FEATURES</span>
               <span class="pipeline-arrow">&darr;</span>
-              <span class="pipeline-step">FEATURE SELECTION</span>
+              <span class="pipeline-step">XGBOOST</span>
               <span class="pipeline-arrow">&darr;</span>
-              <span class="pipeline-step">ML MODEL</span>
+              <span class="pipeline-step">FASTAPI + SQLITE</span>
               <span class="pipeline-arrow">&darr;</span>
-              <span class="pipeline-step">SAFE / MALICIOUS</span>
+              <span class="pipeline-step">REACT DASHBOARD</span>
             </div>
           </div>
 
           <ul class="project-capabilities">
-            <li>Developed a machine-learning-based Intrusion Detection System to inspect inbound and outbound traffic.
-            </li>
-            <li>Applied rigorous data preprocessing, feature engineering, and feature selection for optimal
-              dimensionality.</li>
-            <li>Evaluated multiple machine learning models to maximize classification fidelity.</li>
-            <li>Built an interactive Streamlit dashboard supporting real-time prediction and attack visualization.</li>
+            <li>Captures packets with Scapy, rebuilds two-way flows and scores each one in real time behind a FastAPI
+              backend with SQLite, shown on a React dashboard.</li>
+            <li>Evaluated on CIC-IDS2017 by day, not at random: trained on Monday to Thursday, tested on Friday, whose
+              DDoS, port-scan and botnet attacks never appear in training. A random split scored 99.88% accuracy, which
+              I traced to data leakage.</li>
+            <li>At 0.14% false alarms, XGBoost caught 61.93% of the unseen DDoS flows, against 26.68% for a Random
+              Forest at a similar 0.09%.</li>
+            <li>Port scans are invisible in single flows, so a separate tracker counts distinct ports and hosts per
+              source over 60 seconds and alerts during the scan. Covered by 69 pytest tests.</li>
           </ul>
 
           <div class="project-tech-tags">
             <span class="tech-tag">Python</span>
+            <span class="tech-tag">Scapy</span>
+            <span class="tech-tag">XGBoost</span>
             <span class="tech-tag">Scikit-Learn</span>
+            <span class="tech-tag">PyTorch</span>
             <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">NumPy</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">SQLite</span>
+            <span class="tech-tag">React</span>
           </div>
 
           <div class="project-cta-row">
@@ -2014,6 +2178,47 @@
         </div>
       </article>
     </div>
+
+    <div class="more-projects">
+      <div class="more-projects-title">More projects</div>
+      <div class="more-projects-grid">
+        <article class="mini-card">
+          <span class="mini-card-type">Full-stack web app</span>
+          <h3 class="mini-card-title">Focus — Task &amp; Time Tracker</h3>
+          <p class="mini-card-desc">
+            A task tracker with per-task timers, subtasks and an analytics dashboard: daily progress, a weekly chart,
+            a 30-day trend and a yearly heatmap. Node.js and Express REST API on MongoDB, with JWT login in an
+            HTTP-only cookie, bcrypt, Helmet and rate limiting.
+          </p>
+          <div class="project-tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">JWT</span>
+          </div>
+          <a class="project-btn" href="https://github.com/Ayush-Singh0583/Focus" target="_blank"
+            rel="noopener noreferrer">VIEW ON GITHUB &rarr;</a>
+        </article>
+
+        <article class="mini-card">
+          <span class="mini-card-type">Systems / computer architecture</span>
+          <h3 class="mini-card-title">Configurable CPU Cache Simulator</h3>
+          <p class="mini-card-desc">
+            A C++17 engine, built with CMake, that replays memory-access traces through configurable multi-level
+            caches, with a React and TypeScript front end to explore how each level behaves.
+          </p>
+          <div class="project-tech-tags">
+            <span class="tech-tag">C++17</span>
+            <span class="tech-tag">CMake</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+          </div>
+          <a class="project-btn" href="https://github.com/Ayush-Singh0583/CacheSimulatorV2-c-17-" target="_blank"
+            rel="noopener noreferrer">VIEW ON GITHUB &rarr;</a>
+        </article>
+      </div>
+    </div>
   </section>
 
   <!-- ============================================================
@@ -2030,13 +2235,14 @@
       <div class="skill-category-card sk-card">
         <div class="skill-cat-header">
           <span class="skill-cat-title">LANGUAGES</span>
-          <span class="skill-cat-count">04</span>
+          <span class="skill-cat-count">05</span>
         </div>
         <div class="skill-items-list">
-          <span class="skill-badge">C</span>
-          <span class="skill-badge">Java</span>
           <span class="skill-badge">Python</span>
+          <span class="skill-badge">Java</span>
           <span class="skill-badge">C++</span>
+          <span class="skill-badge">C</span>
+          <span class="skill-badge">TypeScript</span>
         </div>
       </div>
 
@@ -2058,10 +2264,13 @@
       <div class="skill-category-card sk-card">
         <div class="skill-cat-header">
           <span class="skill-cat-title">BACKEND</span>
-          <span class="skill-cat-count">02</span>
+          <span class="skill-cat-count">05</span>
         </div>
         <div class="skill-items-list">
+          <span class="skill-badge">FastAPI</span>
           <span class="skill-badge">Node.js</span>
+          <span class="skill-badge">Express.js</span>
+          <span class="skill-badge">Spring Boot</span>
           <span class="skill-badge">REST APIs</span>
         </div>
       </div>
@@ -2070,10 +2279,12 @@
       <div class="skill-category-card sk-card">
         <div class="skill-cat-header">
           <span class="skill-cat-title">MACHINE LEARNING</span>
-          <span class="skill-cat-count">06</span>
+          <span class="skill-cat-count">08</span>
         </div>
         <div class="skill-items-list">
           <span class="skill-badge">Scikit-Learn</span>
+          <span class="skill-badge">XGBoost</span>
+          <span class="skill-badge">PyTorch</span>
           <span class="skill-badge">OpenCV</span>
           <span class="skill-badge">MediaPipe</span>
           <span class="skill-badge">Pandas</span>
@@ -2086,12 +2297,13 @@
       <div class="skill-category-card sk-card">
         <div class="skill-cat-header">
           <span class="skill-cat-title">DATABASES</span>
-          <span class="skill-cat-count">03</span>
+          <span class="skill-cat-count">04</span>
         </div>
         <div class="skill-items-list">
           <span class="skill-badge">PostgreSQL</span>
           <span class="skill-badge">MySQL</span>
           <span class="skill-badge">MongoDB</span>
+          <span class="skill-badge">SQLite</span>
         </div>
       </div>
 
@@ -2099,11 +2311,12 @@
       <div class="skill-category-card sk-card">
         <div class="skill-cat-header">
           <span class="skill-cat-title">DEVELOPER TOOLS</span>
-          <span class="skill-cat-count">05</span>
+          <span class="skill-cat-count">06</span>
         </div>
         <div class="skill-items-list">
           <span class="skill-badge">Git</span>
           <span class="skill-badge">GitHub</span>
+          <span class="skill-badge">GitHub Actions</span>
           <span class="skill-badge">Docker</span>
           <span class="skill-badge">Postman</span>
           <span class="skill-badge">VS Code</span>
@@ -2193,7 +2406,7 @@
           <div class="edu-period">2023 — 2027</div>
           <div class="edu-degree">B.E. Information Science & Engineering</div>
           <div class="edu-inst">RV Institute of Technology and Management, Bengaluru</div>
-          <span class="edu-grade-pill">8.71 CGPA</span>
+          <span class="edu-grade-pill">8.74 CGPA</span>
         </div>
 
         <div class="edu-card edu-box">
@@ -2323,12 +2536,6 @@
     (function () {
       'use strict';
 
-      /* --- Config --- */
-      const TOTAL_FRAMES = 227;
-      function framePath(n) {
-        return 'frames/frame_' + String(n).padStart(4, '0') + '.jpg';
-      }
-
       /* --- DOM Elements --- */
       const canvas = document.getElementById('hero-canvas');
       const ctx = canvas.getContext('2d', { alpha: false });
@@ -2338,180 +2545,205 @@
       const siteHeader = document.getElementById('site-header');
 
       let lenis = null;
-      let isFallbackCanvas = false;
 
-      /* --- Mobile optimization: load every 2nd frame --- */
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const stepSize = isMobile ? 2 : 1;
-      const frameIndices = [];
-      for (let n = 0; n < TOTAL_FRAMES; n += stepSize) {
-        frameIndices.push(n);
-      }
-      const N = frameIndices.length;
-      const frames = new Array(N);
-      let settled = 0;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       /* --- Canvas Sizing with DPR Cap --- */
-      let cw = 0, ch = 0;
+      let cw = 0, ch = 0, dpr = 1;
       function sizeCanvas() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
         const w = document.documentElement.clientWidth || window.innerWidth;
         const h = window.innerHeight;
         cw = Math.max(1, Math.round(w * dpr));
         ch = Math.max(1, Math.round(h * dpr));
         canvas.width = cw;
         canvas.height = ch;
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
       }
 
-      /* --- Frame Drawing (Cover-fit, cross-faded between neighbors) --- */
-      let curF = -1; // last painted playhead position (fractional)
+      /* --- Hero: a live network-traffic field ---
+         Nodes are hosts, faint lines are links between nearby hosts and
+         small bright dots are packets travelling along those links.
+         Scrolling through the hero (progress 0 → 1) spreads the field out,
+         raises the traffic and flags a few hosts the way an IDS would, so
+         the opening matches the projects further down the page. */
+      const NODE_COUNT = isMobile ? 56 : 110;
+      const LINK_DIST = isMobile ? 115 : 150;   // CSS pixels
+      const MAX_PACKETS = isMobile ? 18 : 36;
 
-      function nearestBitmap(i) {
-        if (frames[i]) return frames[i];
-        // Find closest loaded neighbor so we never draw nothing while
-        // the rest of the sequence is still streaming in.
-        for (let d = 1; d < N; d++) {
-          if (i - d >= 0 && frames[i - d]) return frames[i - d];
-          if (i + d < N && frames[i + d]) return frames[i + d];
-        }
-        return null;
+      // Seeded random, so the layout is the same on every visit.
+      let seed = 2027;
+      function rand() {
+        seed = (seed * 1664525 + 1013904223) % 4294967296;
+        return seed / 4294967296;
       }
 
-      function drawCover(bmp, alpha) {
-        const iw = bmp.naturalWidth || bmp.width;
-        const ih = bmp.naturalHeight || bmp.height;
-        const scale = Math.max(cw / iw, ch / ih);
-        const dw = iw * scale;
-        const dh = ih * scale;
-        ctx.globalAlpha = alpha;
-        ctx.drawImage(bmp, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
-        ctx.globalAlpha = 1;
-      }
-
-      function paint(f) {
-        if (isFallbackCanvas) {
-          paintFallback(f / (N - 1 || 1));
-          return;
-        }
-
-        const lo = Math.max(0, Math.min(N - 1, Math.floor(f)));
-        const hi = Math.min(N - 1, lo + 1);
-        const t = f - lo;
-
-        const bmpLo = nearestBitmap(lo);
-        const bmpHi = hi !== lo ? nearestBitmap(hi) : bmpLo;
-
-        if (!bmpLo && !bmpHi) {
-          paintFallback(f / (N - 1 || 1));
-          return;
-        }
-
-        // Draw the base frame, then cross-fade the next one in as the
-        // playhead moves between the two. This is what turns discrete
-        // JPEG frames into what reads as continuous motion.
-        if (bmpLo) {
-          drawCover(bmpLo, 1);
-        } else if (bmpHi) {
-          drawCover(bmpHi, 1);
-        }
-        if (bmpHi && bmpHi !== bmpLo && t > 0.01) {
-          drawCover(bmpHi, t);
-        }
-      }
-
-      function render(f) {
-        if (f < 0) f = 0;
-        else if (f > N - 1) f = N - 1;
-        // Skip only true no-ops; anything more than a hair of playhead
-        // movement should repaint so the cross-fade stays continuous.
-        if (Math.abs(f - curF) < 0.002) return;
-        curF = f;
-        paint(f);
-      }
-
-      function repaint() {
-        paint(curF < 0 ? 0 : curF);
-      }
-
-      /* --- Cinematic Fallback Network Canvas (if video frames unavailable) --- */
-      const particles = [];
-      for (let p = 0; p < 70; p++) {
-        particles.push({
-          x: Math.random(),
-          y: Math.random(),
-          vx: (Math.random() - 0.5) * 0.0004,
-          vy: (Math.random() - 0.5) * 0.0004,
-          r: Math.random() * 2.5 + 1.2,
-          alpha: Math.random() * 0.6 + 0.3
+      const nodes = [];
+      for (let i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: rand(),
+          y: rand(),
+          vx: (rand() - 0.5) * 0.014,          // screen widths per second
+          vy: (rand() - 0.5) * 0.014,
+          r: rand() * 1.5 + 1.1,
+          a: rand() * 0.45 + 0.35,
+          flagAt: rand() < 0.09 ? 0.2 + rand() * 0.55 : 2   // ~9% get flagged part-way
         });
       }
+      const sx = new Float32Array(NODE_COUNT);  // screen positions this frame
+      const sy = new Float32Array(NODE_COUNT);
+      const packets = [];
 
-      function paintFallback(progress) {
+      let progress = 0;      // hero scroll progress, 0..1
+      let clock = 0;         // seconds of animation
+      let lastTs = 0;
+      let heroVisible = true;
+      let loopRunning = false;
+
+      function wrap(v) {
+        return v - Math.floor(v);
+      }
+
+      function spawnPacket() {
+        const i = Math.floor(Math.random() * NODE_COUNT);
+        const maxD = LINK_DIST * dpr;
+        let best = -1, bestD = Infinity;
+        for (let j = 0; j < NODE_COUNT; j++) {
+          if (j === i) continue;
+          const d = Math.hypot(sx[i] - sx[j], sy[i] - sy[j]);
+          if (d < maxD && d < bestD && Math.random() < 0.6) {
+            best = j;
+            bestD = d;
+          }
+        }
+        if (best >= 0) {
+          packets.push({ from: i, to: best, t: 0, speed: 0.6 + Math.random() * 0.9 });
+        }
+      }
+
+      function drawHero(dt) {
+        const w = cw, h = ch;
+        const spread = 1 + progress * 0.2;
+        const maxD = LINK_DIST * dpr;
+
+        // Background and a warm glow behind the title
         ctx.fillStyle = '#030303';
-        ctx.fillRect(0, 0, cw, ch);
+        ctx.fillRect(0, 0, w, h);
+        const glow = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h) * 0.55);
+        glow.addColorStop(0, 'rgba(245, 158, 11, 0.11)');
+        glow.addColorStop(0.5, 'rgba(245, 158, 11, 0.03)');
+        glow.addColorStop(1, 'rgba(245, 158, 11, 0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, w, h);
 
-        // Network grid lines
-        ctx.lineWidth = 1;
-        for (let i = 0; i < particles.length; i++) {
-          const pi = particles[i];
-          const px = (pi.x + pi.vx * 100) % 1 * cw;
-          const py = (pi.y + pi.vy * 100 + progress * 0.1) % 1 * ch;
+        // Node positions: slow drift (wrapped), spread from the centre by scroll
+        for (let i = 0; i < NODE_COUNT; i++) {
+          const n = nodes[i];
+          const x = wrap(n.x + n.vx * clock);
+          const y = wrap(n.y + n.vy * clock);
+          sx[i] = w / 2 + (x - 0.5) * w * spread;
+          sy[i] = h / 2 + (y - 0.5) * h * spread;
+        }
 
-          ctx.fillStyle = `rgba(245, 158, 11, ${pi.alpha * 0.8})`;
-          ctx.beginPath();
-          ctx.arc(px, py, pi.r, 0, Math.PI * 2);
-          ctx.fill();
-
-          for (let j = i + 1; j < particles.length; j++) {
-            const pj = particles[j];
-            const qx = (pj.x + pj.vx * 100) % 1 * cw;
-            const qy = (pj.y + pj.vy * 100 + progress * 0.1) % 1 * ch;
-            const dist = Math.hypot(px - qx, py - qy);
-            if (dist < 140) {
-              ctx.strokeStyle = `rgba(245, 158, 11, ${0.18 * (1 - dist / 140)})`;
+        // Links between nearby hosts
+        ctx.lineWidth = Math.max(1, dpr * 0.75);
+        for (let i = 0; i < NODE_COUNT; i++) {
+          for (let j = i + 1; j < NODE_COUNT; j++) {
+            const d = Math.hypot(sx[i] - sx[j], sy[i] - sy[j]);
+            if (d < maxD) {
+              ctx.strokeStyle = 'rgba(245, 158, 11, ' + (0.3 * (1 - d / maxD)).toFixed(3) + ')';
               ctx.beginPath();
-              ctx.moveTo(px, py);
-              ctx.lineTo(qx, qy);
+              ctx.moveTo(sx[i], sy[i]);
+              ctx.lineTo(sx[j], sy[j]);
               ctx.stroke();
             }
           }
         }
-      }
 
-      /* --- Image / Frame Loading with ImageBitmap --- */
-      function decode(blob) {
-        if (window.createImageBitmap) {
-          return createImageBitmap(blob);
+        // Packets travelling along links; more traffic deeper into the hero
+        if (!reduceMotion) {
+          const rate = 3 + progress * 9;   // packets per second
+          if (packets.length < MAX_PACKETS && Math.random() < rate * dt) spawnPacket();
+          for (let k = packets.length - 1; k >= 0; k--) {
+            const p = packets[k];
+            p.t += p.speed * dt;
+            const d = Math.hypot(sx[p.from] - sx[p.to], sy[p.from] - sy[p.to]);
+            if (p.t >= 1 || d > maxD * 1.2) {
+              packets.splice(k, 1);
+              continue;
+            }
+            const px = sx[p.from] + (sx[p.to] - sx[p.from]) * p.t;
+            const py = sy[p.from] + (sy[p.to] - sy[p.from]) * p.t;
+            ctx.fillStyle = 'rgba(255, 196, 92, 0.95)';
+            ctx.beginPath();
+            ctx.arc(px, py, 1.7 * dpr, 0, Math.PI * 2);
+            ctx.fill();
+          }
         }
-        return new Promise(function (resolve, reject) {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = reject;
-          img.src = URL.createObjectURL(blob);
-        });
+
+        // Hosts; flagged ones get a pulsing alert ring
+        for (let i = 0; i < NODE_COUNT; i++) {
+          const n = nodes[i];
+          const flagged = progress >= n.flagAt;
+          if (flagged) {
+            const pulse = reduceMotion ? 0.5 : (Math.sin(clock * 3 + i) + 1) / 2;
+            ctx.strokeStyle = 'rgba(248, 113, 113, ' + (0.35 + pulse * 0.4).toFixed(3) + ')';
+            ctx.lineWidth = 1.2 * dpr;
+            ctx.beginPath();
+            ctx.arc(sx[i], sy[i], (7 + pulse * 4) * dpr, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.fillStyle = 'rgba(248, 113, 113, 0.95)';
+            ctx.beginPath();
+            ctx.arc(sx[i], sy[i], 2.6 * dpr, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.fillStyle = 'rgba(255, 232, 196, ' + n.a.toFixed(3) + ')';
+            ctx.beginPath();
+            ctx.arc(sx[i], sy[i], n.r * dpr, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
       }
 
-      function loadFrame(slot) {
-        return fetch(framePath(frameIndices[slot]))
-          .then((r) => {
-            if (!r.ok) throw new Error('Frame unavailable');
-            return r.blob();
-          })
-          .then(decode)
-          .then((bmp) => {
-            frames[slot] = bmp;
-          })
-          .catch(() => {
-            frames[slot] = null;
-          })
-          .then(() => {
-            settled++;
-            const pct = (settled / N) * 100;
-            loaderFill.style.width = pct.toFixed(1) + '%';
-          });
+      function loop(ts) {
+        if (!heroVisible || document.hidden || reduceMotion) {
+          loopRunning = false;
+          return;
+        }
+        const dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 0;
+        lastTs = ts;
+        clock += dt;
+        drawHero(dt);
+        requestAnimationFrame(loop);
       }
+
+      function startLoop() {
+        if (loopRunning || reduceMotion) return;
+        loopRunning = true;
+        lastTs = 0;
+        requestAnimationFrame(loop);
+      }
+
+      // Called by the scroll timeline with hero progress 0..1
+      function render(p) {
+        progress = Math.max(0, Math.min(1, p));
+        if (!loopRunning) drawHero(0);
+      }
+
+      function repaint() {
+        drawHero(0);
+      }
+
+      // Only animate while the hero is on screen and the tab is visible
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          heroVisible = entries[0].isIntersecting;
+          if (heroVisible) startLoop();
+        }).observe(document.getElementById('top'));
+      }
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) startLoop();
+      });
 
       /* --- Word Splitting for Text Moments --- */
       function splitWords() {
@@ -2811,24 +3043,24 @@
           return vars;
         }
 
-        const playhead = { f: 0 };
+        const playhead = { p: 0 };
         const master = gsap.timeline({
           scrollTrigger: {
             trigger: '.hero',
             start: 'top top',
-            end: '+=700%',
+            end: '+=400%',
             pin: true,
             scrub: 0.6,
             invalidateOnRefresh: true
           }
         });
 
-        /* Frame sequence playback mapped across master timeline (duration 100) */
+        /* Hero progress (0 → 1) mapped across the master timeline (duration 100) */
         master.to(playhead, {
-          f: N - 1,
+          p: 1,
           ease: 'none',
           duration: 100,
-          onUpdate: () => render(playhead.f)
+          onUpdate: () => render(playhead.p)
         }, 0);
 
         /* Helper for word reveals */
@@ -2844,14 +3076,9 @@
           master.to(sel, { autoAlpha: 0, ease: 'power1.in', duration: 2.5 }, at);
         }
 
-        /* 01 — IDENTITY (at ~5%) */
-        master.fromTo(
-          '#ov1 .title-text',
-          { autoAlpha: 0, scale: 0.92, y: 20 },
-          withWillChange({ autoAlpha: 1, scale: 1, y: 0, ease: 'power2.out', duration: 3.5 }),
-          4
-        );
-        master.to('#ov1', { autoAlpha: 0, ease: 'power1.in', duration: 2.5 }, 14);
+        /* 01 — IDENTITY: shown on load (see init), fades out as you scroll */
+        master.to('#scrollHint', { autoAlpha: 0, ease: 'power1.in', duration: 2 }, 0.5);
+        master.to('#ov1', { autoAlpha: 0, y: -30, ease: 'power1.in', duration: 4 }, 6);
 
         /* 02 — PROBLEM SOLVING (at ~18%) */
         overlayIn('#ov2', 18, 0.4);
@@ -2953,32 +3180,6 @@
         }));
       }
 
-      /* --- Concurrency-limited frame loading queue ---
-         Firing all N fetches at once made every frame compete for the
-         same bandwidth from the start, so the "initial batch" the page
-         actually waits on wasn't getting any priority over frame 220.
-         Loading a bounded number at a time lets the initial batch land
-         first, then lets the rest stream in behind it. */
-      function runQueue(indices, concurrency, onEach) {
-        return new Promise((resolve) => {
-          if (indices.length === 0) { resolve(); return; }
-          let cursor = 0;
-          let remaining = indices.length;
-          function startNext() {
-            if (cursor >= indices.length) return;
-            const slot = indices[cursor++];
-            loadFrame(slot).then(() => {
-              if (onEach) onEach(slot);
-              remaining--;
-              if (remaining === 0) resolve();
-              else startNext();
-            });
-          }
-          const starters = Math.min(concurrency, indices.length);
-          for (let k = 0; k < starters; k++) startNext();
-        });
-      }
-
       /* --- Bootstrap Sequence --- */
       function init() {
         document.body.classList.add('loading');
@@ -2986,68 +3187,39 @@
         sizeCanvas();
         splitWords();
         initProjectVisuals();
+        render(0);
 
         const fontsReady = (document.fonts && document.fonts.ready)
           ? document.fonts.ready
           : Promise.resolve();
+        // Don't let a slow font request hold the page hostage.
+        const capped = Promise.race([fontsReady, new Promise((r) => setTimeout(r, 2500))]);
 
-        const allIndices = [];
-        for (let s = 0; s < N; s++) allIndices.push(s);
+        loaderFill.style.width = '60%';
 
-        /* paint() already falls back to the nearest loaded neighbor
-           frame, so scroll doesn't need to wait on every single frame
-           to finish downloading — only an initial batch. The rest
-           keep streaming in the background and paint() picks them up
-           automatically as they arrive. This gets the page interactive
-           much sooner on slower connections. */
-        const INITIAL_BATCH = Math.min(N, Math.max(20, Math.round(N * 0.15)));
-        const initialIndices = allIndices.slice(0, INITIAL_BATCH);
-        const restIndices = allIndices.slice(INITIAL_BATCH);
-        const CONCURRENCY = 6;
+        capped.then(() => {
+          loaderFill.style.width = '100%';
+          sizeCanvas();
+          render(0);
+          buildScroll();
+          startLoop();
 
-        const initialBatch = runQueue(initialIndices, CONCURRENCY);
-
-        initialBatch
-          .then(() => fontsReady)
-          .then(() => {
-            // Check if the initial batch actually loaded
-            const validFrames = frames.slice(0, INITIAL_BATCH).filter(Boolean).length;
-            if (validFrames < Math.min(10, INITIAL_BATCH)) {
-              isFallbackCanvas = true;
-            }
-
-            sizeCanvas();
-            render(0);
-            buildScroll();
-
-            // Fade out loader smoothly
-            loader.classList.add('hidden');
-            setTimeout(() => {
-              document.body.classList.remove('loading');
-              loader.style.display = 'none';
-              if (lenis) lenis.start();
-              requestAnimationFrame(() => {
-                ScrollTrigger.refresh();
-              });
-            }, 850);
-
-            // Now that the page is interactive, stream in the rest of
-            // the sequence at the same bounded concurrency.
-            runQueue(restIndices, CONCURRENCY).then(backgroundCompletionCheck);
-          });
-
-        // Background completion: re-check fallback status once every
-        // frame has settled, in case the initial batch looked fine but
-        // the rest of the sequence failed to load.
-        function backgroundCompletionCheck() {
-          if (!isFallbackCanvas) {
-            const validFrames = frames.filter(Boolean).length;
-            if (validFrames < 10) {
-              isFallbackCanvas = true;
-              repaint();
-            }
-          }
-        }
+          // Fade out loader, then bring in the name and role
+          loader.classList.add('hidden');
+          setTimeout(() => {
+            document.body.classList.remove('loading');
+            loader.style.display = 'none';
+            if (lenis) lenis.start();
+            gsap.fromTo(
+              ['#ov1 .title-text', '#ov1 .hero-sub', '#ov1 .hero-meta', '#scrollHint'],
+              { autoAlpha: 0, y: 18 },
+              { autoAlpha: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.14 }
+            );
+            requestAnimationFrame(() => {
+              ScrollTrigger.refresh();
+            });
+          }, 650);
+        });
       }
 
       /* --- Debounced Resize Listener --- */
@@ -3136,10 +3308,10 @@
 
             const dist = Math.abs(targetPos - currentScroll);
 
-            // On mobile, keep scroll durations snappier and responsive (1.2s - 2.5s)
+            // Scale the glide with distance, but never make a visitor wait long
             const duration = isSmall
-              ? (targetId === 'about' ? 2.8 : Math.min(3.0, Math.max(1.2, dist / 1600)))
-              : (targetId === 'about' ? 10.0 : Math.min(10.0, Math.max(2.5, dist / 1200)));
+              ? Math.min(2.5, Math.max(1.0, dist / 1800))
+              : Math.min(4.0, Math.max(1.2, dist / 1600));
 
             lenis.scrollTo(target, {
               duration,

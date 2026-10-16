@@ -1,126 +1,73 @@
-# 🍵 TEA — Luxury Scroll-Driven Narrative Experience
+# Ayush Singh — Developer Portfolio
 
-A high-performance, cinematic, scroll-driven narrative web experience for **TEA** — a luxury Indian botanical tea brand. Built with a zero-build vanilla stack, GSAP ScrollTrigger, Lenis smooth scrolling, and pre-decoded HTML5 Canvas video scrubbing.
+My personal portfolio: a single-page, scroll-driven site that introduces me and walks through my projects, skills, achievements and education.
 
----
-
-## ✨ Features & Highlights
-
-- **Scroll-Controlled Cinematic Film**: The 800vh hero section pins a full-screen `<canvas>` that scrubs through pre-extracted, high-fidelity video frames (`ImageBitmap`) in lockstep with the user's scroll.
-- **Eager Frame Preloading**: Preloads all ~227 frames as `ImageBitmap` objects via parallel blob decoding to eliminate flicker, tearing, and scroll stutter.
-- **Momentum Smooth Scroll**: Powered by **Lenis 1.1.20** coupled to **GSAP ScrollTrigger** for consistent, buttery 60fps scrolling across desktop (macOS/Windows) and touch devices.
-- **Dynamic Text Choreography**: Staggered word-by-word narrative text reveals tied to specific timeline scroll milestones over dark regions of the footage.
-- **"The Collection" Product Showcase**: Interactive product cards for **Dawn**, **Dusk**, and **Night** botanical blends with micro-interactions and smooth anchors.
-- **Luxury Aesthetic & Typography**: Dark palette (`#030303`), gold/amber accents, Google Fonts (*Cormorant Garamond* display + *Inter* body), and bespoke vertical scroll progress tracking.
-- **Zero-Build Architecture**: Single-file frontend (`public/index.html`) with inline CSS & JavaScript — no bundlers, transpilers, or framework overhead required.
-- **Production & Server Resilience**: Lightweight Node.js / Express static server with automatic port-conflict fallback, plus zero-config static deployment for **Vercel**.
+I'm an Information Science & Engineering student at RV Institute of Technology and Management, Bengaluru (class of 2027), working on machine learning and backend systems.
 
 ---
 
-## 🛠️ Tech Stack
+## What's on the site
 
-| Layer | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend** | HTML5, CSS3, Vanilla JS (ES6+) | Direct DOM manipulation & HTML5 Canvas cover-fit rendering |
-| **Animation** | [GSAP 3](https://greensock.com/gsap/) + [ScrollTrigger](https://greensock.com/scrolltrigger/) | Scrubbed timeline synchronization and canvas pinning |
-| **Smooth Scroll** | [Lenis](https://github.com/darkroomengineering/lenis) (1.1.20) | Smooth momentum scrolling integrated with GSAP ticker |
-| **Typography** | Google Fonts | *Cormorant Garamond* (Editorial Display) & *Inter* (Body/UI) |
-| **Server** | Node.js + Express.js | Static asset delivery and dynamic port negotiation |
-| **Asset Pipeline**| FFmpeg | Server-side video frame extraction and compression |
-| **Hosting** | Vercel / Node.js | Configured with `vercel.json` pointing to `public/` |
+- **Hero** — a live network-traffic animation drawn on a `<canvas>`: hosts drift, packets move along the links between them, and a few hosts get flagged as you scroll, like an intrusion detection system would flag them. My name and role show on the first screen.
+- **About** — who I am, CGPA and degree.
+- **Projects** — three case studies, each with its own animated canvas:
+  - ML-based Network Intrusion Detection System (Scapy, FastAPI, SQLite, React, XGBoost)
+  - IronForge, a strength-tracking platform (PostgreSQL, REST APIs)
+  - Vision-based hand gesture control (OpenCV, MediaPipe)
+  - plus shorter cards for Focus (task and time tracker) and a configurable CPU cache simulator
+- **Skills, Achievements, Education, Contact.**
 
 ---
 
-## 📁 Project Structure
+## Tech stack
+
+| Layer | Technology |
+| :--- | :--- |
+| Page | HTML5, CSS3, vanilla JavaScript (ES6+), all in `public/index.html` |
+| Animation | GSAP 3.12.5 + ScrollTrigger |
+| Smooth scroll | Lenis 1.1.20 |
+| Graphics | HTML5 Canvas 2D, drawn in code (the site has no image or video assets) |
+| Fonts | Cormorant Garamond, Inter, JetBrains Mono (Google Fonts) |
+| Local server | Node.js + Express 5, with automatic port fallback |
+| Hosting | Vercel (static, serves `public/`) |
+
+There is no build step: the browser runs `public/index.html` directly.
+
+---
+
+## Project structure
 
 ```text
-portfolio/
-├── package.json              # Project metadata & start script
-├── server.js                 # Express server with automatic port fallback
-├── vercel.json               # Static deployment configuration for Vercel
-├── MASTER-PROMPT.md          # Architectural & design specification
-├── resourcess-assets/
-│   └── video-01.mp4          # Source 1080p hero film (~30s, 30fps)
-└── public/
-    ├── index.html            # Main application (HTML, CSS, JS inline)
-    ├── newsletter-bg.jpg     # Extracted hero still for footer/newsletter
-    ├── dawn.jpg              # Dawn product blend imagery (16:9)
-    ├── dusk.jpg              # Dusk product blend imagery (16:9)
-    ├── night.jpg             # Night product blend imagery (16:9)
-    └── frames/
-        ├── frame_0001.jpg    # Pre-extracted video frames for canvas scrubbing
-        └── ...
-        └── frame_0227.jpg
+Portfolio/
+├── public/
+│   └── index.html            # The whole site: HTML, CSS and JS inline
+├── server.js                 # Express static server for local development
+├── vercel.json               # Vercel config, serves public/
+├── project_documentation.md  # Function-by-function technical notes
+└── package.json
 ```
 
 ---
 
-## 🚀 Getting Started
+## Run it locally
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v16+ recommended)
-- [FFmpeg](https://ffmpeg.org/) *(only required if regenerating video frames from raw video)*
-
-### Installation
-
-1. Clone or navigate to the project directory:
-   ```bash
-   cd portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the local server:
-   ```bash
-   npm start
-   ```
-
-4. Open your browser at [http://localhost:3000](http://localhost:3000) (if port 3000 is occupied, the server will automatically bind to the next available port and log the URL in your terminal).
-
----
-
-## 🎬 Asset Pipeline (FFmpeg Frame Extraction)
-
-If you replace `resourcess-assets/video-01.mp4` or need to regenerate frames, run the following commands from the project root:
+Needs Node.js 18 or newer.
 
 ```bash
-# 1. Extract ~227 hero frames (7.5 fps, scaled to 1600px width, JPEG quality 3)
-ffmpeg -i resourcess-assets/video-01.mp4 -vf "fps=7.5,scale=1600:-2" -q:v 3 public/frames/frame_%04d.jpg
-
-# 2. Extract newsletter background still from the 24.9s mark
-ffmpeg -ss 24.9 -i resourcess-assets/video-01.mp4 -frames:v 1 -q:v 3 public/newsletter-bg.jpg
+npm install
+npm start
 ```
 
-> **Performance Tip**: For lower memory consumption on mobile or slower devices, change `scale=1600:-2` to `scale=1280:-2` or adjust `fps=6`.
+Then open http://localhost:3000. If port 3000 is busy, the server tries 3001, 3002 and so on, and prints the port it used.
+
+## Deploy
+
+Vercel serves `public/` as a static site (see `vercel.json`), so pushing to `main` redeploys it.
 
 ---
 
-## 🚢 Deployment
+## Contact
 
-### Deploying to Vercel
-
-The project includes a ready-to-use [`vercel.json`](./vercel.json) configured to serve the `public/` folder directly:
-
-1. Install the Vercel CLI: `npm i -g vercel`
-2. Run:
-   ```bash
-   vercel
-   ```
-3. Deploy to production:
-   ```bash
-   vercel --prod
-   ```
-
-### Deploying with Node / Docker / VPS
-
-Run `node server.js` behind any reverse proxy (e.g., Nginx, Caddy) or standard cloud hosting service (Railway, Render, Fly.io, etc.).
-
----
-
-## 📜 License
-
-This project is licensed under the [ISC License](LICENSE).
+- Email: ayushsingh10580@gmail.com
+- GitHub: [Ayush-Singh0583](https://github.com/Ayush-Singh0583)
+- LinkedIn: [ayush-singh-47b446298](https://www.linkedin.com/in/ayush-singh-47b446298)

@@ -5,28 +5,9 @@
  */
 
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
 
 const app = express();
-
-// --- Asset check (runs at startup) ---
-function checkAssets() {
-  const framesDir = path.join(__dirname, 'public', 'frames');
-  let count = 0;
-  try {
-    if (fs.existsSync(framesDir)) {
-      count = fs.readdirSync(framesDir).filter((f) => f.endsWith('.jpg')).length;
-    }
-  } catch (_) {
-    /* frames folder missing or inaccessible */
-  }
-  if (count < 200) {
-    console.warn(`\n[Notice] public/frames/ has ${count} frames (expected ~227). Fallback technical canvas will be active if needed.\n`);
-  } else {
-    console.log(`[Assets] ${count} cinematic hero frames verified.`);
-  }
-}
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
@@ -59,5 +40,4 @@ function tryListen(port, triesLeft) {
   });
 }
 
-checkAssets();
 tryListen(3000, 8);
