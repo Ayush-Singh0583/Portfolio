@@ -26,7 +26,7 @@ Last updated: 2026-10-17. Line numbers drift; search by id, class or function na
 | Header + nav | `#site-header`, `.header-nav`, `#mobileNavOverlay` | Links use `data-nav="<section id>"` |
 | Scroll progress | `#progress-track`, `#progress-fill` | Right-edge bar driven by ScrollTrigger |
 | Hero | `.hero#top`, `#hero-canvas`, `#ov1`–`#ov5`, `#scrollHint` | Pinned while scrolling |
-| About | `#about`, `.about-metrics` | CGPA and degree cards |
+| About | `#about`, `.about-content`, `.about-side` (`.about-photo` + `.about-metrics`) | Bio; professional photo (placeholder until added); CGPA and degree cards. On ≤ 1024 px `.about-side` comes first |
 | Projects | `#projects`, `.project-card` ×3, `.more-projects` | Canvases `#canvas-proj-ids`, `#canvas-proj-ironforge`, `#canvas-proj-gesture` |
 | Skills | `#skills`, `.sk-card` | Each card has `.skill-cat-count`; keep it equal to its badge count |
 | Achievements | `#achievements`, `.timeline-cinematic`, `.ach-card` | |
@@ -68,6 +68,7 @@ Hero tuning constants (inside the script): `NODE_COUNT` (110 desktop / 56 phone)
 ## Where to edit what
 
 - Hero name and role line: `#ov1` markup. The role line is two `.hero-sub-part` spans (see `GOTCHAS.md` #14). Keep the `<meta name="description">` in `<head>` in line with it.
+- Professional photo: `.about-photo` in `#about`. Swap steps are in the HTML comment above it.
 - Bio and CGPA card: `#about`. CGPA also appears in `.edu-grade-pill` in `#education`; change both.
 - Project text: `.project-card` articles and `.mini-card` articles in `#projects`.
 - Skills: `.skill-badge` items; update the `.skill-cat-count` beside them.

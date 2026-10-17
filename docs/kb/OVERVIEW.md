@@ -33,7 +33,7 @@ No build step, no framework, no automated tests. `package.json` version: 2.0.0.
 ## What's on the page (top to bottom)
 
 1. **Hero** — live network-traffic canvas; name, "Software engineer · backend systems & machine learning", degree line; four text moments while scrolling
-2. **About** (`#about`) — bio, CGPA card, degree card
+2. **About** (`#about`) — bio, professional photo (placeholder "(MY ONE PROFESSIONAL IMAGE)" until the photo is added), CGPA card, degree card
 3. **Projects** (`#projects`) — three case studies with animated canvases (ML Network Intrusion Detection System, IronForge, Vision-Based Hand Gesture Control), then "More projects": Focus and Configurable CPU Cache Simulator
 4. **Skills** (`#skills`) — six category cards
 5. **Achievements** (`#achievements`) — LeetCode, SIH, Fantom Code, research poster, independent builder

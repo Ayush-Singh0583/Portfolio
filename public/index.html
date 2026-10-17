@@ -481,6 +481,49 @@
       font-weight: 500;
     }
 
+    .about-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Professional photo (portrait 4:5). Shows a dashed placeholder until the photo is added. */
+    .about-photo {
+      margin: 0;
+      width: 100%;
+      max-width: 340px;
+      align-self: center;
+      aspect-ratio: 4 / 5;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(160deg, rgba(245, 158, 11, 0.05), rgba(9, 9, 11, 0.8));
+    }
+
+    .about-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-photo.is-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      border: 1px dashed rgba(245, 158, 11, 0.45);
+    }
+
+    .about-photo-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      line-height: 1.7;
+      text-align: center;
+      color: rgba(245, 158, 11, 0.85);
+    }
+
     .about-metrics {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1592,6 +1635,11 @@
         gap: 40px;
       }
 
+      /* Single column: photo and key numbers first, then the bio */
+      .about-side {
+        order: -1;
+      }
+
       .edu-grid-two {
         grid-template-columns: 1fr;
       }
@@ -1637,6 +1685,10 @@
 
       .ov1 .hero-sub-sep {
         display: none;
+      }
+
+      .about-photo {
+        max-width: 260px;
       }
 
       .ov1 .title-text {
@@ -2003,16 +2055,27 @@
         </p>
       </div>
 
-      <div class="about-metrics">
-        <div class="metric-card">
-          <div class="metric-value">8.74</div>
-          <div class="metric-label">CGPA</div>
-          <div class="metric-sub">RV Institute of Technology and Management</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-value">2023–27</div>
-          <div class="metric-label">B.E. ISE</div>
-          <div class="metric-sub">Information Science & Engineering</div>
+      <div class="about-side">
+        <!-- Professional photo. Placeholder until the photo is added.
+             To swap in the photo: save it as public/profile.jpg (portrait, about 800 x 1000 px),
+             then replace the <span class="about-photo-label"> line below with:
+             <img src="profile.jpg" alt="Ayush Singh" width="800" height="1000" loading="lazy" />
+             and remove the is-placeholder class from the <figure>. -->
+        <figure class="about-photo is-placeholder">
+          <span class="about-photo-label">(MY ONE PROFESSIONAL IMAGE)</span>
+        </figure>
+
+        <div class="about-metrics">
+          <div class="metric-card">
+            <div class="metric-value">8.74</div>
+            <div class="metric-label">CGPA</div>
+            <div class="metric-sub">RV Institute of Technology and Management</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">2023–27</div>
+            <div class="metric-label">B.E. ISE</div>
+            <div class="metric-sub">Information Science & Engineering</div>
+          </div>
         </div>
       </div>
     </div>
