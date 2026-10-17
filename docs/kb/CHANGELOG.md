@@ -8,6 +8,7 @@ Newest first. One entry per working session.
 - Built a professional-photo slot in About ("(MY ONE PROFESSIONAL IMAGE)" placeholder) on branch `photo-slot`, not merged: an empty placeholder would show on the live site.
 - Checked at 1440 px and 390 px in three cases (normal, CDN blocked, CDN hanging): no page errors, no sideways scroll, page scrolls to the footer in all cases.
 - Vercel skipped the first push to `main`; an empty commit triggered the deploy (`GOTCHAS.md` #15). Live site checked: new hero line shows.
+- Added to the to-do list after a look at a friend's portfolio: real project screenshots, and a cleaner domain.
 
 ## 2026-10-16 (evening) — Knowledge base
 - Added `docs/kb/` (INDEX, OVERVIEW, ARCHITECTURE, SETUP, STATUS, DECISIONS, NUMBERS, GOTCHAS, CHANGELOG), `CLAUDE.md` and `AGENTS.md`.

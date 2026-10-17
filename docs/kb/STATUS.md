@@ -22,11 +22,13 @@ Summary: Hero line set for SDE-first, ML-second roles and the blank-page bug fix
 ## Next up (most important first)
 1. Professional photo: merge `photo-slot` once the photo arrives (instructions are in the HTML comment above `.about-photo`)
 2. "My 4 years" timeline section, year by year (2023–2027): for each year, what he built or learned, with dates and tech
-3. Tech news chatbot as a project (NewsAPI + Gemini API, later fine-tuned Pegasus, Streamlit UI): needs repo link, dataset, any ROUGE score
-4. Rewrite About: lead with what he builds and the role he wants (SDE first, ML second), one personal line at the end
-5. Download-resume button (hero + contact): needs the PDF, with numbers matching `NUMBERS.md`
-6. Specific achievements (what, event, year) instead of "participated" / "presented"
-7. Link-preview tags (Open Graph) with a preview image (the professional photo could be it)
+3. Real screenshots on project cards (e.g. the Focus dashboard, NIDS output), next to or instead of the drawn canvases (idea from a friend's portfolio; Ayush agreed 2026-10-17)
+4. Cleaner domain: free (e.g. `ayush-singh.vercel.app`) or a paid custom domain; Ayush to choose
+5. Tech news chatbot as a project (NewsAPI + Gemini API, later fine-tuned Pegasus, Streamlit UI): needs repo link, dataset, any ROUGE score
+6. Rewrite About: lead with what he builds and the role he wants (SDE first, ML second), one personal line at the end
+7. Download-resume button (hero + contact): needs the PDF, with numbers matching `NUMBERS.md`
+8. Specific achievements (what, event, year) instead of "participated" / "presented"
+9. Link-preview tags (Open Graph) with a preview image (the professional photo could be it)
 
 ## Blocked / waiting on
 - Ayush: the professional photo, answers to the content questions, the resume PDF, the chatbot repo link
@@ -36,4 +38,3 @@ Summary: Hero line set for SDE-first, ML-second roles and the blank-page bug fix
 - Are the IronForge and Hand Gesture card claims accurate? (not checked against their repos)
 - LeetCode "150+": still the right number?
 - Keep the phone number public on the site?
-- Add a cleaner domain (e.g. `ayush-singh.vercel.app`, free; or a paid custom domain)?
