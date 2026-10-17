@@ -138,6 +138,10 @@ All JavaScript execution is encapsulated within an Immediate-Invoked Function Ex
 
 #### 18. `init()`
 * **Purpose**: Application bootstrap sequence. Locks scroll during boot, pre-calculates canvas bounds, draws the first hero frame, waits for web fonts (`document.fonts.ready`, capped at 2.5 s), removes the loading screen, fades in the name and role, and starts Lenis momentum scroll.
+* **Fallback**: If GSAP or ScrollTrigger is missing, or `buildScroll()` throws, it calls `showStatic()` instead of animating.
+
+#### 19. `showStatic()`
+* **Purpose**: Shows the whole page without scroll animations: adds `static-mode` to `<html>`, unlocks scrolling, removes the loader and marks the page ready (`window.__portfolioReady`). A small safety script right after the loader markup adds `static-mode` itself if the page isn't ready after 8 s (CDN hanging, or any script error).
 
 ---
 

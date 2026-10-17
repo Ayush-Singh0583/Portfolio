@@ -1,6 +1,6 @@
 # Setup, checks and deploy
 
-Last updated: 2026-10-16
+Last updated: 2026-10-17
 
 ## Run locally
 
@@ -24,6 +24,7 @@ There are no automated tests. Before every push:
 3. Check phone width (DevTools device toolbar, 390 × 844): mobile menu opens and closes, cards stack, nothing scrolls sideways.
 4. Click every nav link and check the scroll lands on the right section.
 5. If you changed a number, check it against `docs/kb/NUMBERS.md`.
+6. If you touched the loader, `init()` or anything GSAP reveals: block `cdnjs.cloudflare.com` (DevTools → Network → right-click a request → Block request domain), reload, and check the page shows right away without animations and scrolls to the footer.
 
 ## Deploy
 
@@ -39,3 +40,4 @@ In Claude's cloud workspace, cdnjs, jsDelivr and Google Fonts are blocked, so th
 2. Run the site with `node server.js`.
 3. With Playwright (Python), intercept requests: serve `gsap.min.js`, `ScrollTrigger.min.js`, `lenis.min.js` from `node_modules`, answer `fonts.googleapis.com` with the concatenated `@fontsource` CSS, and serve the font files it points to.
 4. Wait for `#loader` to hide, then scroll with `window.lenis.scrollTo(y, {immediate: true, force: true})` and wait ~1.8 s before each screenshot. Use 1440 × 900 and 390 × 844 (scale 2, `is_mobile`).
+5. To test static mode: `route.abort()` the cdnjs / jsDelivr requests (CDN down), or never answer the `gsap.min.js` request (CDN hanging; static mode should start at ~8 s). Expect `html.static-mode`, no `body.loading`, and the page scrolling to the bottom. The three "Failed to load resource" console lines are the blocked requests themselves.

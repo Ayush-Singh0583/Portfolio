@@ -1,8 +1,8 @@
 # Gotchas
 
-Last updated: 2026-10-16
+Last updated: 2026-10-17
 
-1. **Blank page if the GSAP CDN fails.** GSAP, ScrollTrigger and Lenis load from cdnjs / jsDelivr. If GSAP doesn't load, `buildScroll()` throws inside `init()`'s promise and the loader never hides. Not fixed yet. Fix idea: if `!window.gsap`, hide `#loader`, show `#ov1`, and skip the scroll animations.
+1. **CDN failures → static mode (fixed 2026-10-17).** GSAP, ScrollTrigger and Lenis load from cdnjs / jsDelivr. Before the fix, a failed GSAP load left the loader up forever (blank page). Now `init()` checks for `gsap` and `ScrollTrigger`; if either is missing, or `buildScroll()` throws, it calls `showStatic()`. A safety script right after `#loader` switches to static mode after 8 s if the page never became ready (CDN hanging, script error). In static mode the hero isn't pinned, `#ov2`–`#ov5` stay hidden, and every section shows without reveal animations. If you add new elements that start hidden in CSS and are revealed by GSAP, also make them visible under `html.static-mode`. Lenis missing alone is fine: nav falls back to `window.scrollTo`.
 
 2. **Vercel branch and preview URLs need a login.** `portfolio-git-main-…vercel.app` and `portfolio-<hash>-…vercel.app` redirect to `vercel.com/login` (HTTP 302) for visitors. Only share https://portfolio-ten-sandy-31hdz6ywb8.vercel.app.
 
@@ -27,3 +27,5 @@ Last updated: 2026-10-16
 12. **Cloud sandbox can't reach the CDNs.** See `SETUP.md`, "Screenshots from a cloud sandbox".
 
 13. **`pkill -f "node server.js"` can kill your own shell** when the same text is in the running command line. Use `pkill -f '^node server'`.
+
+14. **The hero role line is two parts.** `.hero-sub` holds two `.hero-sub-part` spans with a `.hero-sub-sep` middot between them. Each part never wraps; on phones (≤ 768 px) they stack and the middot hides. `.ov1` has `width: 92%` on desktop; without it, the absolutely placed overlay only gets half the screen and the line breaks badly ("learning" alone on line two).

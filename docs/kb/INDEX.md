@@ -1,6 +1,6 @@
 # Knowledge base — index
 
-Last updated: 2026-10-16
+Last updated: 2026-10-17
 
 This folder holds everything a new session needs to work on Ayush's portfolio site without re-explaining.
 

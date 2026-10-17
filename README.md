@@ -2,7 +2,7 @@
 
 My personal portfolio: a single-page, scroll-driven site that introduces me and walks through my projects, skills, achievements and education.
 
-I'm an Information Science & Engineering student at RV Institute of Technology and Management, Bengaluru (class of 2027), working on machine learning and backend systems.
+I'm an Information Science & Engineering student at RV Institute of Technology and Management, Bengaluru (class of 2027), working on backend systems and machine learning.
 
 ---
 

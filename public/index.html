@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ayush Singh — Developer Portfolio</title>
   <meta name="description"
-    content="Ayush Singh — Information Science & Engineering student and Software Developer. Building at the intersection of Software Engineering, Machine Learning, and Computer Vision." />
+    content="Ayush Singh — software engineer working on backend systems and machine learning. B.E. Information Science & Engineering, RVITM Bengaluru, class of 2027." />
   <meta name="theme-color" content="#030303" />
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030303'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23f59e0b' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
@@ -284,10 +284,16 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
+      width: 92%;
       max-width: 92%;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    /* Each half of the role line stays whole; on phones they stack (see 768px block) */
+    .ov1 .hero-sub-part {
+      white-space: nowrap;
     }
 
     .ov1 .hero-sub {
@@ -1625,6 +1631,14 @@
         max-width: 300px;
       }
 
+      .ov1 .hero-sub-part {
+        display: block;
+      }
+
+      .ov1 .hero-sub-sep {
+        display: none;
+      }
+
       .ov1 .title-text {
         font-size: clamp(40px, 13.5vw, 84px);
         letter-spacing: 0.26em;
@@ -1800,6 +1814,25 @@
       }
     }
 
+    /* Static mode: used when the animation libraries (GSAP / ScrollTrigger)
+       fail to load, so visitors still get the whole page without animations.
+       Set by the page script, or by the safety timer after the loader. */
+    html.static-mode body.loading {
+      overflow: visible;
+      height: auto;
+    }
+
+    html.static-mode #loader {
+      display: none;
+    }
+
+    html.static-mode .title-text,
+    html.static-mode .hero-sub,
+    html.static-mode .hero-meta,
+    html.static-mode .scroll-hint {
+      opacity: 1;
+    }
+
     /* Reduced Motion Accessibility */
     @media (prefers-reduced-motion: reduce) {
       * {
@@ -1836,6 +1869,14 @@
     </div>
     <div class="loader-note" id="loaderNote">Initializing...</div>
   </div>
+  <script>
+    /* Safety net: if the page script hasn't finished starting up within 8 s
+       (CDN down or very slow, or a script error), drop the loader and show
+       the page without animations. See docs/kb/GOTCHAS.md #1. */
+    setTimeout(function () {
+      if (!window.__portfolioReady) document.documentElement.classList.add('static-mode');
+    }, 8000);
+  </script>
 
   <!-- ============================================================
        01. FIXED HEADER
@@ -1904,7 +1945,7 @@
     <!-- Moment 01 — IDENTITY (visible on the first screen) -->
     <div class="overlay ov1" id="ov1">
       <span class="title-text">AYUSH</span>
-      <span class="hero-sub">Machine learning &amp; backend systems</span>
+      <span class="hero-sub"><span class="hero-sub-part">Software engineer</span><span class="hero-sub-sep" aria-hidden="true"> &middot; </span><span class="hero-sub-part">backend systems &amp; machine learning</span></span>
       <span class="hero-meta">B.E. Information Science &middot; RVITM Bengaluru &middot; Class of 2027</span>
     </div>
 
@@ -3180,14 +3221,33 @@
         }));
       }
 
+      /* --- Static fallback (no GSAP) --- */
+      /* Shows the whole page without scroll animations. Used when GSAP or
+         ScrollTrigger didn't load, or buildScroll() failed. */
+      function showStatic() {
+        document.documentElement.classList.add('static-mode');
+        document.body.classList.remove('loading');
+        loader.style.display = 'none';
+        window.__portfolioReady = true;
+      }
+
       /* --- Bootstrap Sequence --- */
       function init() {
-        document.body.classList.add('loading');
-        window.scrollTo(0, 0);
         sizeCanvas();
         splitWords();
         initProjectVisuals();
         render(0);
+
+        // The safety timer already showed the page (scripts arrived very late):
+        // stay static rather than jumping the visitor back to the top.
+        if (document.documentElement.classList.contains('static-mode')) {
+          showStatic();
+          startLoop();
+          return;
+        }
+
+        document.body.classList.add('loading');
+        window.scrollTo(0, 0);
 
         const fontsReady = (document.fonts && document.fonts.ready)
           ? document.fonts.ready
@@ -3201,8 +3261,27 @@
           loaderFill.style.width = '100%';
           sizeCanvas();
           render(0);
-          buildScroll();
+
+          // Off if GSAP is missing, or the safety timer already switched to static mode
+          let canAnimate = !!(window.gsap && window.ScrollTrigger) &&
+            !document.documentElement.classList.contains('static-mode');
+          if (canAnimate) {
+            try {
+              buildScroll();
+            } catch (err) {
+              console.error('Scroll animations failed; showing the page without them.', err);
+              canAnimate = false;
+              if (lenis) { lenis.destroy(); lenis = null; window.lenis = undefined; }
+              ScrollTrigger.getAll().forEach((t) => t.kill());
+            }
+          }
           startLoop();
+
+          if (!canAnimate) {
+            showStatic();
+            return;
+          }
+          window.__portfolioReady = true;
 
           // Fade out loader, then bring in the name and role
           loader.classList.add('hidden');
