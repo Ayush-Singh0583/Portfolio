@@ -7,6 +7,7 @@ Newest first. One entry per working session.
 - Fixed `GOTCHAS.md` #1: if GSAP or ScrollTrigger doesn't load, the page now shows everything without animations instead of a stuck loader. An 8 s safety timer covers a hanging CDN or any script error.
 - Built a professional-photo slot in About ("(MY ONE PROFESSIONAL IMAGE)" placeholder) on branch `photo-slot`, not merged: an empty placeholder would show on the live site.
 - Checked at 1440 px and 390 px in three cases (normal, CDN blocked, CDN hanging): no page errors, no sideways scroll, page scrolls to the footer in all cases.
+- Vercel skipped the first push to `main`; an empty commit triggered the deploy (`GOTCHAS.md` #15). Live site checked: new hero line shows.
 
 ## 2026-10-16 (evening) — Knowledge base
 - Added `docs/kb/` (INDEX, OVERVIEW, ARCHITECTURE, SETUP, STATUS, DECISIONS, NUMBERS, GOTCHAS, CHANGELOG), `CLAUDE.md` and `AGENTS.md`.

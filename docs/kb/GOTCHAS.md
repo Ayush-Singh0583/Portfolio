@@ -29,3 +29,5 @@ Last updated: 2026-10-17
 13. **`pkill -f "node server.js"` can kill your own shell** when the same text is in the running command line. Use `pkill -f '^node server'`.
 
 14. **The hero role line is two parts.** `.hero-sub` holds two `.hero-sub-part` spans with a `.hero-sub-sep` middot between them. Each part never wraps; on phones (≤ 768 px) they stack and the middot hides. `.ov1` has `width: 92%` on desktop; without it, the absolutely placed overlay only gets half the screen and the line breaks badly ("learning" alone on line two).
+
+15. **Vercel can miss a push to `main`.** On 2026-10-17 a push to `main` got no Vercel build at all (no status on the commit), while a branch pushed seconds later did build. After pushing, check the commit's status (`gh api repos/Ayush-Singh0583/Portfolio/commits/<sha>/statuses` should show "Deployment has completed") or the live page. If nothing started after a couple of minutes, push an empty commit or press Redeploy in the Vercel dashboard.
