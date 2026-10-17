@@ -2,6 +2,13 @@
 
 Newest first. One entry per working session.
 
+## 2026-10-18 (after midnight) — Journey timeline
+- Question 2 answered. Added the "Journey" section after Projects (nav link too): Year 1 basics; Year 2 Focus, IronForge, tech news chatbot; Year 3 cache simulator, VoIP (Java), hand gesture control, EventSphere, Campus Buzz, IDS and banking API started; Year 4 IDS + paper, banking API, EDM tool-wear paper, blockchain e-voting (team), Interview Speaking Trainer, CODEBASE, Unload.
+- Checked Ayush's years against GitHub. Repos start in 2026 because he built earlier work locally; a note under the timeline says so. Two of his answers changed between messages (IronForge 3→2, cache simulator 4→3); he confirmed the later ones.
+- Added his other public repos at his request, placed by upload date; tech lists taken from each repo's dependency files (`NUMBERS.md`, Journey table).
+- Found: IronForge card says "session authentication", repo uses JWT. Left for Ayush to decide.
+- Checked at 1440 px and 390 px, normal and CDN-blocked: no page errors, nav link lands on the section, all year cards visible.
+
 ## 2026-10-17 (night) — Hero line, blank-page fix, photo slot
 - Question 1 answered: Ayush is applying for SDE (first) and ML engineer (second) roles. Hero role line is now "Software engineer · backend systems & machine learning" (his pick). Meta description and README updated to match. The line is split into two parts so it never leaves one word alone on a line; on phones the parts stack.
 - Fixed `GOTCHAS.md` #1: if GSAP or ScrollTrigger doesn't load, the page now shows everything without animations instead of a stuck loader. An 8 s safety timer covers a hanging CDN or any script error.

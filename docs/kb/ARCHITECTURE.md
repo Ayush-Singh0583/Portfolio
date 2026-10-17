@@ -28,6 +28,7 @@ Last updated: 2026-10-17. Line numbers drift; search by id, class or function na
 | Hero | `.hero#top`, `#hero-canvas`, `#ov1`–`#ov5`, `#scrollHint` | Pinned while scrolling |
 | About | `#about`, `.about-metrics` | CGPA and degree cards |
 | Projects | `#projects`, `.project-card` ×3, `.more-projects` | Canvases `#canvas-proj-ids`, `#canvas-proj-ironforge`, `#canvas-proj-gesture` |
+| Journey | `#journey`, `.journey-grid` (an `<ol>`), `.year-card` ×4, `.year-item` | Year-by-year timeline. Horizontal rail on desktop, vertical rail ≤ 1100 px. `.is-current` + `.year-now` pill mark the current year |
 | Skills | `#skills`, `.sk-card` | Each card has `.skill-cat-count`; keep it equal to its badge count |
 | Achievements | `#achievements`, `.timeline-cinematic`, `.ach-card` | |
 | Education | `#education`, `.edu-box`, `.edu-grade-pill`, `.course-list` | |
@@ -41,7 +42,7 @@ All page code lives in one IIFE in strict mode, after three CDN scripts (GSAP, S
 
 1. `init()` runs on `DOMContentLoaded`: `sizeCanvas()`, `splitWords()`, `initProjectVisuals()`, `render(0)`. If the safety timer already set `static-mode`, it calls `showStatic()` and stops there.
 2. It waits for `document.fonts.ready`, capped at 2.5 s. If `gsap` and `ScrollTrigger` exist, it calls `buildScroll()` (inside try/catch), `startLoop()`, hides the loader, and fades in `#ov1` and `#scrollHint`. Otherwise, or if `buildScroll()` throws, it calls `showStatic()` (see `GOTCHAS.md` #1).
-3. `buildScroll()` creates Lenis (hooked into `gsap.ticker` and `ScrollTrigger.update`) and a master timeline pinned to `.hero` with `end: '+=400%'`, `scrub: 0.6`. The timeline runs 0→100; hero progress 0→1 goes to `render(p)`; text moments sit at positions 6 (name out), 18, 38, 60 and 82. It also sets up the progress bar, header `scrolled` class, and section reveal animations.
+3. `buildScroll()` creates Lenis (hooked into `gsap.ticker` and `ScrollTrigger.update`) and a master timeline pinned to `.hero` with `end: '+=400%'`, `scrub: 0.6`. The timeline runs 0→100; hero progress 0→1 goes to `render(p)`; text moments sit at positions 6 (name out), 18, 38, 60 and 82. It also sets up the progress bar, header `scrolled` class, and section reveal animations (project cards, year cards, skills, achievements, education).
 4. Nav clicks (`[data-nav]`) call `lenis.scrollTo` with a duration that scales with distance: at most 4 s on desktop, 2.5 s on phones.
 
 ## Function reference
@@ -70,5 +71,6 @@ Hero tuning constants (inside the script): `NODE_COUNT` (110 desktop / 56 phone)
 - Hero name and role line: `#ov1` markup. The role line is two `.hero-sub-part` spans (see `GOTCHAS.md` #14). Keep the `<meta name="description">` in `<head>` in line with it.
 - Bio and CGPA card: `#about`. CGPA also appears in `.edu-grade-pill` in `#education`; change both.
 - Project text: `.project-card` articles and `.mini-card` articles in `#projects`.
+- Timeline: `.year-item` entries in `#journey`. Each has a name, a short description and a tech line. Record every new entry in `NUMBERS.md` (Journey table). When the academic year changes, move `is-current` and the `Now` pill.
 - Skills: `.skill-badge` items; update the `.skill-cat-count` beside them.
 - Links: search for `github.com/Ayush-Singh0583`, `linkedin.com`, `leetcode.com`, `mailto:`, `tel:`.

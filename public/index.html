@@ -830,6 +830,183 @@
       }
     }
 
+    /* ============================================================
+       JOURNEY SECTION — "THE JOURNEY" (year-by-year timeline)
+       Desktop: four cards on a horizontal rail. ≤ 1100 px: one column
+       on a vertical rail. The current year's dot is filled and pulses.
+       ============================================================ */
+    .journey-section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .journey-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      align-items: start;
+      margin-top: 56px;
+      padding-top: 34px;
+      list-style: none;
+    }
+
+    /* The rail */
+    .journey-grid::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.55), rgba(245, 158, 11, 0.1));
+    }
+
+    .year-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(22px, 2.2vw, 30px);
+      border-radius: 14px;
+      background: linear-gradient(160deg, #0d0d10 0%, #060608 100%);
+      border: 1px solid var(--border-card);
+    }
+
+    /* Dot on the rail */
+    .year-card::before {
+      content: '';
+      position: absolute;
+      top: -34px;
+      left: 0;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #030303;
+      border: 1px solid rgba(245, 158, 11, 0.6);
+    }
+
+    .year-card.is-current {
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    .year-card.is-current::before {
+      background: var(--amber);
+      border-color: var(--amber);
+      animation: yearPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes yearPulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15), 0 0 14px rgba(245, 158, 11, 0.5); }
+      50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.04), 0 0 22px rgba(245, 158, 11, 0.75); }
+    }
+
+    .year-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+    }
+
+    .year-num {
+      color: var(--amber);
+    }
+
+    .year-span {
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.06em;
+    }
+
+    .year-now {
+      margin-left: auto;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #030303;
+      background: var(--amber);
+      border-radius: 999px;
+      padding: 3px 8px;
+    }
+
+    .year-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(22px, 1.9vw, 27px);
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .year-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .year-item {
+      padding-left: 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .year-item-name {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .year-item-desc {
+      display: block;
+      margin-top: 3px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    .year-item-tech {
+      display: block;
+      margin-top: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.04em;
+      color: rgba(245, 158, 11, 0.85);
+    }
+
+    .journey-note {
+      margin-top: 26px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 1100px) {
+      .journey-grid {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+        padding-top: 0;
+        padding-left: 30px;
+      }
+
+      .journey-grid::before {
+        top: 0;
+        bottom: 0;
+        left: 6px;
+        right: auto;
+        width: 1px;
+        height: auto;
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.55), rgba(245, 158, 11, 0.1));
+      }
+
+      .year-card::before {
+        top: 30px;
+        left: -30px;
+      }
+    }
+
     /* Interactive / Canvas Visual Panels */
     .project-visual-wrapper {
       position: relative;
@@ -1886,6 +2063,7 @@
     <nav class="header-nav" aria-label="Main Navigation">
       <a class="header-link" data-nav="about">About</a>
       <a class="header-link" data-nav="projects">Projects</a>
+      <a class="header-link" data-nav="journey">Journey</a>
       <a class="header-link" data-nav="skills">Skills</a>
       <a class="header-link" data-nav="achievements">Achievements</a>
       <a class="header-link" data-nav="education">Education</a>
@@ -1910,10 +2088,11 @@
         <a class="mobile-nav-link" data-nav="top"><span class="nav-num">00</span> Home</a>
         <a class="mobile-nav-link" data-nav="about"><span class="nav-num">01</span> About</a>
         <a class="mobile-nav-link" data-nav="projects"><span class="nav-num">02</span> Projects</a>
-        <a class="mobile-nav-link" data-nav="skills"><span class="nav-num">03</span> Skills</a>
-        <a class="mobile-nav-link" data-nav="achievements"><span class="nav-num">04</span> Achievements</a>
-        <a class="mobile-nav-link" data-nav="education"><span class="nav-num">05</span> Education</a>
-        <a class="mobile-nav-link" data-nav="contact"><span class="nav-num">06</span> Contact</a>
+        <a class="mobile-nav-link" data-nav="journey"><span class="nav-num">03</span> Journey</a>
+        <a class="mobile-nav-link" data-nav="skills"><span class="nav-num">04</span> Skills</a>
+        <a class="mobile-nav-link" data-nav="achievements"><span class="nav-num">05</span> Achievements</a>
+        <a class="mobile-nav-link" data-nav="education"><span class="nav-num">06</span> Education</a>
+        <a class="mobile-nav-link" data-nav="contact"><span class="nav-num">07</span> Contact</a>
       </nav>
       <div class="mobile-nav-footer">
         <a class="mobile-cta-btn" href="mailto:ayushsingh10580@gmail.com">GET IN TOUCH &rarr;</a>
@@ -2260,6 +2439,134 @@
         </article>
       </div>
     </div>
+  </section>
+
+  <!-- ============================================================
+       05b. JOURNEY SECTION ("THE JOURNEY") — year-by-year timeline
+       Content confirmed by Ayush on 2026-10-18; sources in docs/kb/NUMBERS.md.
+       Move the is-current class and the NOW pill when the year changes.
+       ============================================================ -->
+  <section class="journey-section" id="journey">
+    <span class="section-eyebrow">THE JOURNEY</span>
+    <h2 class="section-heading">Four years, year by year.</h2>
+    <p class="section-lead">What I learned and built in each year of my degree, from the basics in first year to
+      backend and machine learning work now.</p>
+
+    <ol class="journey-grid">
+      <li class="year-card">
+        <div class="year-head"><span class="year-num">YEAR 01</span><span class="year-span">2023–24</span></div>
+        <h3 class="year-title">The basics</h3>
+        <ul class="year-items">
+          <li class="year-item">
+            <span class="year-item-name">Started B.E. Information Science &amp; Engineering at RVITM</span>
+            <span class="year-item-desc">Learned programming fundamentals.</span>
+          </li>
+        </ul>
+      </li>
+
+      <li class="year-card">
+        <div class="year-head"><span class="year-num">YEAR 02</span><span class="year-span">2024–25</span></div>
+        <h3 class="year-title">First full-stack apps</h3>
+        <ul class="year-items">
+          <li class="year-item">
+            <span class="year-item-name">Focus</span>
+            <span class="year-item-desc">Task and time tracker with analytics.</span>
+            <span class="year-item-tech">React · Express · MongoDB</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">IronForge</span>
+            <span class="year-item-desc">Gym workout tracker.</span>
+            <span class="year-item-tech">Next.js · NestJS · PostgreSQL</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Tech news chatbot</span>
+            <span class="year-item-desc">Summarises the latest tech news.</span>
+            <span class="year-item-tech">NewsAPI · Gemini API · Pegasus</span>
+          </li>
+        </ul>
+      </li>
+
+      <li class="year-card">
+        <div class="year-head"><span class="year-num">YEAR 03</span><span class="year-span">2025–26</span></div>
+        <h3 class="year-title">Systems, networking and ML</h3>
+        <ul class="year-items">
+          <li class="year-item">
+            <span class="year-item-name">CPU cache simulator</span>
+            <span class="year-item-desc">Configurable multi-level caches.</span>
+            <span class="year-item-tech">C++17 · React · TypeScript</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">VoIP app</span>
+            <span class="year-item-desc">Voice over IP.</span>
+            <span class="year-item-tech">Java</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Hand gesture control</span>
+            <span class="year-item-desc">Controls the computer with hand gestures.</span>
+            <span class="year-item-tech">Python · MediaPipe · OpenCV</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">EventSphere</span>
+            <span class="year-item-desc">Event management for college events: schedules, judging, attendance.</span>
+            <span class="year-item-tech">React · Express · MongoDB</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Campus Buzz</span>
+            <span class="year-item-desc">Student bulletin board for RVITM.</span>
+            <span class="year-item-tech">React · Express · PostgreSQL</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">6th semester</span>
+            <span class="year-item-desc">Started the intrusion detection system and the banking API.</span>
+          </li>
+        </ul>
+      </li>
+
+      <li class="year-card is-current">
+        <div class="year-head"><span class="year-num">YEAR 04</span><span class="year-span">2026–now</span><span
+            class="year-now">Now</span></div>
+        <h3 class="year-title">Backend and ML, in depth</h3>
+        <ul class="year-items">
+          <li class="year-item">
+            <span class="year-item-name">ML intrusion detection system</span>
+            <span class="year-item-desc">Live detection pipeline, and a research paper on it in progress.</span>
+            <span class="year-item-tech">XGBoost · FastAPI · React</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Banking API</span>
+            <span class="year-item-desc">Secure transaction API, in progress.</span>
+            <span class="year-item-tech">Spring Boot · PostgreSQL · JWT</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">EDM tool-wear research paper</span>
+            <span class="year-item-desc">Team paper testing whether tool-wear models transfer to a new lab.</span>
+            <span class="year-item-tech">Python · scikit-learn · XGBoost</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Blockchain e-voting</span>
+            <span class="year-item-desc">Team project. I worked on the voting UI and am building face authentication.</span>
+            <span class="year-item-tech">Solidity · Hardhat · React</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Interview Speaking Trainer</span>
+            <span class="year-item-desc">Practice spoken answers with a prep timer and browser recording.</span>
+            <span class="year-item-tech">React · FastAPI · SQLite</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">CODEBASE</span>
+            <span class="year-item-desc">Workspace for storing problems, solutions and notes.</span>
+            <span class="year-item-tech">React · Express · PostgreSQL · C++</span>
+          </li>
+          <li class="year-item">
+            <span class="year-item-name">Unload</span>
+            <span class="year-item-desc">Sorts a brain dump into tonight, this week and later.</span>
+            <span class="year-item-tech">Python · Gemini API · Pydantic</span>
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <p class="journey-note">Projects from before 2026 were built on my own machine and moved to GitHub in 2026.</p>
   </section>
 
   <!-- ============================================================
@@ -3171,6 +3478,18 @@
             }
           }));
         });
+
+        gsap.from('.year-card', withWillChange({
+          autoAlpha: 0,
+          y: 30,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: '.journey-grid',
+            start: 'top 82%'
+          }
+        }));
 
         gsap.from('.sk-card', withWillChange({
           autoAlpha: 0,

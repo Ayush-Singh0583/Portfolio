@@ -35,10 +35,11 @@ No build step, no framework, no automated tests. `package.json` version: 2.0.0.
 1. **Hero** — live network-traffic canvas; name, "Software engineer · backend systems & machine learning", degree line; four text moments while scrolling
 2. **About** (`#about`) — bio, CGPA card, degree card
 3. **Projects** (`#projects`) — three case studies with animated canvases (ML Network Intrusion Detection System, IronForge, Vision-Based Hand Gesture Control), then "More projects": Focus and Configurable CPU Cache Simulator
-4. **Skills** (`#skills`) — six category cards
-5. **Achievements** (`#achievements`) — LeetCode, SIH, Fantom Code, research poster, independent builder
-6. **Education** (`#education`) — B.E., CBSE XII and X, coursework list
-7. **Contact** (`#contact`) — email, phone, GitHub, LinkedIn, LeetCode; closing "KEEP BUILDING." banner; footer
+4. **Journey** (`#journey`) — year-by-year timeline of what he learned and built, 2023 to now
+5. **Skills** (`#skills`) — six category cards
+6. **Achievements** (`#achievements`) — LeetCode, SIH, Fantom Code, research poster, independent builder
+7. **Education** (`#education`) — B.E., CBSE XII and X, coursework list
+8. **Contact** (`#contact`) — email, phone, GitHub, LinkedIn, LeetCode; closing "KEEP BUILDING." banner; footer
 
 ## History in one paragraph
 

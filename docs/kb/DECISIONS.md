@@ -2,6 +2,13 @@
 
 Newest first. Format: date — decision. Why. Alternatives considered.
 
+## 2026-10-18 — "Journey" timeline section after Projects
+Why: Ayush wanted the site to show his four years. Placed after Projects so recruiters still reach the case studies first; new nav link "Journey". Years come from Ayush (he built early projects locally and only started using GitHub in 2026), so the section ends with a note saying so; otherwise his 2026 repo dates would look like they contradict the timeline. Projects he didn't mention were added from his public GitHub at his request, placed by upload date.
+Alternatives: place it before Projects (pushes the strongest proof down); leave out projects without a repo (VoIP, chatbot, banking API) — kept, without links.
+
+## 2026-10-18 — Personal-history facts can be "stated by Ayush"
+Why: which year he built something, or his grades, can't be checked against code. `CLAUDE.md`'s VERIFIED rule now allows these when he confirmed them and `NUMBERS.md` records the source.
+
 ## 2026-10-17 — Hero role line: "Software engineer · backend systems & machine learning"
 Why: Ayush is applying for SDE roles first and ML engineer roles second; he picked this line. The degree line under it already says "Class of 2027", so the role line doesn't need to say "student". The `<meta name="description">` and README were updated to match.
 Alternatives: "I build backend APIs and machine learning models"; the old line with the order flipped ("Backend systems & machine learning").

@@ -16,7 +16,7 @@ Ayush's personal portfolio: a single-page, scroll-driven site (HTML, CSS and van
 ## Rules
 - At the end of every session, update `docs/kb/STATUS.md` and add an entry to `docs/kb/CHANGELOG.md`.
 - Record every important decision in `docs/kb/DECISIONS.md`.
-- Never put a number or project claim on the site unless `docs/kb/NUMBERS.md` marks it VERIFIED.
+- Never put a number or project claim on the site unless `docs/kb/NUMBERS.md` marks it VERIFIED. Exception: Ayush's own history (which year he built something, grades) can only come from him; it may go on the site when he has confirmed it and `NUMBERS.md` records it as stated by him.
 - Run the manual checks in `docs/kb/SETUP.md` before pushing; pushing to `main` deploys to production.
 - Commit as `Ayush Singh <competetiveprogramming.study@gmail.com>` and don't add AI co-author lines (Ayush's request).
 - Never share Vercel branch or preview URLs; they sit behind a login.
